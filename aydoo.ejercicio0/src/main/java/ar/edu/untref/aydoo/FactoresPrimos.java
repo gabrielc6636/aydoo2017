@@ -36,12 +36,12 @@ public class FactoresPrimos {
 
         System.out.println("Ingrese el numero: ");
 
-        int num=Integer.parseInt(br.readLine());
+        int vIntNumero=Integer.parseInt(br.readLine());
 
-        FactoresPrimos FP1=new FactoresPrimos(num);
+        FactoresPrimos factoresPrimos=new FactoresPrimos(vIntNumero);
 
         System.out.println("Los factores primos son:");
-        FP1.factores(num);
+        factoresPrimos.factores(vIntNumero);
 
     }
 
