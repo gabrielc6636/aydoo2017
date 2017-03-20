@@ -8,19 +8,23 @@ public class FactoresPrimos {
 
     int vIntNumero;
 
-    public FactoresPrimos(int pIntNumero){
-        vIntNumero=pIntNumero;
+    public FactoresPrimos(){
+        vIntNumero=2; //divisor
     }
 
     public void factores(int pIntNumeroFactor){
 
+        vIntNumero = pIntNumeroFactor;
+
         for(int i=2;i<pIntNumeroFactor;i++){
 
             while(vIntNumero%i==0){
+
                 vIntNumero=vIntNumero/i;
+
                 System.out.print(i+"  ");
 
-                //Para evitar hacer cálculos innecesarios :
+
                 if(vIntNumero==1){
                     System.exit(0);
                 }
@@ -38,7 +42,7 @@ public class FactoresPrimos {
 
         int vIntNumero=Integer.parseInt(br.readLine());
 
-        FactoresPrimos factoresPrimos=new FactoresPrimos(vIntNumero);
+        FactoresPrimos factoresPrimos=new FactoresPrimos();
 
         System.out.println("Los factores primos son:");
         factoresPrimos.factores(vIntNumero);
