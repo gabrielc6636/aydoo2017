@@ -6,11 +6,11 @@ import org.junit.Assert;
 
 public class FooTest 
 {
-    @Test
+    /*@Test
     public void doFooShouldReturnFoo()
     {
         Foo foo = new Foo();
         String result = foo.doFoo();
         Assert.assertEquals("foo", result);
-    }
+    }*/
 }
