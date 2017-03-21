@@ -16,19 +16,27 @@ public class FactoresPrimos {
 
         vIntNumero = pIntNumeroFactor;
 
-        for(int i=2;i<pIntNumeroFactor;i++){
+        if(Integer.class.isInstance(vIntNumero)) {
+            if(vIntNumero>1) {
+                for (int i = 2; i < pIntNumeroFactor; i++) {
 
-            while(vIntNumero%i==0){
+                    while (vIntNumero % i == 0) {
 
-                vIntNumero=vIntNumero/i;
+                        vIntNumero = vIntNumero / i;
 
-                System.out.print(i+"  ");
+                        System.out.print(i + "  ");
 
 
-                if(vIntNumero==1){
-                    System.exit(0);
+                        if (vIntNumero == 1) {
+                            System.exit(0);
+                        }
+                    }
                 }
             }
+            else {
+                System.out.println("El valor debe ser mayor a 1");
+            }
+
         }
 
     }
