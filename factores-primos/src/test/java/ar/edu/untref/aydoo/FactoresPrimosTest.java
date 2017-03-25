@@ -15,7 +15,7 @@ public class FactoresPrimosTest {
         int valor = 360;
 
         FactoresPrimos factoresPrimos = new FactoresPrimos();
-        System.out.println("Los factores primos de "+valor+ "son : ");
+        System.out.println("Los factores primos de "+valor+ " son : ");
         factoresPrimos.factores(valor);
         Assert.assertTrue(true);
     }
@@ -25,7 +25,7 @@ public class FactoresPrimosTest {
         int valor = 90;
 
         FactoresPrimos factoresPrimos = new FactoresPrimos();
-        System.out.println("Los factores primos de "+valor+ "son : ");
+        System.out.println("Los factores primos de "+valor+ " son : ");
         factoresPrimos.factores(valor);
         Assert.assertTrue(true);
     }
