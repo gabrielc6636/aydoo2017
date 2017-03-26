@@ -29,7 +29,7 @@ public class Votacion {
 
 
         for (Map.Entry<Candidato, Long> e: t.entrySet()) {
-            System.out.println("["+e.getKey().getNombre() + "=" + e.getValue()+"]");
+            //System.out.println("["+e.getKey().getNombre() + "=" + e.getValue()+"]");
             if(candidatoGanador.getNombre().isEmpty()) {
                 candidatoGanador = e.getKey();
                 vContador = e.getValue();
