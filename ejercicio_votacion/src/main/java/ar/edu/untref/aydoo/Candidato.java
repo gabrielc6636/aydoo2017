@@ -5,15 +5,15 @@ package ar.edu.untref.aydoo;
  */
 public class Candidato {
 
-    public Partido getPartido() {
+    public String getPartido() {
         return vPartido;
     }
 
-    private void setPartido(Partido pPartido) {
+    private void setPartido(String pPartido) {
         this.vPartido = pPartido;
     }
 
-    Partido vPartido;
+    String vPartido;
     String vNombre;
 
     public String getNombre() {
@@ -26,10 +26,16 @@ public class Candidato {
 
 
 
-    public Candidato (String pNombre,Partido pPartido){
+    public Candidato (String pNombre,String pPartido){
 
         setPartido(pPartido);
         setNombre(pNombre);
+
+    }
+
+    public Candidato (){
+
+        setNombre("");
 
     }
 

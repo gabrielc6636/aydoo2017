@@ -8,6 +8,10 @@ public class Voto {
         return candidato;
     }
 
+    public String getCandidato_Nombre() {
+        return getCandidato().getNombre();
+    }
+
     private void setCandidato(Candidato candidato) {
         this.candidato = candidato;
     }
