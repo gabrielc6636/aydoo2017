@@ -120,4 +120,13 @@ public class Votacion {
         }
 
     }
+
+    public void ResumenVotos(){
+        System.out.println("Votos:"+votos.size());
+
+        for (Voto voto: votos) {
+            System.out.println(voto.getCandidato().getNombre().toString() + " " + voto.getCandidato().getPartido().toString() + " " + voto.getProvincia().toString());
+
+        }
+    }
 }
