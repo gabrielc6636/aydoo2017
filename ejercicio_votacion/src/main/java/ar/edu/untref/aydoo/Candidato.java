@@ -10,7 +10,7 @@ public class Candidato {
     }
 
     private void setPartido(Partido pPartido) {
-        this.vPartido = vPartido;
+        this.vPartido = pPartido;
     }
 
     Partido vPartido;
