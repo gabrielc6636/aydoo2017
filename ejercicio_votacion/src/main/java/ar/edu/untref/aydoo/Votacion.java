@@ -29,7 +29,7 @@ public class Votacion {
 
 
         for (Map.Entry<Candidato, Long> e: t.entrySet()) {
-            //System.out.println("["+e.getKey().getNombre() + "=" + e.getValue()+"]");
+
             if(candidatoGanador.getNombre().isEmpty()) {
                 candidatoGanador = e.getKey();
                 vContador = e.getValue();
@@ -45,22 +45,6 @@ public class Votacion {
     }
 
     public void RecuentoVotosProvincial(){
-
-        /*System.out.println("Votos:"+votos.size());
-
-        for (Voto voto: votos) {
-            System.out.println(voto.getCandidato().getNombre());
-            System.out.println(voto.getCandidato().getPartido().toString());
-            System.out.println(voto.getProvincia().toString());
-        }
-
-        for (Voto voto: votos) {
-            System.out.println(voto.getCandidato().getNombre());
-            System.out.println(voto.getCandidato().getPartido().toString());
-            System.out.println(voto.getProvincia().toString());
-        }*/
-
-
 
         Map<Candidato, Long> colCandidato=
                 votos.stream().collect(
@@ -82,7 +66,6 @@ public class Votacion {
         //Itero por Provincia
         for (Map.Entry<Provincia, Long> vProvincia: colProvincia.entrySet()) {
 
-            //System.out.println("["+vProvincia.getKey().toString() + "=" + vProvincia.getValue()+"]");
 
             int vContadorPartidoProvincia = 0 ;
             String strPartido = "";

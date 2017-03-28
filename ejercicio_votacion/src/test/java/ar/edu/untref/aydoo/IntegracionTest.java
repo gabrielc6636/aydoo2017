@@ -6,7 +6,7 @@ import org.junit.Test;
 /**
  * Created by gabriel on 25/03/17.
  */
-public class VotacionTest {
+public class IntegracionTest {
 
     @Test
     public void TestEmisionVotos()
