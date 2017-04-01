@@ -33,7 +33,6 @@ public class FactoresPrimos {
                 {
                     while(vIntNumero%vIntNumeroFactor==0)
                     {
-                        //System.out.print(vIntNumeroFactor+" ");
                         vIntNumero /= vIntNumeroFactor;
                         lstFactores.add(vIntNumeroFactor);
                     }
