@@ -3,6 +3,8 @@ package ar.edu.untref.aydoo;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.List;
 
 public class FactoresPrimos {
 
@@ -12,25 +14,26 @@ public class FactoresPrimos {
         vIntNumero=2; //divisor
     }
 
-    public void factores(int pIntNumeroFactor){
+    public List<Integer> CalcularFactores(int pIntNumero){
 
-        vIntNumero = pIntNumeroFactor;
+
+        int vIntNumero = pIntNumero;
+
+        int vIntNumeroFactor = 2;
+
+        List<Integer> lstFactores = new LinkedList<Integer>();
 
         if(Integer.class.isInstance(vIntNumero)) {
             if(vIntNumero>1) {
-                for (int i = 2; i < pIntNumeroFactor; i++) {
-
-                    while (vIntNumero % i == 0) {
-
-                        vIntNumero = vIntNumero / i;
-
-                        System.out.print(i + "  ");
-
-
-                        if (vIntNumero == 1) {
-                            System.exit(0);
-                        }
+                while(vIntNumero!=1)
+                {
+                    while(vIntNumero%vIntNumeroFactor==0)
+                    {
+                        vIntNumero /= vIntNumeroFactor;
+                        lstFactores.add(vIntNumeroFactor);
                     }
+
+                    vIntNumeroFactor++;
                 }
             }
             else {
@@ -39,6 +42,7 @@ public class FactoresPrimos {
 
         }
 
+        return lstFactores;
     }
 
 
@@ -53,7 +57,11 @@ public class FactoresPrimos {
         FactoresPrimos factoresPrimos=new FactoresPrimos();
 
         System.out.println("Los factores primos son:");
-        factoresPrimos.factores(vIntNumero);
+        List<Integer> lstFactores =factoresPrimos.CalcularFactores(vIntNumero);
+
+        for (Integer factor : lstFactores) {
+            System.out.print(factor + " ");
+        }
 
     }
 
