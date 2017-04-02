@@ -27,6 +27,10 @@ public class Cliente {
 
         ItemCompra item = comprasClientes.get(pmes);
 
+        if(item ==null){
+            item = new ItemCompra();
+        }
+
         item.AgregarItem(pProducto);
 
         comprasClientes.put(pmes,item);
@@ -36,5 +40,15 @@ public class Cliente {
 
         lstSuscripciones.add(pProducto);
 
+    }
+
+    public LinkedList<Producto> ObtenerItemsCompra(EnumMes pMes){
+        ItemCompra itemCompra = comprasClientes.get(pMes);
+        return itemCompra.ObtenerItems();
+    }
+
+    public LinkedList<Producto> ObtenerSuscripciones(){
+
+        return lstSuscripciones;
     }
 }

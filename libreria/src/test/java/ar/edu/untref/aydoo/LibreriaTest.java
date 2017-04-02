@@ -26,12 +26,12 @@ public class LibreriaTest {
 
         Diario Clarín $13 cada ejemplar, frecuencia diaria*/
 
-        Producto revistaBarcelona = new Producto("Revista Barcelona",20,EnumFrecuencia.QUINCENAL,EnumCategoria.REVISTAS);
-        Producto revistaElGrafico = new Producto("Revista El Grafico",30,EnumFrecuencia.MENSUAL,EnumCategoria.REVISTAS);
-        Producto elHobbit = new Producto("El Hobbit",50,EnumFrecuencia.UNICO,EnumCategoria.LIBROS);
-        Producto lapicera = new Producto("Lapicera",5,EnumFrecuencia.UNICO,EnumCategoria.ARTICULOS);
-        Producto diarioPagina12 = new Producto("Diario Pagina 12",12,EnumFrecuencia.DIARIO,EnumCategoria.PERIODICOS);
-        Producto diarioClarin = new Producto("Diario Clarin",13,EnumFrecuencia.DIARIO,EnumCategoria.PERIODICOS);
+        Producto revistaBarcelona = new Producto("Revista Barcelona",20.0,EnumFrecuencia.QUINCENAL,EnumCategoria.REVISTAS);
+        Producto revistaElGrafico = new Producto("Revista El Grafico",30.0,EnumFrecuencia.MENSUAL,EnumCategoria.REVISTAS);
+        Producto elHobbit = new Producto("El Hobbit",50.0,EnumFrecuencia.UNICO,EnumCategoria.LIBROS);
+        Producto lapicera = new Producto("Lapicera",5.0,EnumFrecuencia.UNICO,EnumCategoria.ARTICULOS);
+        Producto diarioPagina12 = new Producto("Diario Pagina 12",12.0,EnumFrecuencia.DIARIO,EnumCategoria.PERIODICOS);
+        Producto diarioClarin = new Producto("Diario Clarin",13.0,EnumFrecuencia.DIARIO,EnumCategoria.PERIODICOS);
 
         AdministracionLibreria libreria = new AdministracionLibreria();
         libreria.AgregarProducto(revistaBarcelona);
@@ -55,9 +55,9 @@ public class LibreriaTest {
         juan.AgregarProductoCompra(EnumMes.AGOSTO,lapicera);
         juan.AgregarProductoCompra(EnumMes.AGOSTO,revistaElGrafico);
 
-        double valorACobrar = libreria.calcularMontoACobrar(EnumMes.AGOSTO,juan);
+        Double valorACobrar = libreria.calcularMontoACobrar(EnumMes.AGOSTO,juan);
 
-        double valorPrevistoACobrar = 90;
+        Double valorPrevistoACobrar = 90.0;
 
         Assert.assertEquals (valorPrevistoACobrar, valorACobrar);
 
