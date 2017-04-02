@@ -44,6 +44,11 @@ public class Cliente {
 
     public LinkedList<Producto> ObtenerItemsCompra(EnumMes pMes){
         ItemCompra itemCompra = comprasClientes.get(pMes);
+
+        if(itemCompra==null){
+            return new LinkedList<Producto>();
+        }
+
         return itemCompra.ObtenerItems();
     }
 
