@@ -12,7 +12,9 @@ public class AdministracionLibreria {
 
     }
 
-    public void AgregarProductoCompra(EnumMes mes, Producto pProducto){
+    public double calcularMontoACobrar(EnumMes pmes,Cliente pCliente){
+        double montoARetornar = 0;
 
+        return montoARetornar;
     }
 }

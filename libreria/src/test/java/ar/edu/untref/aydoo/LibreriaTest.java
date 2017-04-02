@@ -48,14 +48,16 @@ public class LibreriaTest {
         un ejemplar del gráfico (ejemplar suelto, no suscripción)
         => Monto a cobrarle por agosto: 50 + 12,1 + 30 = $90*/
 
-        libreria.AgregarProductoCompra(EnumMes.AGOSTO,elHobbit);
-        libreria.AgregarProductoCompra(EnumMes.AGOSTO,lapicera);
-        libreria.AgregarProductoCompra(EnumMes.AGOSTO,lapicera);
-        libreria.AgregarProductoCompra(EnumMes.AGOSTO,revistaElGrafico);
+        Cliente juan = new Cliente("Juan","Av Siempre Viva 742");
 
-        int valorACobrar = 90;
+        juan.AgregarProductoCompra(EnumMes.AGOSTO,elHobbit);
+        juan.AgregarProductoCompra(EnumMes.AGOSTO,lapicera);
+        juan.AgregarProductoCompra(EnumMes.AGOSTO,lapicera);
+        juan.AgregarProductoCompra(EnumMes.AGOSTO,revistaElGrafico);
 
-        int valorPrevistoACobrar = 90;
+        double valorACobrar = libreria.calcularMontoACobrar(EnumMes.AGOSTO,juan);
+
+        double valorPrevistoACobrar = 90;
 
         Assert.assertEquals (valorPrevistoACobrar, valorACobrar);
 
