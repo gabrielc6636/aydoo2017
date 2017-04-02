@@ -10,10 +10,6 @@ public class AdministracionLibreria {
 
     }
 
-    public void AgregarProducto(Producto pProducto){
-
-    }
-
     public Double calcularMontoACobrar(EnumMes pmes,Cliente pCliente){
         Double montoARetornar = 0.0;
 
@@ -22,11 +18,13 @@ public class AdministracionLibreria {
         LinkedList<Producto> productosSuscripcion = pCliente.ObtenerSuscripciones();
 
         for(Producto producto : productosCompra){
-
+            montoARetornar = montoARetornar + producto.ObtenerPrecio(false);
         }
 
         for(Producto producto : productosSuscripcion){
 
+
+            montoARetornar = montoARetornar + producto.ObtenerPrecio(true);
         }
 
         return montoARetornar;

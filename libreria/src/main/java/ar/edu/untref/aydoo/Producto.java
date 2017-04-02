@@ -7,10 +7,12 @@ public class Producto {
 
     Double dblPrecio;
     EnumCategoria categoria;
+    EnumFrecuencia frecuencia;
 
     public Producto(String pNombre,Double pPrecio,EnumFrecuencia pFrecuencia,EnumCategoria pCategoria){
         this.dblPrecio = pPrecio;
         this.categoria = pCategoria;
+        this.frecuencia = pFrecuencia;
     }
 
     public Double ObtenerPrecio(Boolean pEsSuscripcion){
@@ -23,6 +25,15 @@ public class Producto {
 
         if(pEsSuscripcion.equals(true)){
             precioRetorno = precioRetorno*0.8;
+
+            switch (this.frecuencia){
+                case DIARIO:
+                    precioRetorno = precioRetorno*(4*7);
+                    break;
+                case QUINCENAL:
+                    precioRetorno = precioRetorno*2;
+                    break;
+            }
         }
 
         return precioRetorno;
