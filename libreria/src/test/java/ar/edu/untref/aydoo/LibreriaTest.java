@@ -32,6 +32,13 @@ public class LibreriaTest {
         Producto diarioPagina12 = new Producto("Diario Pagina 12",12,EnumFrecuencia.DIARIO,EnumCategoria.PERIODICOS);
         Producto diarioClarin = new Producto("Diario Clarin",13,EnumFrecuencia.DIARIO,EnumCategoria.PERIODICOS);
 
+        AdministracionLibreria libreria = new AdministracionLibreria();
+        libreria.AgregarProducto(revistaBarcelona);
+        libreria.AgregarProducto(revistaElGrafico);
+        libreria.AgregarProducto(elHobbit);
+        libreria.AgregarProducto(lapicera);
+        libreria.AgregarProducto(diarioPagina12);
+        libreria.AgregarProducto(diarioClarin);
 
         /*Caso 1, en agosto Juan compra:
 
