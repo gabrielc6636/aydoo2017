@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+import cucumber.api.java.is.En;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -47,7 +48,10 @@ public class LibreriaTest {
         un ejemplar del gráfico (ejemplar suelto, no suscripción)
         => Monto a cobrarle por agosto: 50 + 12,1 + 30 = $90*/
 
-
+        libreria.AgregarProductoCompra(EnumMes.AGOSTO,elHobbit);
+        libreria.AgregarProductoCompra(EnumMes.AGOSTO,lapicera);
+        libreria.AgregarProductoCompra(EnumMes.AGOSTO,lapicera);
+        libreria.AgregarProductoCompra(EnumMes.AGOSTO,revistaElGrafico);
 
         int valorACobrar = 90;
 

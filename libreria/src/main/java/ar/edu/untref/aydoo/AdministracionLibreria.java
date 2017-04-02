@@ -11,4 +11,8 @@ public class AdministracionLibreria {
     public void AgregarProducto(Producto pProducto){
 
     }
+
+    public void AgregarProductoCompra(EnumMes mes, Producto pProducto){
+
+    }
 }
