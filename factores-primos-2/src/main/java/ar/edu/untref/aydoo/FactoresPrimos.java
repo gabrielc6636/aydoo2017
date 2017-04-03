@@ -51,7 +51,7 @@ public class FactoresPrimos {
 
     public void DevolverFactoresPrimos(int pIntNumero, String formato){
 
-        if(formato=="quiet"||formato=="pretty") {
+        if(formato.equals("quiet")||formato.equals("pretty")) {
 
             List<Integer> lstFactores = CalcularFactores(pIntNumero);
 
@@ -80,6 +80,14 @@ public class FactoresPrimos {
 
     public static void main(String[]args)throws IOException {
 
+        String formatoPrimos = "";
+
+        if(args.length>0) {
+            formatoPrimos = args[0].replaceAll("--format=", "").trim().toLowerCase();
+        }
+
+        System.out.println("Formato: "+formatoPrimos);
+
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("Ingrese el numero: ");
@@ -88,8 +96,9 @@ public class FactoresPrimos {
 
         FactoresPrimos factoresPrimos=new FactoresPrimos();
 
+
         System.out.println("Los factores primos son:");
-        factoresPrimos.DevolverFactoresPrimos(vIntNumero,"pretty");
+        factoresPrimos.DevolverFactoresPrimos(vIntNumero,formatoPrimos);
 
     }
 }
