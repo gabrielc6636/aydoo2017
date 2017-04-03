@@ -8,11 +8,13 @@ public class Producto {
     Double dblPrecio;
     EnumCategoria categoria;
     EnumFrecuencia frecuencia;
+    String strNombre;
 
     public Producto(String pNombre,Double pPrecio,EnumFrecuencia pFrecuencia,EnumCategoria pCategoria){
         this.dblPrecio = pPrecio;
         this.categoria = pCategoria;
         this.frecuencia = pFrecuencia;
+        this.strNombre = pNombre;
     }
 
     public Double ObtenerPrecio(Boolean pEsSuscripcion){
@@ -35,6 +37,8 @@ public class Producto {
                     break;
             }
         }
+
+        System.out.println(strNombre + " " + precioRetorno);
 
         return precioRetorno;
     }
