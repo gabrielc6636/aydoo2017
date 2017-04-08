@@ -11,105 +11,80 @@ public class Votacion {
 
     public Votacion(){
         votos = new ArrayList<Voto>();
-
     }
 
-    public void EmitirVoto(Voto pVoto){
-        votos.add(pVoto);
+    public void EmitirVoto(Voto voto){
+        votos.add(voto);
     }
 
-    public void RecuentoVotosNacional(){
-        Map<Candidato, Long> t=
+    public Map<Candidato, Long> RecuentoVotosNacional(){
+
+        Map<Candidato, Long> mapCandidatoVotos=
                 votos.stream().collect(
-                        Collectors.groupingBy(Voto::getCandidato, Collectors.counting()));
+                        Collectors.groupingBy(Voto::obtenerCandidato, Collectors.counting()));
+
+        Map<Candidato, Long> mapCandidatoGanador = new HashMap<Candidato,Long>();
 
         Candidato candidatoGanador = new Candidato();
-        long vContador = 0;
 
+        long lngContador = 0;
 
+        for (Map.Entry<Candidato, Long> registroVotos: mapCandidatoVotos.entrySet()) {
 
-        for (Map.Entry<Candidato, Long> e: t.entrySet()) {
-
-            if(candidatoGanador.getNombre().isEmpty()) {
-                candidatoGanador = e.getKey();
-                vContador = e.getValue();
+            if(candidatoGanador.obtenerNombre().isEmpty()) {
+                candidatoGanador = registroVotos.getKey();
+                lngContador = registroVotos.getValue();
             }
-            if(candidatoGanador != e.getKey() && vContador < e.getValue()){
-                candidatoGanador = e.getKey();
-                vContador = e.getValue();
+            if(candidatoGanador != registroVotos.getKey() && lngContador < registroVotos.getValue()){
+                candidatoGanador = registroVotos.getKey();
+                lngContador = registroVotos.getValue();
             }
         }
 
-        System.out.println("Candidato ganador a nivel nacional: "+candidatoGanador.getNombre() + " con " + vContador + " votos");
+        mapCandidatoGanador.put(candidatoGanador,lngContador);
+
+        return mapCandidatoGanador;
 
     }
 
-    public void RecuentoVotosProvincial(){
+    public Map<Partido, Long> RecuentoVotosProvincial(Provincia provincia){
 
-        Map<Candidato, Long> colCandidato=
-                votos.stream().collect(
-                        Collectors.groupingBy(Voto::getCandidato, Collectors.counting()));
-
-        Map<Provincia, Long> colProvincia=
-                votos.stream().collect(
-                        Collectors.groupingBy(Voto::getProvincia, Collectors.counting()));
-
-        Set<Candidato> candidatoes = colCandidato.keySet();
-
-        Map<String,Long> colPartido = candidatoes.stream().collect(Collectors.groupingBy(Candidato::getPartido,Collectors.counting()));
-
-        Provincia provincia = Provincia.BUENOS_AIRES;
-
-
-
-
-        //Itero por Provincia
-        for (Map.Entry<Provincia, Long> vProvincia: colProvincia.entrySet()) {
-
-
-            int vContadorPartidoProvincia = 0 ;
-            String strPartido = "";
-
-            //Itero por Partido
-            for (Map.Entry<String, Long> vPartido: colPartido.entrySet()) {
-
-                if(vContadorPartidoProvincia==0){
-                    strPartido = vPartido.getKey();
-                }
-
-                int vContadorPartido = 0;
-
-                //Itero los votos totales
-                for (Voto voto: votos) {
-
-                    if(voto.getProvincia().equals(vProvincia.getKey())) {
-                        if(voto.getCandidato().getPartido().equals(strPartido)){
-                            vContadorPartido++;
-                        }
-
-                    }
-
-
-                }
-
-                if(vContadorPartidoProvincia<vContadorPartido){
-                    strPartido = vPartido.getKey();
-                    vContadorPartidoProvincia = vContadorPartido;
-                }
-
-            }
-
-            System.out.println("Candidato ganador a nivel provincial: "+vProvincia.getKey().toString() + " el partido:" + strPartido + " con " + vContadorPartidoProvincia + " votos");
-        }
-
-    }
-
-    public void ResumenVotos(){
-        System.out.println("Votos:"+votos.size());
+        Map<Partido, Long> mapVotosProvinciales = new HashMap<Partido,Long>();
 
         for (Voto voto: votos) {
-            System.out.println(voto.getCandidato().getNombre().toString() + " " + voto.getCandidato().getPartido().toString() + " " + voto.getProvincia().toString());
-
+            if(voto.obtenerProvincia().equals(provincia)){
+                Partido partidoVoto = voto.obtenerCandidato().obtenerPartido();
+                long lngVotos = 0;
+                if(mapVotosProvinciales.containsKey(partidoVoto)) {
+                    lngVotos=mapVotosProvinciales.get(partidoVoto);
+                }
+                mapVotosProvinciales.put(partidoVoto,lngVotos+1);
+            }
         }
+
+        Partido partidoGanador = new Partido("");
+
+        long lngContador = 0;
+
+        for (Map.Entry<Partido, Long> registroVotos: mapVotosProvinciales.entrySet()) {
+
+            if(partidoGanador.obtenerNombre().isEmpty()) {
+                partidoGanador = registroVotos.getKey();
+                lngContador = registroVotos.getValue();
+            }
+            if(partidoGanador != registroVotos.getKey() && lngContador < registroVotos.getValue()){
+                partidoGanador = registroVotos.getKey();
+                lngContador = registroVotos.getValue();
+            }
+        }
+
+        mapVotosProvinciales.clear();
+        mapVotosProvinciales.put(partidoGanador,lngContador);
+
+        return mapVotosProvinciales;
+    }
+
+    public List<Voto> ResumenVotos(){
+        return this.votos;
     }
 }
