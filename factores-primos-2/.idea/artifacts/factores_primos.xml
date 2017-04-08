@@ -1,6 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" build-on-make="true" name="factores-primos">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="factores-primos.jar" />
-  </artifact>
-</component>
