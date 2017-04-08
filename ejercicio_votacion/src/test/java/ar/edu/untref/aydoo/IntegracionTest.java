@@ -3,6 +3,9 @@ package ar.edu.untref.aydoo;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by gabriel on 25/03/17.
  */
@@ -11,12 +14,20 @@ public class IntegracionTest {
     @Test
     public void TestEmisionVotos()
     {
-        Candidato candidato1 = new Candidato("Candidato1","PartidoA");
-        Candidato candidato2 = new Candidato("Candidato2","PartidoA");
 
-        Candidato candidato3 = new Candidato("Candidato3","PartidoB");
+        System.out.println("TestEmisionVotos");
 
-        Candidato candidato4 = new Candidato("Candidato4","PartidoC");
+        Partido partidoA = new Partido("PartidoA");
+        Partido partidoB = new Partido("PartidoB");
+        Partido partidoC = new Partido("PartidoC");
+
+
+        Candidato candidato1 = new Candidato("Candidato1",partidoA);
+        Candidato candidato2 = new Candidato("Candidato2",partidoA);
+
+        Candidato candidato3 = new Candidato("Candidato3",partidoB);
+
+        Candidato candidato4 = new Candidato("Candidato4",partidoC);
 
         Votacion votacion    = new Votacion();
 
@@ -64,20 +75,36 @@ public class IntegracionTest {
         votacion.EmitirVoto(voto6);
         votacion.EmitirVoto(voto6);
 
-        votacion.ResumenVotos();
-        Assert.assertEquals("foo", "foo");
+        List<Voto> votos = votacion.ResumenVotos();
+
+        System.out.println("Votos:"+votos.size());
+
+        for (Voto voto: votos) {
+            System.out.println(voto.obtenerCandidato().obtenerNombre().toString() + " " + voto.obtenerCandidato().obtenerPartido().obtenerNombre() + " " + voto.obtenerProvincia().toString());
+
+        }
+
+        Assert.assertEquals(20, votos.size());
 
     }
 
     @Test
     public void TestVotacionXPais()
     {
-        Candidato candidato1 = new Candidato("Candidato1","PartidoA");
-        Candidato candidato2 = new Candidato("Candidato2","PartidoA");
 
-        Candidato candidato3 = new Candidato("Candidato3","PartidoB");
+        System.out.println("TestVotacionXPais");
 
-        Candidato candidato4 = new Candidato("Candidato4","PartidoC");
+        Partido partidoA = new Partido("PartidoA");
+        Partido partidoB = new Partido("PartidoB");
+        Partido partidoC = new Partido("PartidoC");
+
+
+        Candidato candidato1 = new Candidato("Candidato1",partidoA);
+        Candidato candidato2 = new Candidato("Candidato2",partidoA);
+
+        Candidato candidato3 = new Candidato("Candidato3",partidoB);
+
+        Candidato candidato4 = new Candidato("Candidato4",partidoC);
 
         Votacion votacion    = new Votacion();
 
@@ -125,20 +152,36 @@ public class IntegracionTest {
         votacion.EmitirVoto(voto6);
         votacion.EmitirVoto(voto6);
 
-        votacion.RecuentoVotosNacional();
-        Assert.assertEquals("foo", "foo");
+        Map<Candidato, Long> mapCandidatoGanador = votacion.RecuentoVotosNacional();
+
+        Candidato candidatoGanador = new Candidato();
+
+        for (Map.Entry<Candidato, Long> registroVotos: mapCandidatoGanador.entrySet()) {
+            candidatoGanador = registroVotos.getKey();
+            System.out.println("Candidato ganador a nivel nacional: "+candidatoGanador.obtenerNombre() + " con " + registroVotos.getValue() + " votos");
+        }
+
+        Assert.assertEquals("Candidato3", candidatoGanador.obtenerNombre());
 
     }
 
     @Test
     public void TestVotacionXProvinciaYPartido()
     {
-        Candidato candidato1 = new Candidato("Candidato1","PartidoA");
-        Candidato candidato2 = new Candidato("Candidato2","PartidoA");
 
-        Candidato candidato3 = new Candidato("Candidato3","PartidoB");
+        System.out.println("TestVotacionXProvinciaYPartido");
 
-        Candidato candidato4 = new Candidato("Candidato4","PartidoC");
+        Partido partidoA = new Partido("PartidoA");
+        Partido partidoB = new Partido("PartidoB");
+        Partido partidoC = new Partido("PartidoC");
+
+
+        Candidato candidato1 = new Candidato("Candidato1",partidoA);
+        Candidato candidato2 = new Candidato("Candidato2",partidoA);
+
+        Candidato candidato3 = new Candidato("Candidato3",partidoB);
+
+        Candidato candidato4 = new Candidato("Candidato4",partidoC);
 
         Votacion votacion    = new Votacion();
 
@@ -186,8 +229,16 @@ public class IntegracionTest {
         votacion.EmitirVoto(voto6);
         votacion.EmitirVoto(voto6);
 
-        votacion.RecuentoVotosProvincial();
-        Assert.assertEquals("foo", "foo");
+        Map<Partido, Long> mapPartidoGanador = votacion.RecuentoVotosProvincial(Provincia.BUENOS_AIRES);
+
+        Partido partidoGanador = new Partido("");
+
+        for (Map.Entry<Partido, Long> registroVotos: mapPartidoGanador.entrySet()) {
+            partidoGanador = registroVotos.getKey();
+            System.out.println("Candidato ganador a nivel provincial : "+ Provincia.BUENOS_AIRES.toString() + " el partido:" + partidoGanador.obtenerNombre() + " con " + registroVotos.getValue() + " votos");
+        }
+
+        Assert.assertEquals("PartidoA", partidoGanador.obtenerNombre());
 
     }
 }

@@ -5,40 +5,33 @@ package ar.edu.untref.aydoo;
  */
 public class Candidato {
 
-    public String getPartido() {
-        return vPartido;
+    Partido partido;
+    String nombre;
+
+    public Partido obtenerPartido() {
+        return this.partido;
     }
 
-    private void setPartido(String pPartido) {
-        this.vPartido = pPartido;
+    private void asignarPartido(Partido partido) {
+        this.partido = partido;
     }
 
-    String vPartido;
-    String vNombre;
-
-    public String getNombre() {
-        return vNombre;
+    public String obtenerNombre() {
+        return this.nombre;
     }
 
-    private void setNombre(String pNombre) {
-        this.vNombre = pNombre;
+    private void asignarNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-
-
-    public Candidato (String pNombre,String pPartido){
-
-        setPartido(pPartido);
-        setNombre(pNombre);
-
+    public Candidato (String nombre,Partido partido){
+        asignarPartido(partido);
+        asignarNombre(nombre);
     }
 
     public Candidato (){
 
-        setNombre("");
+        asignarNombre("");
 
     }
-
-
-
 }
