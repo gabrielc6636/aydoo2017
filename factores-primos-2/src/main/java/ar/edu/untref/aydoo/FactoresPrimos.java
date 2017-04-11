@@ -1,71 +1,55 @@
 package ar.edu.untref.aydoo;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by gabriel on 01/04/17.
  */
 public class FactoresPrimos {
-    int vIntNumero;
+    int intNumeroAFactorizar;
 
-    public FactoresPrimos(){
-        vIntNumero=2; //divisor
-    }
+    public List<Integer> calcularFactores(int intNumeroAFactorizar){
 
 
-    public List<Integer> CalcularFactores(int pIntNumero){
-
-
-        int vIntNumero = pIntNumero;
-
-        int vIntNumeroFactor = 2;
-
+        this.intNumeroAFactorizar = intNumeroAFactorizar;
+        int intFactor = 2;
         List<Integer> lstFactores = new LinkedList<Integer>();
 
-        if(Integer.class.isInstance(vIntNumero)) {
-            if(vIntNumero>1) {
-                while(vIntNumero!=1)
+        if(Integer.class.isInstance(this.intNumeroAFactorizar)) {
+            if(this.intNumeroAFactorizar>1) {
+                while(this.intNumeroAFactorizar!=1)
                 {
-                    while(vIntNumero%vIntNumeroFactor==0)
+                    while(this.intNumeroAFactorizar%intFactor==0)
                     {
-                        vIntNumero /= vIntNumeroFactor;
-                        lstFactores.add(vIntNumeroFactor);
+                        this.intNumeroAFactorizar /= intFactor;
+                        lstFactores.add(intFactor);
                     }
-
-                    vIntNumeroFactor++;
+                    intFactor++;
                 }
             }
             else {
                 System.out.println("El valor debe ser mayor a 1");
             }
-
         }
 
         return lstFactores;
     }
 
-    public void DevolverFactoresPrimos(int pIntNumero, String formato){
+    public String devolverFactoresPrimos(int intNumeroAFactorizar, String strFormato){
 
-        if(formato.equals("quiet")||formato.equals("pretty")) {
+        String strRetorno = "";
 
-            List<Integer> lstFactores = CalcularFactores(pIntNumero);
+        if(strFormato.equals("quiet")||strFormato.equals("pretty")) {
 
-            switch (formato) {
+            List<Integer> lstFactores = calcularFactores(intNumeroAFactorizar);
+
+            switch (strFormato) {
                 case "pretty":
-                    for (Integer factor : lstFactores) {
-                        System.out.print(factor + " ");
-                    }
+                    strRetorno = imprimirEnFormatoPretty(intNumeroAFactorizar,lstFactores);
                     break;
                 case "quiet":
-                    Collections.sort(lstFactores, Collections.reverseOrder());
-                    for (Integer factor : lstFactores) {
-                        System.out.println(factor + " ");
-                    }
+                    strRetorno = imprimirEnFormatoQuiet(lstFactores);
                     break;
                 default:
                     break;
@@ -73,32 +57,59 @@ public class FactoresPrimos {
         }
         else
         {
-            System.out.println("Formato no aceptado. Las opciones posibles son: pretty o quiet.");
+            strRetorno = "Formato no aceptado. Las opciones posibles son: pretty o quiet.";
         }
 
+        return strRetorno;
     }
+
+    public String imprimirEnFormatoPretty(int numeroAFactorizar, List<Integer> lstFactores){
+
+        String strFactoresPretty = "Factores primos "  + Integer.toString(numeroAFactorizar) + ": ";
+
+        Iterator<Integer> itListaFactores = lstFactores.iterator();
+        while(itListaFactores.hasNext()){
+            strFactoresPretty = strFactoresPretty + Integer.toString(itListaFactores.next()) + ' ';
+        }
+
+        return strFactoresPretty;
+    }
+
+    public String imprimirEnFormatoQuiet(List<Integer> lstFactores) {
+
+        String strFactoresQuiet = "";
+
+        ListIterator<Integer> itListaFactores = lstFactores.listIterator(lstFactores.size());
+
+        while (itListaFactores.hasPrevious()){
+            strFactoresQuiet = strFactoresQuiet + Integer.toString(itListaFactores.previous()) + "\n";
+        }
+
+        return strFactoresQuiet;
+    }
+
 
     public static void main(String[]args)throws IOException {
 
-        String formatoPrimos = "";
+        String strFormatoSalida = "";
 
-        if(args.length>0) {
-            formatoPrimos = args[0].replaceAll("--format=", "").trim().toLowerCase();
+        int intNumeroAFactorizar = Integer.parseInt(args[0]);
+
+        if(args.length>1) {
+            strFormatoSalida = args[1].replaceAll("--format=", "").trim().toLowerCase();
         }
 
-        System.out.println("Formato: "+formatoPrimos);
+        System.out.println("Formato: "+strFormatoSalida);
 
-        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-
-        System.out.println("Ingrese el numero: ");
-
-        int vIntNumero=Integer.parseInt(br.readLine());
+        System.out.println("El número es: "+intNumeroAFactorizar);
 
         FactoresPrimos factoresPrimos=new FactoresPrimos();
 
-
         System.out.println("Los factores primos son:");
-        factoresPrimos.DevolverFactoresPrimos(vIntNumero,formatoPrimos);
+
+        String strImpresion = factoresPrimos.devolverFactoresPrimos(intNumeroAFactorizar,strFormatoSalida);
+
+        System.out.println(strImpresion);
 
     }
 }
