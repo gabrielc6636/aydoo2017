@@ -58,14 +58,6 @@ public class PruebaClubDeBeneficios {
         this.club.agregarEstablecimiento(heladeriaA);
         this.club.agregarEstablecimiento(restaurantB);
 
-        /*Durante Enero, la sucursal S1 realiza 4 beneficios con tarjeta Classic y 3 con tarjeta Premium.
-         Carlos y Juan utilizaron los beneficios con sus tarjetas, una vez cada uno.
-
-         La sucursal S2 no realiza beneficios.
-         La sucursal S3 atendió a 6 clientes y les realizó el beneficio ofrecido.
-         Carlos utilizó su tarjeta Classic para hacer uso del beneficio.*/
-
-
     }
 
     @Test
@@ -89,6 +81,20 @@ public class PruebaClubDeBeneficios {
 
         Establecimiento establecimientoConMasBeneficios = club.obtenerEstablecimientoAFelicitar();
 
+        Assert.assertEquals(heladeriaA, establecimientoConMasBeneficios);
+    }
+
+
+    @Test
+    public void laHeladeriaEsElEstablecimientoQueDeboFelicitar(){
+        /*Durante Enero, la sucursal S1 realiza 4 beneficios con tarjeta Classic y 3 con tarjeta Premium.
+         Carlos y Juan utilizaron los beneficios con sus tarjetas, una vez cada uno.
+
+         La sucursal S2 no realiza beneficios.
+         La sucursal S3 atendió a 6 clientes y les realizó el beneficio ofrecido.
+         Carlos utilizó su tarjeta Classic para hacer uso del beneficio.*/
+
+        Establecimiento establecimientoConMasBeneficios = club.obtenerEstablecimientoAFelicitar();
         Assert.assertEquals(heladeriaA, establecimientoConMasBeneficios);
     }
 
