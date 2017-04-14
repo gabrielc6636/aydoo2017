@@ -131,7 +131,7 @@ public class PruebaClubDeBeneficios {
 
         Sucursal sucursalGanadora = club.obtenerSucursalAFelicitar();
 
-        Assert.assertEquals(sucursalS3, sucursalGanadora);
+        Assert.assertEquals(sucursalS1, sucursalGanadora);
     }
 
 }

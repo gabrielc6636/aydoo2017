@@ -35,7 +35,25 @@ public class ClubDeBeneficios {
     }
 
     public Sucursal obtenerSucursalAFelicitar(){
-        return establecimientos.get(0).obtenerSucursales().get(0);
+
+        Sucursal sucursalGanadora = new Sucursal("SucursalGanadora");
+        int cantidadDeOperaciones = 0;
+
+        for(Establecimiento establecimiento: establecimientos){
+            List<Sucursal> sucursales = establecimiento.obtenerSucursales();
+
+            for(Sucursal sucursal:sucursales){
+                int operaciones = 0;
+                operaciones = operaciones+sucursal.getOperaciones().size();
+
+                if(operaciones>cantidadDeOperaciones){
+                    cantidadDeOperaciones = operaciones;
+                    sucursalGanadora = sucursal;
+                }
+            }
+        }
+
+        return sucursalGanadora;
     }
 
 }
