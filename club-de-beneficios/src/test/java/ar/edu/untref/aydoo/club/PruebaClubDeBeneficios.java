@@ -69,7 +69,7 @@ public class PruebaClubDeBeneficios {
         
         juan.registrarOperacion(operacion);
         
-        Assert.assertEquals(900, juan.calcularAhorro(), 0.005);
+        Assert.assertEquals(900, juan.calcularDineroAbonado(), 0.005);
     }
 
     @Test

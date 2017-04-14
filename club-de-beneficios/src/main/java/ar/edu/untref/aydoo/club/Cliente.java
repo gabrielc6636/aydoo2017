@@ -23,7 +23,7 @@ public class Cliente {
         return this.tarjeta;
     }
 
-    public double calcularAhorro() {
+    public double calcularDineroAbonado() {
 
         double ahorro = 0;
         
@@ -31,6 +31,17 @@ public class Cliente {
             ahorro = ahorro + operacion.obtenerImporte();
         }
         
+        return ahorro;
+    }
+
+    public double calcularAhorro() {
+
+        double ahorro = 0;
+
+        for(Operacion operacion : operaciones){
+            ahorro = ahorro + operacion.obtenerImporteAhorrado();
+        }
+
         return ahorro;
     }
     

@@ -16,19 +16,19 @@ public class PruebaCliente {
     @Test
     public void siElClienteNoRealizaOperacionesEntoncesNoAhorraNada() {
        
-        Assert.assertEquals(0, juan.calcularAhorro(), 0.005);
+        Assert.assertEquals(0, juan.calcularDineroAbonado(), 0.005);
     }
     
     @Test
-    public void siElClienteRealizaUnaOperacionDeMilPesosConDescuentoDe10PorcientoEntoncesAhorro100() {
+    public void siElClienteRealizaUnaOperacionDeMilPesosConDescuentoDe10PorcientoEntoncesPago900() {
         
         Beneficio beneficio = new Beneficio(Tarjeta.CLASSIC, 10);
         
         Operacion operacion = new Operacion(beneficio, 1000,EnumMes.ENERO);
+
+        juan.registrarOperacion(operacion);
         
-        juan.getOperaciones().add(operacion);
-        
-        Assert.assertEquals(900, juan.calcularAhorro(), 0.005);
+        Assert.assertEquals(900, juan.calcularDineroAbonado(), 0.005);
     }
     
     @Test
@@ -37,9 +37,21 @@ public class PruebaCliente {
         Beneficio beneficio = new Beneficio(Tarjeta.CLASSIC, 50);
         
         Operacion operacion = new Operacion(beneficio, 1,EnumMes.ENERO);
+
+        juan.registrarOperacion(operacion);
         
-        juan.getOperaciones().add(operacion);
-        
-        Assert.assertEquals(0.5, juan.calcularAhorro(), 0.005);
+        Assert.assertEquals(0.5, juan.calcularDineroAbonado(), 0.005);
+    }
+
+    @Test
+    public void siElClienteRealizaUnaOperacionDeMilPesosConDescuentoDe10PorcientoEntoncesAhorro100() {
+
+        Beneficio beneficio = new Beneficio(Tarjeta.CLASSIC, 10);
+
+        Operacion operacion = new Operacion(beneficio, 1000,EnumMes.ENERO);
+
+        juan.registrarOperacion(operacion);
+
+        Assert.assertEquals(100, juan.calcularAhorro(), 0.005);
     }
 }
