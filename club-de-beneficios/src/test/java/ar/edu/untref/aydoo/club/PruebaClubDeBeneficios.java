@@ -122,4 +122,16 @@ public class PruebaClubDeBeneficios {
         Assert.assertEquals(heladeriaA, establecimientoConMasBeneficios);
     }
 
+    @Test
+    public void siTengoUnaOperacionLaSucursalQueMasBeneficiosTieneQueSerElDeLaOperacion() throws BeneficioException {
+
+        Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com");
+
+        sucursalS1.comprar(juan, 100);
+
+        Sucursal sucursalGanadora = club.obtenerSucursalAFelicitar();
+
+        Assert.assertEquals(sucursalS3, sucursalGanadora);
+    }
+
 }

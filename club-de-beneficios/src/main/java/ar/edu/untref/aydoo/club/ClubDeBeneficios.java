@@ -34,4 +34,8 @@ public class ClubDeBeneficios {
         return establecimientoGanador;
     }
 
+    public Sucursal obtenerSucursalAFelicitar(){
+        return establecimientos.get(0).obtenerSucursales().get(0);
+    }
+
 }
