@@ -7,6 +7,11 @@ public class Sucursal {
 
     private List<Operacion> operaciones = new ArrayList<Operacion>();
     private Establecimiento establecimiento;
+    private String nombre;
+
+    public Sucursal(String nombre){
+        this.nombre = nombre;
+    }
 
     public List<Operacion> getOperaciones() {
         return this.operaciones;

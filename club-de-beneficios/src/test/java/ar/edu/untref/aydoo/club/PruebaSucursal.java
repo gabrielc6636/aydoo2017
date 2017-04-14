@@ -15,7 +15,7 @@ public class PruebaSucursal {
 
         Establecimiento heladeria = new Establecimiento();
         Beneficio beneficio = new Beneficio(Tarjeta.PREMIUM, 20);
-        Sucursal heladeriaSucursal1 = new Sucursal();
+        Sucursal heladeriaSucursal1 = new Sucursal("SucursalPrueba");
 
         heladeria.agregarSucursal(heladeriaSucursal1);
         heladeria.agregarBeneficio(beneficio);
@@ -36,7 +36,7 @@ public class PruebaSucursal {
         Cliente juan = new Cliente(Tarjeta.CLASSIC);
         
         Establecimiento heladeria = new Establecimiento();
-        Sucursal heladeriaSucursal1 = new Sucursal();
+        Sucursal heladeriaSucursal1 = new Sucursal("SucursalPrueba");
         Beneficio beneficioTarjetaPremium = new Beneficio(Tarjeta.PREMIUM, 20);
         
         heladeria.agregarSucursal(heladeriaSucursal1);
