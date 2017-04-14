@@ -61,6 +61,9 @@ public class PruebaClubDeBeneficios {
         this.club.agregarEstablecimiento(heladeriaA);
         this.club.agregarEstablecimiento(restaurantB);
 
+        this.club.agregarCliente(juan);
+        this.club.agregarCliente(carlos);
+
     }
 
     @Test
@@ -178,6 +181,8 @@ public class PruebaClubDeBeneficios {
     public void siJuanHizoOperacionEnEneroTengoQueEnviarleEmail() throws BeneficioException {
 
         Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com");
+
+        club.agregarCliente(juan);
 
         sucursalS1.comprar(juan, 100,EnumMes.ENERO);
 

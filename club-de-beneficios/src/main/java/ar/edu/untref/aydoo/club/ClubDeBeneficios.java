@@ -64,19 +64,16 @@ public class ClubDeBeneficios {
     public Map<Cliente,Double> obtenerClientesParaEnviarEmail(EnumMes mes){
         Map<Cliente,Double> listaDeClientes = new HashMap<Cliente, Double>();
 
-        for(Establecimiento establecimiento: establecimientos){
-            List<Sucursal> sucursales = establecimiento.obtenerSucursales();
+        for(Cliente cliente : clientes){
+            double importeAhorrado = 0;
 
-            for(Sucursal sucursal:sucursales){
-
-                List<Operacion> operaciones = sucursal.obtenerOperaciones();
-
-                for(Operacion operacion: operaciones){
-                    double montoAhorrado = operacion.obtenerImporteAhorrado();
-
+            for(Operacion operacion: cliente.obtenerOperaciones()){
+                if(operacion.obtenerMes().equals(mes)){
+                    importeAhorrado = importeAhorrado + operacion.obtenerImporteAhorrado();
                 }
-
             }
+
+            listaDeClientes.put(cliente,importeAhorrado);
         }
 
         return listaDeClientes;
