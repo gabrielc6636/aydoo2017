@@ -1,7 +1,6 @@
 package ar.edu.untref.aydoo.club;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ClubDeBeneficios {
 
@@ -54,6 +53,12 @@ public class ClubDeBeneficios {
         }
 
         return sucursalGanadora;
+    }
+
+    public Map<Cliente,Double> obtenerClientesParaEnviarEmail(EnumMes mes){
+        Map<Cliente,Double> listaDeClientes = new HashMap<Cliente, Double>();
+
+        return listaDeClientes;
     }
 
 }

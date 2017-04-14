@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Map;
 
 public class PruebaClubDeBeneficios {
 
@@ -180,9 +181,9 @@ public class PruebaClubDeBeneficios {
 
         sucursalS1.comprar(juan, 100,EnumMes.ENERO);
 
-        List<Cliente,double> clientesParaEmail = club.obtenerClientesParaEnviarEmail(EnumMes.ENERO);
+        Map<Cliente,Double> clientesParaEmail = club.obtenerClientesParaEnviarEmail(EnumMes.ENERO);
 
-        Assert.assertTrue(clientesParaEmail.contains(juan));
+        Assert.assertTrue(clientesParaEmail.containsKey(juan));
     }
 
 }
