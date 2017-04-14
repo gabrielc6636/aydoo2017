@@ -21,5 +21,9 @@ public class Operacion {
     public double obtenerImporteAhorrado(){
         return this.importeAhorrado;
     }
+
+    public EnumMes obtenerMes(){
+        return this.mes;
+    }
     
 }

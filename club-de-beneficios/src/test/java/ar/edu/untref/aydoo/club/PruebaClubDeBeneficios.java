@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 public class PruebaClubDeBeneficios {
 
     private Cliente juan;
@@ -169,6 +171,18 @@ public class PruebaClubDeBeneficios {
 
         Sucursal sucursalGanadora = club.obtenerSucursalAFelicitar();
         Assert.assertEquals(sucursalS1, sucursalGanadora);
+    }
+
+    @Test
+    public void siJuanHizoOperacionEnEneroTengoQueEnviarleEmail() throws BeneficioException {
+
+        Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com");
+
+        sucursalS1.comprar(juan, 100,EnumMes.ENERO);
+
+        List<Cliente,double> clientesParaEmail = club.obtenerClientesParaEnviarEmail(EnumMes.ENERO);
+
+        Assert.assertTrue(clientesParaEmail.contains(juan));
     }
 
 }

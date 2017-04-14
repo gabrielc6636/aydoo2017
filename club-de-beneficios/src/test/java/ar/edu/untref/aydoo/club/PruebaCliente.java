@@ -52,6 +52,6 @@ public class PruebaCliente {
 
         juan.registrarOperacion(operacion);
 
-        Assert.assertEquals(100, juan.calcularAhorro(), 0.005);
+        Assert.assertEquals(100, juan.calcularAhorro(EnumMes.ENERO), 0.005);
     }
 }
