@@ -22,4 +22,17 @@ public class PruebaEstablecimiento {
 
         Assert.assertEquals(beneficio,beneficioObtenido);
     }
+
+    @Test(expected = BeneficioException.class)
+    public void siAgregoBeneficioTarjetaClassicNoTengoQueTenerBeneficioPremium() throws BeneficioException {
+
+        Establecimiento heladeria = new Establecimiento();
+        Beneficio beneficio = new Beneficio(Tarjeta.CLASSIC,20);
+
+        heladeria.agregarBeneficio(beneficio);
+
+        Beneficio beneficioObtenido = heladeria.tieneBeneficio(Tarjeta.PREMIUM);
+
+        Assert.assertEquals(beneficio,beneficioObtenido);
+    }
 }
