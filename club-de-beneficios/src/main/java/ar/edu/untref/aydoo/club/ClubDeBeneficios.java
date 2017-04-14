@@ -5,10 +5,16 @@ import java.util.*;
 public class ClubDeBeneficios {
 
     private List<Establecimiento> establecimientos = new ArrayList<Establecimiento>();
+    private List<Cliente> clientes = new ArrayList<Cliente>();
     
     public void agregarEstablecimiento(Establecimiento establecimiento) {
 
         this.establecimientos.add(establecimiento);
+    }
+
+    public void agregarCliente(Cliente cliente) {
+
+        this.clientes.add(cliente);
     }
 
     public Establecimiento obtenerEstablecimientoAFelicitar() {
@@ -57,6 +63,21 @@ public class ClubDeBeneficios {
 
     public Map<Cliente,Double> obtenerClientesParaEnviarEmail(EnumMes mes){
         Map<Cliente,Double> listaDeClientes = new HashMap<Cliente, Double>();
+
+        for(Establecimiento establecimiento: establecimientos){
+            List<Sucursal> sucursales = establecimiento.obtenerSucursales();
+
+            for(Sucursal sucursal:sucursales){
+
+                List<Operacion> operaciones = sucursal.obtenerOperaciones();
+
+                for(Operacion operacion: operaciones){
+                    double montoAhorrado = operacion.obtenerImporteAhorrado();
+
+                }
+
+            }
+        }
 
         return listaDeClientes;
     }
