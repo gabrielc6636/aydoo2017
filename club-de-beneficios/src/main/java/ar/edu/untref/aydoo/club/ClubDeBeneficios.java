@@ -14,7 +14,13 @@ public class ClubDeBeneficios {
 
     public Establecimiento obtenerEstablecimientoAFelicitar() {
 
-        return this.establecimientos.get(0);
+        Establecimiento establecimientoGanador = new Establecimiento();
+
+        for(Establecimiento establecimiento: establecimientos){
+//            List<Sucursal> sucursales = establecimiento.
+        }
+
+        return establecimientoGanador;
     }
 
 }

@@ -14,6 +14,10 @@ public class Establecimiento {
         sucursal.asignarEstablecimiento(this);
     }
 
+    public List<Sucursal> obtenerSucursales(){
+        return this.sucursales;
+    }
+
     public void agregarBeneficio(Beneficio beneficio) {
         this.beneficios.add(beneficio);
     }
