@@ -15,9 +15,20 @@ public class ClubDeBeneficios {
     public Establecimiento obtenerEstablecimientoAFelicitar() {
 
         Establecimiento establecimientoGanador = new Establecimiento();
+        int cantidadDeOperaciones = 0;
 
         for(Establecimiento establecimiento: establecimientos){
-//            List<Sucursal> sucursales = establecimiento.
+            List<Sucursal> sucursales = establecimiento.obtenerSucursales();
+            int operaciones = 0;
+
+            for(Sucursal sucursal:sucursales){
+                operaciones = operaciones+sucursal.getOperaciones().size();
+            }
+
+            if(operaciones>cantidadDeOperaciones){
+                cantidadDeOperaciones = operaciones;
+                establecimientoGanador = establecimiento;
+            }
         }
 
         return establecimientoGanador;

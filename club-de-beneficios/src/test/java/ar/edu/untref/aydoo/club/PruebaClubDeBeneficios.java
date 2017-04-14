@@ -16,6 +16,8 @@ public class PruebaClubDeBeneficios {
     private Sucursal sucursalS2;
     private Sucursal sucursalS3;
 
+    private ClubDeBeneficios club;
+
     @Before
     public void inicializar() {
 
@@ -27,6 +29,8 @@ public class PruebaClubDeBeneficios {
 
         El restaurant B ofrece un 20% de descuento con ambas tarjetas.
         El restaurant B tiene una sola sucursal: S3.*/
+
+        this.club = new ClubDeBeneficios();
 
         this.juan = new Cliente(Tarjeta.PREMIUM,"juan@a.com");
         this.carlos  =new Cliente(Tarjeta.CLASSIC,"carlos@b.com");
@@ -51,6 +55,9 @@ public class PruebaClubDeBeneficios {
         this.restaurantB.agregarSucursal(sucursalS3);
         this.sucursalS3.asignarEstablecimiento(restaurantB);
 
+        this.club.agregarEstablecimiento(heladeriaA);
+        this.club.agregarEstablecimiento(restaurantB);
+
         /*Durante Enero, la sucursal S1 realiza 4 beneficios con tarjeta Classic y 3 con tarjeta Premium.
          Carlos y Juan utilizaron los beneficios con sus tarjetas, una vez cada uno.
 
@@ -71,6 +78,18 @@ public class PruebaClubDeBeneficios {
         juan.registrarOperacion(operacion);
         
         Assert.assertEquals(900, juan.calcularAhorro(), 0.005);
+    }
+
+    @Test
+    public void siTengoUnaOperacionElEstablecimientoQueMasBeneficiosTieneQueSerElDeLaOperacion() throws BeneficioException {
+
+        Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com");
+
+        sucursalS1.comprar(juan, 100);
+
+        Establecimiento establecimientoConMasBeneficios = club.obtenerEstablecimientoAFelicitar();
+
+        Assert.assertEquals(heladeriaA, establecimientoConMasBeneficios);
     }
 
 }
