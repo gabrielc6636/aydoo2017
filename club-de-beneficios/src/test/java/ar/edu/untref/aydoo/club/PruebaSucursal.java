@@ -8,9 +8,8 @@ import org.junit.Test;
 
 public class PruebaSucursal {
 
-    @Ignore
     @Test
-    public void siJuanCompraEnLaSucursalBLaOperacionSeRegistraEnLaSucursalYEnJuan() throws Exception {
+    public void siJuanCompraEnLaSucursalBLaOperacionSeRegistraEnLaSucursalYEnJuan() throws BeneficioException {
 
         Cliente juan = new Cliente(Tarjeta.PREMIUM);
 
@@ -31,8 +30,8 @@ public class PruebaSucursal {
         Assert.assertEquals(operacionesDeJuan.get(0), operacionesDeSucursal1.get(0));
     }
     
-    @Test(expected = Exception.class)
-    public void siJuanTieneTarjetaClassicPeroLaSucursalSoloManejaTarjetaPremiumEntoncesHayUnaExcepcion() throws Exception {
+    @Test(expected = BeneficioException.class)
+    public void siJuanTieneTarjetaClassicPeroLaSucursalSoloManejaTarjetaPremiumEntoncesHayUnaExcepcion() throws BeneficioException {
 
         Cliente juan = new Cliente(Tarjeta.CLASSIC);
         

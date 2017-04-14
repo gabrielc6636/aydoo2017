@@ -18,17 +18,22 @@ public class Establecimiento {
         this.beneficios.add(beneficio);
     }
 
-    public boolean tieneBeneficio(Tarjeta tarjeta) {
+    public Beneficio tieneBeneficio(Tarjeta tarjeta) throws BeneficioException {
         
         boolean tiene = false;
-        
+        Beneficio beneficio = this.beneficios.get(0);
+
         for(int i = 0 ; i < this.beneficios.size() && !tiene ; i++) {
             
-            Beneficio beneficio = this.beneficios.get(i);
+            beneficio= this.beneficios.get(i);
             tiene = beneficio.obtenerTarjeta().equals(tarjeta);
         }
-        
-        return tiene;
+
+        if(!tiene){
+            throw new BeneficioException();
+        }
+
+        return beneficio;
     }
 
 }
