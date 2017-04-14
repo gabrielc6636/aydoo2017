@@ -10,7 +10,7 @@ public class PruebaCliente {
 
     @Before
     public void inicializar() {
-        this.juan = new Cliente(Tarjeta.CLASSIC);
+        this.juan = new Cliente(Tarjeta.CLASSIC,"a@b.com");
     }
     
     @Test

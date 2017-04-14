@@ -20,21 +20,16 @@ public class PruebaClubDeBeneficios {
     public void inicializar() {
 
         /*Carlos tiene tarjeta Classic.
-
         Juan tiene tarjeta Premium.
 
-
         La heladería A ofrece un 10% de descuento con tarjeta Classic y 20% de descuento con tarjeta Premium.
-
         La heladería A tiene las sucursales S1 y S2.
 
-
-                El restaurant B ofrece un 20% de descuento con ambas tarjetas.
-
+        El restaurant B ofrece un 20% de descuento con ambas tarjetas.
         El restaurant B tiene una sola sucursal: S3.*/
 
-        this.juan = new Cliente(Tarjeta.PREMIUM);
-        this.carlos  =new Cliente(Tarjeta.CLASSIC);
+        this.juan = new Cliente(Tarjeta.PREMIUM,"juan@a.com");
+        this.carlos  =new Cliente(Tarjeta.CLASSIC,"carlos@b.com");
 
         this.heladeriaA = new Establecimiento();
         this.heladeriaA.agregarBeneficio(new Beneficio(Tarjeta.CLASSIC,10));
@@ -56,6 +51,14 @@ public class PruebaClubDeBeneficios {
         this.restaurantB.agregarSucursal(sucursalS3);
         this.sucursalS3.asignarEstablecimiento(restaurantB);
 
+        /*Durante Enero, la sucursal S1 realiza 4 beneficios con tarjeta Classic y 3 con tarjeta Premium.
+         Carlos y Juan utilizaron los beneficios con sus tarjetas, una vez cada uno.
+
+         La sucursal S2 no realiza beneficios.
+         La sucursal S3 atendió a 6 clientes y les realizó el beneficio ofrecido.
+         Carlos utilizó su tarjeta Classic para hacer uso del beneficio.*/
+
+
     }
 
     @Test
@@ -65,7 +68,7 @@ public class PruebaClubDeBeneficios {
         
         Operacion operacion = new Operacion(beneficio, 1000);
         
-        juan.getOperaciones().add(operacion);
+        juan.registrarOperacion(operacion);
         
         Assert.assertEquals(900, juan.calcularAhorro(), 0.005);
     }
