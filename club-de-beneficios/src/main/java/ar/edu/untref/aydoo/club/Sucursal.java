@@ -13,7 +13,7 @@ public class Sucursal {
         this.nombre = nombre;
     }
 
-    public List<Operacion> getOperaciones() {
+    public List<Operacion> obtenerOperaciones() {
         return this.operaciones;
     }
 

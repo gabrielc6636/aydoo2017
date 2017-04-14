@@ -22,7 +22,7 @@ public class PruebaSucursal {
         heladeriaSucursal1.comprar(juan, 100,EnumMes.ENERO);
 
         List<Operacion> operacionesDeJuan = juan.obtenerOperaciones();
-        List<Operacion> operacionesDeSucursal1 = heladeriaSucursal1.getOperaciones();
+        List<Operacion> operacionesDeSucursal1 = heladeriaSucursal1.obtenerOperaciones();
 
         Assert.assertEquals(operacionesDeJuan.size(), 1);
         Assert.assertEquals(operacionesDeSucursal1.size(), 1);

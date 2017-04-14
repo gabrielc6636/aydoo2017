@@ -21,7 +21,7 @@ public class ClubDeBeneficios {
             int operaciones = 0;
 
             for(Sucursal sucursal:sucursales){
-                operaciones = operaciones+sucursal.getOperaciones().size();
+                operaciones = operaciones+sucursal.obtenerOperaciones().size();
             }
 
             if(operaciones>cantidadDeOperaciones){
@@ -43,7 +43,7 @@ public class ClubDeBeneficios {
 
             for(Sucursal sucursal:sucursales){
                 int operaciones = 0;
-                operaciones = operaciones+sucursal.getOperaciones().size();
+                operaciones = operaciones+sucursal.obtenerOperaciones().size();
 
                 if(operaciones>cantidadDeOperaciones){
                     cantidadDeOperaciones = operaciones;
