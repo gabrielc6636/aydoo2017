@@ -24,7 +24,7 @@ public class PruebaCliente {
         
         Beneficio beneficio = new Beneficio(Tarjeta.CLASSIC, 10);
         
-        Operacion operacion = new Operacion(beneficio, 1000);
+        Operacion operacion = new Operacion(beneficio, 1000,EnumMes.ENERO);
         
         juan.getOperaciones().add(operacion);
         
@@ -36,7 +36,7 @@ public class PruebaCliente {
         
         Beneficio beneficio = new Beneficio(Tarjeta.CLASSIC, 50);
         
-        Operacion operacion = new Operacion(beneficio, 1);
+        Operacion operacion = new Operacion(beneficio, 1,EnumMes.ENERO);
         
         juan.getOperaciones().add(operacion);
         
