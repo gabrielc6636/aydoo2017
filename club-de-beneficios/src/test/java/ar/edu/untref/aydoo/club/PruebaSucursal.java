@@ -3,7 +3,6 @@ package ar.edu.untref.aydoo.club;
 import java.util.List;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class PruebaSucursal {
@@ -22,7 +21,7 @@ public class PruebaSucursal {
         
         heladeriaSucursal1.comprar(juan, 100,EnumMes.ENERO);
 
-        List<Operacion> operacionesDeJuan = juan.getOperaciones();
+        List<Operacion> operacionesDeJuan = juan.obtenerOperaciones();
         List<Operacion> operacionesDeSucursal1 = heladeriaSucursal1.getOperaciones();
 
         Assert.assertEquals(operacionesDeJuan.size(), 1);

@@ -14,7 +14,7 @@ public class Cliente {
         this.email = email;
     }
 
-    public List<Operacion> getOperaciones() {
+    public List<Operacion> obtenerOperaciones() {
         return this.operaciones;
     }
 
@@ -34,12 +34,14 @@ public class Cliente {
         return ahorro;
     }
 
-    public double calcularAhorro() {
+    public double calcularAhorro(EnumMes mes) {
 
         double ahorro = 0;
 
         for(Operacion operacion : operaciones){
-            ahorro = ahorro + operacion.obtenerImporteAhorrado();
+            if(operacion.obtenerMes().equals(mes)) {
+                ahorro = ahorro + operacion.obtenerImporteAhorrado();
+            }
         }
 
         return ahorro;
