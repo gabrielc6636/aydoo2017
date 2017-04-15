@@ -73,7 +73,9 @@ public class ClubDeBeneficios {
                 }
             }
 
-            listaDeClientes.put(cliente,importeAhorrado);
+            if(importeAhorrado>0) {
+                listaDeClientes.put(cliente, importeAhorrado);
+            }
         }
 
         return listaDeClientes;
