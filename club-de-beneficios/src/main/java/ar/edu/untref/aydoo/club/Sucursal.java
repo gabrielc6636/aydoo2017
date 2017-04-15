@@ -7,23 +7,29 @@ public class Sucursal {
 
     private List<Operacion> operaciones = new ArrayList<Operacion>();
     private Establecimiento establecimiento;
+    private String nombre;
 
-    public List<Operacion> getOperaciones() {
+    public Sucursal(String nombre){
+        this.nombre = nombre;
+    }
+
+    public List<Operacion> obtenerOperaciones() {
         return this.operaciones;
     }
 
-    public void comprar(Cliente cliente, int importeOriginal) throws Exception {
- 
-        if (this.establecimiento.tieneBeneficio(cliente.obtenerTarjeta())) {
-        
-            //TODO: Hay que obtener el Beneficio para crear la Operacion.
-            Operacion nuevaOperacion = new Operacion(null, importeOriginal);
+    public void comprar(Cliente cliente, int importeOriginal,Mes mes) throws BeneficioException {
+
+        Beneficio beneficio = this.establecimiento.tieneBeneficio(cliente.obtenerTarjeta());
+
+        if (beneficio!=null) {
+
+            Operacion nuevaOperacion = new Operacion(beneficio, importeOriginal,mes);
             
             this.operaciones.add(nuevaOperacion);
             cliente.registrarOperacion(nuevaOperacion);
         
         } else {
-            throw new Exception("No hay beneficio para esa tarjeta en este establecimiento");
+            throw new BeneficioException();
         }
     }
 

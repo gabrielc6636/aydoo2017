@@ -7,12 +7,14 @@ public class Cliente {
 
     private Tarjeta tarjeta;
     private List<Operacion> operaciones = new ArrayList<Operacion>();
+    private String email;
 
-    public Cliente(Tarjeta tarjeta) {
+    public Cliente(Tarjeta tarjeta,String email) {
         this.tarjeta = tarjeta;
+        this.email = email;
     }
 
-    public List<Operacion> getOperaciones() {
+    public List<Operacion> obtenerOperaciones() {
         return this.operaciones;
     }
 
@@ -21,7 +23,7 @@ public class Cliente {
         return this.tarjeta;
     }
 
-    public double calcularAhorro() {
+    public double calcularDineroAbonado() {
 
         double ahorro = 0;
         
@@ -29,6 +31,19 @@ public class Cliente {
             ahorro = ahorro + operacion.obtenerImporte();
         }
         
+        return ahorro;
+    }
+
+    public double calcularAhorro(Mes mes) {
+
+        double ahorro = 0;
+
+        for(Operacion operacion : operaciones){
+            if(operacion.obtenerMes().equals(mes)) {
+                ahorro = ahorro + operacion.obtenerImporteAhorrado();
+            }
+        }
+
         return ahorro;
     }
     
