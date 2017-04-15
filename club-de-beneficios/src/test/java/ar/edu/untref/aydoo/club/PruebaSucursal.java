@@ -19,7 +19,7 @@ public class PruebaSucursal {
         heladeria.agregarSucursal(heladeriaSucursal1);
         heladeria.agregarBeneficio(beneficio);
         
-        heladeriaSucursal1.comprar(juan, 100,EnumMes.ENERO);
+        heladeriaSucursal1.comprar(juan, 100, Mes.ENERO);
 
         List<Operacion> operacionesDeJuan = juan.obtenerOperaciones();
         List<Operacion> operacionesDeSucursal1 = heladeriaSucursal1.obtenerOperaciones();
@@ -41,7 +41,7 @@ public class PruebaSucursal {
         heladeria.agregarSucursal(heladeriaSucursal1);
         heladeria.agregarBeneficio(beneficioTarjetaPremium);
 
-        heladeriaSucursal1.comprar(juan, 100,EnumMes.ENERO);
+        heladeriaSucursal1.comprar(juan, 100, Mes.ENERO);
     }
 
 }

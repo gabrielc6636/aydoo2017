@@ -5,9 +5,9 @@ public class Operacion {
     private double importe;
     private double importeAhorrado;
     private Beneficio beneficio;
-    private EnumMes mes;
+    private Mes mes;
     
-    public Operacion(Beneficio beneficio, int importeOriginal,EnumMes mes) {
+    public Operacion(Beneficio beneficio, int importeOriginal,Mes mes) {
         this.beneficio = beneficio;
         this.importe = ( (100-beneficio.obtenerValorBeneficio() )*importeOriginal) / 100.0;
         this.importeAhorrado = importeOriginal-(( (100-beneficio.obtenerValorBeneficio() )*importeOriginal) / 100.0);
@@ -22,7 +22,7 @@ public class Operacion {
         return this.importeAhorrado;
     }
 
-    public EnumMes obtenerMes(){
+    public Mes obtenerMes(){
         return this.mes;
     }
     

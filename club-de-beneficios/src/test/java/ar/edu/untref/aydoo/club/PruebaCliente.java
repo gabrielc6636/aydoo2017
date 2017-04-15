@@ -24,7 +24,7 @@ public class PruebaCliente {
         
         Beneficio beneficio = new Beneficio(Tarjeta.CLASSIC, 10);
         
-        Operacion operacion = new Operacion(beneficio, 1000,EnumMes.ENERO);
+        Operacion operacion = new Operacion(beneficio, 1000, Mes.ENERO);
 
         juan.registrarOperacion(operacion);
         
@@ -36,7 +36,7 @@ public class PruebaCliente {
         
         Beneficio beneficio = new Beneficio(Tarjeta.CLASSIC, 50);
         
-        Operacion operacion = new Operacion(beneficio, 1,EnumMes.ENERO);
+        Operacion operacion = new Operacion(beneficio, 1, Mes.ENERO);
 
         juan.registrarOperacion(operacion);
         
@@ -48,10 +48,10 @@ public class PruebaCliente {
 
         Beneficio beneficio = new Beneficio(Tarjeta.CLASSIC, 10);
 
-        Operacion operacion = new Operacion(beneficio, 1000,EnumMes.ENERO);
+        Operacion operacion = new Operacion(beneficio, 1000, Mes.ENERO);
 
         juan.registrarOperacion(operacion);
 
-        Assert.assertEquals(100, juan.calcularAhorro(EnumMes.ENERO), 0.005);
+        Assert.assertEquals(100, juan.calcularAhorro(Mes.ENERO), 0.005);
     }
 }

@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.List;
 import java.util.Map;
 
 public class PruebaClubDeBeneficios {
@@ -71,7 +70,7 @@ public class PruebaClubDeBeneficios {
         
         Beneficio beneficio = new Beneficio(Tarjeta.PREMIUM, 10);
         
-        Operacion operacion = new Operacion(beneficio, 1000,EnumMes.ENERO);
+        Operacion operacion = new Operacion(beneficio, 1000, Mes.ENERO);
         
         juan.registrarOperacion(operacion);
         
@@ -83,7 +82,7 @@ public class PruebaClubDeBeneficios {
 
         Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com");
 
-        sucursalS1.comprar(juan, 100,EnumMes.ENERO);
+        sucursalS1.comprar(juan, 100, Mes.ENERO);
 
         Establecimiento establecimientoConMasBeneficios = club.obtenerEstablecimientoAFelicitar();
 
@@ -104,25 +103,25 @@ public class PruebaClubDeBeneficios {
         Cliente clientePremium = new Cliente(Tarjeta.PREMIUM,"clientePremium@premium");
 
         //OPERACIONES CLASSIC
-        sucursalS1.comprar(carlos,500,EnumMes.ENERO);
-        sucursalS1.comprar(clienteClassic,500,EnumMes.ENERO);
-        sucursalS1.comprar(clienteClassic,500,EnumMes.ENERO);
-        sucursalS1.comprar(clienteClassic,500,EnumMes.ENERO);
+        sucursalS1.comprar(carlos,500, Mes.ENERO);
+        sucursalS1.comprar(clienteClassic,500, Mes.ENERO);
+        sucursalS1.comprar(clienteClassic,500, Mes.ENERO);
+        sucursalS1.comprar(clienteClassic,500, Mes.ENERO);
 
         //OPERACIONES PREMIUM
-        sucursalS1.comprar(juan,500,EnumMes.ENERO);
-        sucursalS1.comprar(clientePremium,500,EnumMes.ENERO);
-        sucursalS1.comprar(clientePremium,500,EnumMes.ENERO);
+        sucursalS1.comprar(juan,500, Mes.ENERO);
+        sucursalS1.comprar(clientePremium,500, Mes.ENERO);
+        sucursalS1.comprar(clientePremium,500, Mes.ENERO);
 
         //OPERACIONES CLASSIC
-        sucursalS3.comprar(carlos,500,EnumMes.ENERO);
-        sucursalS3.comprar(clienteClassic,500,EnumMes.ENERO);
-        sucursalS3.comprar(clienteClassic,500,EnumMes.ENERO);
+        sucursalS3.comprar(carlos,500, Mes.ENERO);
+        sucursalS3.comprar(clienteClassic,500, Mes.ENERO);
+        sucursalS3.comprar(clienteClassic,500, Mes.ENERO);
 
         //OPERACIONES PREMIUM
-        sucursalS3.comprar(clientePremium,500,EnumMes.ENERO);
-        sucursalS3.comprar(clientePremium,500,EnumMes.ENERO);
-        sucursalS3.comprar(clientePremium,500,EnumMes.ENERO);
+        sucursalS3.comprar(clientePremium,500, Mes.ENERO);
+        sucursalS3.comprar(clientePremium,500, Mes.ENERO);
+        sucursalS3.comprar(clientePremium,500, Mes.ENERO);
 
         Establecimiento establecimientoConMasBeneficios = club.obtenerEstablecimientoAFelicitar();
         Assert.assertEquals(heladeriaA, establecimientoConMasBeneficios);
@@ -133,7 +132,7 @@ public class PruebaClubDeBeneficios {
 
         Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com");
 
-        sucursalS1.comprar(juan, 100,EnumMes.ENERO);
+        sucursalS1.comprar(juan, 100, Mes.ENERO);
 
         Sucursal sucursalGanadora = club.obtenerSucursalAFelicitar();
 
@@ -153,25 +152,25 @@ public class PruebaClubDeBeneficios {
         Cliente clientePremium = new Cliente(Tarjeta.PREMIUM,"clientePremium@premium");
 
         //OPERACIONES CLASSIC
-        sucursalS1.comprar(carlos,500,EnumMes.ENERO);
-        sucursalS1.comprar(clienteClassic,500,EnumMes.ENERO);
-        sucursalS1.comprar(clienteClassic,500,EnumMes.ENERO);
-        sucursalS1.comprar(clienteClassic,500,EnumMes.ENERO);
+        sucursalS1.comprar(carlos,500, Mes.ENERO);
+        sucursalS1.comprar(clienteClassic,500, Mes.ENERO);
+        sucursalS1.comprar(clienteClassic,500, Mes.ENERO);
+        sucursalS1.comprar(clienteClassic,500, Mes.ENERO);
 
         //OPERACIONES PREMIUM
-        sucursalS1.comprar(juan,500,EnumMes.ENERO);
-        sucursalS1.comprar(clientePremium,500,EnumMes.ENERO);
-        sucursalS1.comprar(clientePremium,500,EnumMes.ENERO);
+        sucursalS1.comprar(juan,500, Mes.ENERO);
+        sucursalS1.comprar(clientePremium,500, Mes.ENERO);
+        sucursalS1.comprar(clientePremium,500, Mes.ENERO);
 
         //OPERACIONES CLASSIC
-        sucursalS3.comprar(carlos,500,EnumMes.ENERO);
-        sucursalS3.comprar(clienteClassic,500,EnumMes.ENERO);
-        sucursalS3.comprar(clienteClassic,500,EnumMes.ENERO);
+        sucursalS3.comprar(carlos,500, Mes.ENERO);
+        sucursalS3.comprar(clienteClassic,500, Mes.ENERO);
+        sucursalS3.comprar(clienteClassic,500, Mes.ENERO);
 
         //OPERACIONES PREMIUM
-        sucursalS3.comprar(clientePremium,500,EnumMes.ENERO);
-        sucursalS3.comprar(clientePremium,500,EnumMes.ENERO);
-        sucursalS3.comprar(clientePremium,500,EnumMes.ENERO);
+        sucursalS3.comprar(clientePremium,500, Mes.ENERO);
+        sucursalS3.comprar(clientePremium,500, Mes.ENERO);
+        sucursalS3.comprar(clientePremium,500, Mes.ENERO);
 
         Sucursal sucursalGanadora = club.obtenerSucursalAFelicitar();
         Assert.assertEquals(sucursalS1, sucursalGanadora);
@@ -184,9 +183,9 @@ public class PruebaClubDeBeneficios {
 
         club.agregarCliente(juan);
 
-        sucursalS1.comprar(juan, 100,EnumMes.ENERO);
+        sucursalS1.comprar(juan, 100, Mes.ENERO);
 
-        Map<Cliente,Double> clientesParaEmail = club.obtenerClientesParaEnviarEmail(EnumMes.ENERO);
+        Map<Cliente,Double> clientesParaEmail = club.obtenerClientesParaEnviarEmail(Mes.ENERO);
 
         double valorAhorrado = clientesParaEmail.get(juan);
 
@@ -197,11 +196,7 @@ public class PruebaClubDeBeneficios {
     @Test
     public void siNadieHizoOperacionEnEneroNoTengoQueEnviarleEmail() throws BeneficioException {
 
-        Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com");
-
-        club.agregarCliente(juan);
-
-        Map<Cliente,Double> clientesParaEmail = club.obtenerClientesParaEnviarEmail(EnumMes.ENERO);
+        Map<Cliente,Double> clientesParaEmail = club.obtenerClientesParaEnviarEmail(Mes.ENERO);
 
         int cantidadDeClientesANotificar = clientesParaEmail.size();
 
@@ -225,27 +220,27 @@ public class PruebaClubDeBeneficios {
         this.club.agregarCliente(clientePremium);
 
         //OPERACIONES CLASSIC
-        sucursalS1.comprar(carlos,500,EnumMes.ENERO);
-        sucursalS1.comprar(clienteClassic,500,EnumMes.ENERO);
-        sucursalS1.comprar(clienteClassic,500,EnumMes.ENERO);
-        sucursalS1.comprar(clienteClassic,500,EnumMes.ENERO);
+        sucursalS1.comprar(carlos,500, Mes.ENERO);
+        sucursalS1.comprar(clienteClassic,500, Mes.ENERO);
+        sucursalS1.comprar(clienteClassic,500, Mes.ENERO);
+        sucursalS1.comprar(clienteClassic,500, Mes.ENERO);
 
         //OPERACIONES PREMIUM
-        sucursalS1.comprar(juan,500,EnumMes.ENERO);
-        sucursalS1.comprar(clientePremium,500,EnumMes.ENERO);
-        sucursalS1.comprar(clientePremium,500,EnumMes.ENERO);
+        sucursalS1.comprar(juan,500, Mes.ENERO);
+        sucursalS1.comprar(clientePremium,500, Mes.ENERO);
+        sucursalS1.comprar(clientePremium,500, Mes.ENERO);
 
         //OPERACIONES CLASSIC
-        sucursalS3.comprar(carlos,500,EnumMes.ENERO);
-        sucursalS3.comprar(clienteClassic,500,EnumMes.ENERO);
-        sucursalS3.comprar(clienteClassic,500,EnumMes.ENERO);
+        sucursalS3.comprar(carlos,500, Mes.ENERO);
+        sucursalS3.comprar(clienteClassic,500, Mes.ENERO);
+        sucursalS3.comprar(clienteClassic,500, Mes.ENERO);
 
         //OPERACIONES PREMIUM
-        sucursalS3.comprar(clientePremium,500,EnumMes.ENERO);
-        sucursalS3.comprar(clientePremium,500,EnumMes.ENERO);
-        sucursalS3.comprar(clientePremium,500,EnumMes.ENERO);
+        sucursalS3.comprar(clientePremium,500, Mes.ENERO);
+        sucursalS3.comprar(clientePremium,500, Mes.ENERO);
+        sucursalS3.comprar(clientePremium,500, Mes.ENERO);
 
-        Map<Cliente,Double> clientesParaEmail = club.obtenerClientesParaEnviarEmail(EnumMes.ENERO);
+        Map<Cliente,Double> clientesParaEmail = club.obtenerClientesParaEnviarEmail(Mes.ENERO);
 
         Assert.assertTrue(clientesParaEmail.containsKey(this.juan));
         Assert.assertTrue(clientesParaEmail.containsKey(this.carlos));

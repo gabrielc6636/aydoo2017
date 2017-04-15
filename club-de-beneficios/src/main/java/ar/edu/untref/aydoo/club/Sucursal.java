@@ -17,7 +17,7 @@ public class Sucursal {
         return this.operaciones;
     }
 
-    public void comprar(Cliente cliente, int importeOriginal,EnumMes mes) throws BeneficioException {
+    public void comprar(Cliente cliente, int importeOriginal,Mes mes) throws BeneficioException {
 
         Beneficio beneficio = this.establecimiento.tieneBeneficio(cliente.obtenerTarjeta());
 

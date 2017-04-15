@@ -61,7 +61,7 @@ public class ClubDeBeneficios {
         return sucursalGanadora;
     }
 
-    public Map<Cliente,Double> obtenerClientesParaEnviarEmail(EnumMes mes){
+    public Map<Cliente,Double> obtenerClientesParaEnviarEmail(Mes mes){
         Map<Cliente,Double> listaDeClientes = new HashMap<Cliente, Double>();
 
         for(Cliente cliente : clientes){

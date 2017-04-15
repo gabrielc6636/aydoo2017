@@ -34,7 +34,7 @@ public class Cliente {
         return ahorro;
     }
 
-    public double calcularAhorro(EnumMes mes) {
+    public double calcularAhorro(Mes mes) {
 
         double ahorro = 0;
 
