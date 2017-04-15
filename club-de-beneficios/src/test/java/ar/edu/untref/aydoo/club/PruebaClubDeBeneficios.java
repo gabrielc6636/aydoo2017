@@ -209,4 +209,49 @@ public class PruebaClubDeBeneficios {
 
     }
 
+    @Test
+    public void siJuan_Carlos_ClienteClassic_ClientePremiumHicieronComprasTengoQueNotificarlos() throws BeneficioException{
+        /*Durante Enero, la sucursal S1 realiza 4 beneficios con tarjeta Classic y 3 con tarjeta Premium.
+         Carlos y Juan utilizaron los beneficios con sus tarjetas, una vez cada uno.
+
+         La sucursal S2 no realiza beneficios.
+         La sucursal S3 atendió a 6 clientes y les realizó el beneficio ofrecido.
+         Carlos utilizó su tarjeta Classic para hacer uso del beneficio.*/
+
+        Cliente clienteClassic = new Cliente(Tarjeta.CLASSIC,"clienteClassic@classic");
+        Cliente clientePremium = new Cliente(Tarjeta.PREMIUM,"clientePremium@premium");
+
+        this.club.agregarCliente(clienteClassic);
+        this.club.agregarCliente(clientePremium);
+
+        //OPERACIONES CLASSIC
+        sucursalS1.comprar(carlos,500,EnumMes.ENERO);
+        sucursalS1.comprar(clienteClassic,500,EnumMes.ENERO);
+        sucursalS1.comprar(clienteClassic,500,EnumMes.ENERO);
+        sucursalS1.comprar(clienteClassic,500,EnumMes.ENERO);
+
+        //OPERACIONES PREMIUM
+        sucursalS1.comprar(juan,500,EnumMes.ENERO);
+        sucursalS1.comprar(clientePremium,500,EnumMes.ENERO);
+        sucursalS1.comprar(clientePremium,500,EnumMes.ENERO);
+
+        //OPERACIONES CLASSIC
+        sucursalS3.comprar(carlos,500,EnumMes.ENERO);
+        sucursalS3.comprar(clienteClassic,500,EnumMes.ENERO);
+        sucursalS3.comprar(clienteClassic,500,EnumMes.ENERO);
+
+        //OPERACIONES PREMIUM
+        sucursalS3.comprar(clientePremium,500,EnumMes.ENERO);
+        sucursalS3.comprar(clientePremium,500,EnumMes.ENERO);
+        sucursalS3.comprar(clientePremium,500,EnumMes.ENERO);
+
+        Map<Cliente,Double> clientesParaEmail = club.obtenerClientesParaEnviarEmail(EnumMes.ENERO);
+
+        Assert.assertTrue(clientesParaEmail.containsKey(this.juan));
+        Assert.assertTrue(clientesParaEmail.containsKey(this.carlos));
+        Assert.assertTrue(clientesParaEmail.containsKey(clienteClassic));
+        Assert.assertTrue(clientesParaEmail.containsKey(clientePremium));
+
+    }
+
 }
