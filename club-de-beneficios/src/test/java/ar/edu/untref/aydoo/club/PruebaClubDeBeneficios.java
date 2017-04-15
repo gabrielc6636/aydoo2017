@@ -188,7 +188,25 @@ public class PruebaClubDeBeneficios {
 
         Map<Cliente,Double> clientesParaEmail = club.obtenerClientesParaEnviarEmail(EnumMes.ENERO);
 
+        double valorAhorrado = clientesParaEmail.get(juan);
+
         Assert.assertTrue(clientesParaEmail.containsKey(juan));
+        Assert.assertEquals(20.0,valorAhorrado, 0.005);
+    }
+
+    @Test
+    public void siNadieHizoOperacionEnEneroNoTengoQueEnviarleEmail() throws BeneficioException {
+
+        Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com");
+
+        club.agregarCliente(juan);
+
+        Map<Cliente,Double> clientesParaEmail = club.obtenerClientesParaEnviarEmail(EnumMes.ENERO);
+
+        int cantidadDeClientesANotificar = clientesParaEmail.size();
+
+        Assert.assertEquals(0,cantidadDeClientesANotificar);
+
     }
 
 }
