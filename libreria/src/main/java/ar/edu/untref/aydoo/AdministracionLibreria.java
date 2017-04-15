@@ -5,12 +5,14 @@ import java.util.LinkedList;
 /**
  * Created by gabriel on 02/04/17.
  */
+
+//SERVICES
 public class AdministracionLibreria {
     public AdministracionLibreria(){
 
     }
 
-    public Double calcularMontoACobrar(EnumMes pmes,Cliente pCliente){
+    public Double calcularMontoACobrar(Mes pmes, Cliente pCliente){
         Double montoARetornar = 0.0;
 
         LinkedList<Producto> productosCompra = pCliente.ObtenerItemsCompra(pmes);
@@ -22,8 +24,6 @@ public class AdministracionLibreria {
         }
 
         for(Producto producto : productosSuscripcion){
-
-
             montoARetornar = montoARetornar + producto.ObtenerPrecio(true);
         }
 

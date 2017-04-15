@@ -6,6 +6,8 @@ import java.util.LinkedList;
 /**
  * Created by gabriel on 02/04/17.
  */
+
+//REPOSITORY
 public class ItemCompra {
 
     LinkedList<Producto> lstProductos;

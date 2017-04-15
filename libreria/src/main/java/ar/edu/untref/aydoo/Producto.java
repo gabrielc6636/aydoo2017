@@ -3,14 +3,16 @@ package ar.edu.untref.aydoo;
 /**
  * Created by gabriel on 02/04/17.
  */
+
+//ENTITY
 public class Producto {
 
     Double dblPrecio;
-    EnumCategoria categoria;
-    EnumFrecuencia frecuencia;
+    Categoria categoria;
+    Frecuencia frecuencia;
     String strNombre;
 
-    public Producto(String pNombre,Double pPrecio,EnumFrecuencia pFrecuencia,EnumCategoria pCategoria){
+    public Producto(String pNombre, Double pPrecio, Frecuencia pFrecuencia, Categoria pCategoria){
         this.dblPrecio = pPrecio;
         this.categoria = pCategoria;
         this.frecuencia = pFrecuencia;
@@ -21,7 +23,7 @@ public class Producto {
 
         Double precioRetorno = this.dblPrecio;
 
-        if(this.categoria.equals(EnumCategoria.ARTICULOS)){
+        if(this.categoria.equals(Categoria.ARTICULOS)){
             precioRetorno = precioRetorno*1.21;
         }
 

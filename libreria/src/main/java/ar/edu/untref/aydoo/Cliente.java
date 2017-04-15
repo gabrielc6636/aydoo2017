@@ -6,12 +6,14 @@ import java.util.LinkedList;
 /**
  * Created by gabriel on 02/04/17.
  */
+
+//AGGREGATE
 public class Cliente {
 
     String strNombreCliente;
     String strDireccion;
 
-    HashMap<EnumMes,ItemCompra> comprasClientes;
+    HashMap<Mes,ItemCompra> comprasClientes;
 
     LinkedList<Producto> lstSuscripciones;
 
@@ -19,11 +21,11 @@ public class Cliente {
         this.strDireccion = pDireccion;
         this.strNombreCliente = pNombre;
 
-        comprasClientes = new HashMap<EnumMes,ItemCompra>();
+        comprasClientes = new HashMap<Mes,ItemCompra>();
         lstSuscripciones = new LinkedList<Producto>();
     }
 
-    public void AgregarProductoCompra(EnumMes pmes, Producto pProducto){
+    public void AgregarProductoCompra(Mes pmes, Producto pProducto){
 
         ItemCompra item = comprasClientes.get(pmes);
 
@@ -42,7 +44,7 @@ public class Cliente {
 
     }
 
-    public LinkedList<Producto> ObtenerItemsCompra(EnumMes pMes){
+    public LinkedList<Producto> ObtenerItemsCompra(Mes pMes){
         ItemCompra itemCompra = comprasClientes.get(pMes);
 
         if(itemCompra==null){
