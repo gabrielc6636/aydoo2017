@@ -2,40 +2,35 @@ package ar.edu.untref.aydoo;
 
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
  * Created by gabriel on 02/04/17.
  */
 public class LibreriaTest {
+
+    private Producto revistaBarcelona;
+    private Producto revistaElGrafico;
+    private Producto elHobbit;
+    private Producto lapicera;
+    private Producto diarioPagina12;
+    private Producto diarioClarin;
+
+    @Before
+    public void precarga(){
+        this.revistaBarcelona = new Producto("Revista Barcelona",20.0, Frecuencia.QUINCENAL, Categoria.REVISTAS);
+        this.revistaElGrafico = new Producto("Revista El Grafico",30.0, Frecuencia.MENSUAL, Categoria.REVISTAS);
+        this.elHobbit = new Producto("El Hobbit",50.0, Frecuencia.UNICO, Categoria.LIBROS);
+        this.lapicera = new Producto("Lapicera",5.0, Frecuencia.UNICO, Categoria.ARTICULOS);
+        this.diarioPagina12 = new Producto("Diario Pagina 12",12.0, Frecuencia.DIARIO, Categoria.PERIODICOS);
+        this.diarioClarin = new Producto("Diario Clarin",13.0, Frecuencia.DIARIO, Categoria.PERIODICOS);
+    }
+
     @Test
     public void compraAgostoClienteJuanTest()
     {
         System.out.println("Ejecuto compraAgostoClienteJuanTest");
-
-        /*Dados los datos:
-
-        Revista Barcelona $20 cada ejemplar, frecuencia 15 quicenal
-
-        Revista El Gráfico, $30 cada ejemplar, frecuencia mensual
-
-        Libro El Hobbit $50
-
-        Lapicera $5 (al precio de venta hay que sumarle 21% de IVA)
-
-        Diario Página12,  $12 cada ejemplar, frecuencia diaria
-
-        Diario Clarín $13 cada ejemplar, frecuencia diaria*/
-
-        Producto revistaBarcelona = new Producto("Revista Barcelona",20.0,EnumFrecuencia.QUINCENAL,EnumCategoria.REVISTAS);
-        Producto revistaElGrafico = new Producto("Revista El Grafico",30.0,EnumFrecuencia.MENSUAL,EnumCategoria.REVISTAS);
-
-        Producto elHobbit = new Producto("El Hobbit",50.0,EnumFrecuencia.UNICO,EnumCategoria.LIBROS);
-
-        Producto lapicera = new Producto("Lapicera",5.0,EnumFrecuencia.UNICO,EnumCategoria.ARTICULOS);
-
-        Producto diarioPagina12 = new Producto("Diario Pagina 12",12.0,EnumFrecuencia.DIARIO,EnumCategoria.PERIODICOS);
-        Producto diarioClarin = new Producto("Diario Clarin",13.0,EnumFrecuencia.DIARIO,EnumCategoria.PERIODICOS);
 
         /*PREPARO EL CASO DE TEST*/
         /*Caso 1, en agosto Juan compra:
@@ -47,13 +42,13 @@ public class LibreriaTest {
 
         Cliente juan = new Cliente("Juan","Av Siempre Viva 742");
 
-        juan.AgregarProductoCompra(EnumMes.AGOSTO,elHobbit);
-        juan.AgregarProductoCompra(EnumMes.AGOSTO,lapicera);
-        juan.AgregarProductoCompra(EnumMes.AGOSTO,lapicera);
-        juan.AgregarProductoCompra(EnumMes.AGOSTO,revistaElGrafico);
+        juan.AgregarProductoCompra(Mes.AGOSTO,elHobbit);
+        juan.AgregarProductoCompra(Mes.AGOSTO,lapicera);
+        juan.AgregarProductoCompra(Mes.AGOSTO,lapicera);
+        juan.AgregarProductoCompra(Mes.AGOSTO,revistaElGrafico);
 
         AdministracionLibreria libreria = new AdministracionLibreria();
-        Double valorACobrar = libreria.calcularMontoACobrar(EnumMes.AGOSTO,juan);
+        Double valorACobrar = libreria.calcularMontoACobrar(Mes.AGOSTO,juan);
 
         System.out.println("El valor a cobrar es:"+valorACobrar);
 
@@ -70,30 +65,6 @@ public class LibreriaTest {
     {
         System.out.println("Ejecuto compraAgostoClienteMariaTest");
 
-        /*Dados los datos:
-
-        Revista Barcelona $20 cada ejemplar, frecuencia 15 quicenal
-
-        Revista El Gráfico, $30 cada ejemplar, frecuencia mensual
-
-        Libro El Hobbit $50
-
-        Lapicera $5 (al precio de venta hay que sumarle 21% de IVA)
-
-        Diario Página12,  $12 cada ejemplar, frecuencia diaria
-
-        Diario Clarín $13 cada ejemplar, frecuencia diaria*/
-
-        Producto revistaBarcelona = new Producto("Revista Barcelona",20.0,EnumFrecuencia.QUINCENAL,EnumCategoria.REVISTAS);
-        Producto revistaElGrafico = new Producto("Revista El Grafico",30.0,EnumFrecuencia.MENSUAL,EnumCategoria.REVISTAS);
-
-        Producto elHobbit = new Producto("El Hobbit",50.0,EnumFrecuencia.UNICO,EnumCategoria.LIBROS);
-
-        Producto lapicera = new Producto("Lapicera",5.0,EnumFrecuencia.UNICO,EnumCategoria.ARTICULOS);
-
-        Producto diarioPagina12 = new Producto("Diario Pagina 12",12.0,EnumFrecuencia.DIARIO,EnumCategoria.PERIODICOS);
-        Producto diarioClarin = new Producto("Diario Clarin",13.0,EnumFrecuencia.DIARIO,EnumCategoria.PERIODICOS);
-
         /*PREPARO EL CASO DE TEST*/
         /*Caso 2, en enero Maria compra:
 
@@ -105,12 +76,12 @@ public class LibreriaTest {
         Cliente maria = new Cliente("Maria","Av Siempre Viva 742");
 
         maria.AgregarProductoSuscripcion(revistaBarcelona);
-        maria.AgregarProductoCompra(EnumMes.ENERO,diarioPagina12);
+        maria.AgregarProductoCompra(Mes.ENERO,diarioPagina12);
 
 
         AdministracionLibreria libreria = new AdministracionLibreria();
 
-        Double valorACobrar = libreria.calcularMontoACobrar(EnumMes.ENERO,maria);
+        Double valorACobrar = libreria.calcularMontoACobrar(Mes.ENERO,maria);
         System.out.println("El valor a cobrar es:"+valorACobrar);
 
         Double valorPrevistoACobrar = 44.0;
@@ -125,29 +96,6 @@ public class LibreriaTest {
     {
         System.out.println("Ejecuto compraEneroClienteGabrielTest");
 
-        /*Dados los datos:
-
-        Revista Barcelona $20 cada ejemplar, frecuencia 15 quicenal
-
-        Revista El Gráfico, $30 cada ejemplar, frecuencia mensual
-
-        Libro El Hobbit $50
-
-        Lapicera $5 (al precio de venta hay que sumarle 21% de IVA)
-
-        Diario Página12,  $12 cada ejemplar, frecuencia diaria
-
-        Diario Clarín $13 cada ejemplar, frecuencia diaria*/
-
-        Producto revistaBarcelona = new Producto("Revista Barcelona",20.0,EnumFrecuencia.QUINCENAL,EnumCategoria.REVISTAS);
-        Producto revistaElGrafico = new Producto("Revista El Grafico",30.0,EnumFrecuencia.MENSUAL,EnumCategoria.REVISTAS);
-
-        Producto elHobbit = new Producto("El Hobbit",50.0,EnumFrecuencia.UNICO,EnumCategoria.LIBROS);
-
-        Producto lapicera = new Producto("Lapicera",5.0,EnumFrecuencia.UNICO,EnumCategoria.ARTICULOS);
-
-        Producto diarioPagina12 = new Producto("Diario Pagina 12",12.0,EnumFrecuencia.DIARIO,EnumCategoria.PERIODICOS);
-        Producto diarioClarin = new Producto("Diario Clarin",13.0,EnumFrecuencia.DIARIO,EnumCategoria.PERIODICOS);
 
         /*PREPARO EL CASO DE TEST*/
         /*Caso 3, en Agosto Gabriel compra:
@@ -160,14 +108,14 @@ public class LibreriaTest {
 
         Cliente gabriel = new Cliente("Gabriel","Av Siempre Viva 742");
 
-        gabriel.AgregarProductoCompra(EnumMes.AGOSTO,lapicera);
-        gabriel.AgregarProductoCompra(EnumMes.AGOSTO,lapicera);
-        gabriel.AgregarProductoCompra(EnumMes.AGOSTO,revistaElGrafico);
+        gabriel.AgregarProductoCompra(Mes.AGOSTO,lapicera);
+        gabriel.AgregarProductoCompra(Mes.AGOSTO,lapicera);
+        gabriel.AgregarProductoCompra(Mes.AGOSTO,revistaElGrafico);
 
 
         AdministracionLibreria libreria = new AdministracionLibreria();
 
-        Double valorACobrar = libreria.calcularMontoACobrar(EnumMes.ENERO,gabriel);
+        Double valorACobrar = libreria.calcularMontoACobrar(Mes.ENERO,gabriel);
         System.out.println("El valor a cobrar es:"+valorACobrar);
 
         Double valorPrevistoACobrar = 0.0;

@@ -3,29 +3,31 @@ package ar.edu.untref.aydoo;
 /**
  * Created by gabriel on 02/04/17.
  */
+
+//ENTITY
 public class Producto {
 
     Double dblPrecio;
-    EnumCategoria categoria;
-    EnumFrecuencia frecuencia;
+    Categoria categoria;
+    Frecuencia frecuencia;
     String strNombre;
 
-    public Producto(String pNombre,Double pPrecio,EnumFrecuencia pFrecuencia,EnumCategoria pCategoria){
-        this.dblPrecio = pPrecio;
-        this.categoria = pCategoria;
-        this.frecuencia = pFrecuencia;
-        this.strNombre = pNombre;
+    public Producto(String nombre, Double precio, Frecuencia frecuencia, Categoria categoria){
+        this.dblPrecio = precio;
+        this.categoria = categoria;
+        this.frecuencia = frecuencia;
+        this.strNombre = nombre;
     }
 
-    public Double ObtenerPrecio(Boolean pEsSuscripcion){
+    public Double ObtenerPrecio(Boolean esSuscripcion){
 
         Double precioRetorno = this.dblPrecio;
 
-        if(this.categoria.equals(EnumCategoria.ARTICULOS)){
+        if(this.categoria.equals(Categoria.ARTICULOS)){
             precioRetorno = precioRetorno*1.21;
         }
 
-        if(pEsSuscripcion.equals(true)){
+        if(esSuscripcion.equals(true)){
             precioRetorno = precioRetorno*0.8;
 
             switch (this.frecuencia){
