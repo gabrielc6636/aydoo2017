@@ -2,40 +2,35 @@ package ar.edu.untref.aydoo;
 
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
  * Created by gabriel on 02/04/17.
  */
 public class LibreriaTest {
+
+    private Producto revistaBarcelona;
+    private Producto revistaElGrafico;
+    private Producto elHobbit;
+    private Producto lapicera;
+    private Producto diarioPagina12;
+    private Producto diarioClarin;
+
+    @Before
+    public void precarga(){
+        this.revistaBarcelona = new Producto("Revista Barcelona",20.0, Frecuencia.QUINCENAL, Categoria.REVISTAS);
+        this.revistaElGrafico = new Producto("Revista El Grafico",30.0, Frecuencia.MENSUAL, Categoria.REVISTAS);
+        this.elHobbit = new Producto("El Hobbit",50.0, Frecuencia.UNICO, Categoria.LIBROS);
+        this.lapicera = new Producto("Lapicera",5.0, Frecuencia.UNICO, Categoria.ARTICULOS);
+        this.diarioPagina12 = new Producto("Diario Pagina 12",12.0, Frecuencia.DIARIO, Categoria.PERIODICOS);
+        this.diarioClarin = new Producto("Diario Clarin",13.0, Frecuencia.DIARIO, Categoria.PERIODICOS);
+    }
+
     @Test
     public void compraAgostoClienteJuanTest()
     {
         System.out.println("Ejecuto compraAgostoClienteJuanTest");
-
-        /*Dados los datos:
-
-        Revista Barcelona $20 cada ejemplar, frecuencia 15 quicenal
-
-        Revista El Gráfico, $30 cada ejemplar, frecuencia mensual
-
-        Libro El Hobbit $50
-
-        Lapicera $5 (al precio de venta hay que sumarle 21% de IVA)
-
-        Diario Página12,  $12 cada ejemplar, frecuencia diaria
-
-        Diario Clarín $13 cada ejemplar, frecuencia diaria*/
-
-        Producto revistaBarcelona = new Producto("Revista Barcelona",20.0, Frecuencia.QUINCENAL, Categoria.REVISTAS);
-        Producto revistaElGrafico = new Producto("Revista El Grafico",30.0, Frecuencia.MENSUAL, Categoria.REVISTAS);
-
-        Producto elHobbit = new Producto("El Hobbit",50.0, Frecuencia.UNICO, Categoria.LIBROS);
-
-        Producto lapicera = new Producto("Lapicera",5.0, Frecuencia.UNICO, Categoria.ARTICULOS);
-
-        Producto diarioPagina12 = new Producto("Diario Pagina 12",12.0, Frecuencia.DIARIO, Categoria.PERIODICOS);
-        Producto diarioClarin = new Producto("Diario Clarin",13.0, Frecuencia.DIARIO, Categoria.PERIODICOS);
 
         /*PREPARO EL CASO DE TEST*/
         /*Caso 1, en agosto Juan compra:
@@ -70,30 +65,6 @@ public class LibreriaTest {
     {
         System.out.println("Ejecuto compraAgostoClienteMariaTest");
 
-        /*Dados los datos:
-
-        Revista Barcelona $20 cada ejemplar, frecuencia 15 quicenal
-
-        Revista El Gráfico, $30 cada ejemplar, frecuencia mensual
-
-        Libro El Hobbit $50
-
-        Lapicera $5 (al precio de venta hay que sumarle 21% de IVA)
-
-        Diario Página12,  $12 cada ejemplar, frecuencia diaria
-
-        Diario Clarín $13 cada ejemplar, frecuencia diaria*/
-
-        Producto revistaBarcelona = new Producto("Revista Barcelona",20.0, Frecuencia.QUINCENAL, Categoria.REVISTAS);
-        Producto revistaElGrafico = new Producto("Revista El Grafico",30.0, Frecuencia.MENSUAL, Categoria.REVISTAS);
-
-        Producto elHobbit = new Producto("El Hobbit",50.0, Frecuencia.UNICO, Categoria.LIBROS);
-
-        Producto lapicera = new Producto("Lapicera",5.0, Frecuencia.UNICO, Categoria.ARTICULOS);
-
-        Producto diarioPagina12 = new Producto("Diario Pagina 12",12.0, Frecuencia.DIARIO, Categoria.PERIODICOS);
-        Producto diarioClarin = new Producto("Diario Clarin",13.0, Frecuencia.DIARIO, Categoria.PERIODICOS);
-
         /*PREPARO EL CASO DE TEST*/
         /*Caso 2, en enero Maria compra:
 
@@ -125,29 +96,6 @@ public class LibreriaTest {
     {
         System.out.println("Ejecuto compraEneroClienteGabrielTest");
 
-        /*Dados los datos:
-
-        Revista Barcelona $20 cada ejemplar, frecuencia 15 quicenal
-
-        Revista El Gráfico, $30 cada ejemplar, frecuencia mensual
-
-        Libro El Hobbit $50
-
-        Lapicera $5 (al precio de venta hay que sumarle 21% de IVA)
-
-        Diario Página12,  $12 cada ejemplar, frecuencia diaria
-
-        Diario Clarín $13 cada ejemplar, frecuencia diaria*/
-
-        Producto revistaBarcelona = new Producto("Revista Barcelona",20.0, Frecuencia.QUINCENAL, Categoria.REVISTAS);
-        Producto revistaElGrafico = new Producto("Revista El Grafico",30.0, Frecuencia.MENSUAL, Categoria.REVISTAS);
-
-        Producto elHobbit = new Producto("El Hobbit",50.0, Frecuencia.UNICO, Categoria.LIBROS);
-
-        Producto lapicera = new Producto("Lapicera",5.0, Frecuencia.UNICO, Categoria.ARTICULOS);
-
-        Producto diarioPagina12 = new Producto("Diario Pagina 12",12.0, Frecuencia.DIARIO, Categoria.PERIODICOS);
-        Producto diarioClarin = new Producto("Diario Clarin",13.0, Frecuencia.DIARIO, Categoria.PERIODICOS);
 
         /*PREPARO EL CASO DE TEST*/
         /*Caso 3, en Agosto Gabriel compra:

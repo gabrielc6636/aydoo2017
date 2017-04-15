@@ -16,8 +16,8 @@ public class ItemCompra {
         lstProductos = new LinkedList<Producto>();
     }
 
-    public void AgregarItem(Producto pProducto){
-        lstProductos.add(pProducto);
+    public void AgregarItem(Producto producto){
+        lstProductos.add(producto);
     }
 
     public LinkedList<Producto> ObtenerItems(){

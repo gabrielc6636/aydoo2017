@@ -12,14 +12,14 @@ public class Producto {
     Frecuencia frecuencia;
     String strNombre;
 
-    public Producto(String pNombre, Double pPrecio, Frecuencia pFrecuencia, Categoria pCategoria){
-        this.dblPrecio = pPrecio;
-        this.categoria = pCategoria;
-        this.frecuencia = pFrecuencia;
-        this.strNombre = pNombre;
+    public Producto(String nombre, Double precio, Frecuencia frecuencia, Categoria categoria){
+        this.dblPrecio = precio;
+        this.categoria = categoria;
+        this.frecuencia = frecuencia;
+        this.strNombre = nombre;
     }
 
-    public Double ObtenerPrecio(Boolean pEsSuscripcion){
+    public Double ObtenerPrecio(Boolean esSuscripcion){
 
         Double precioRetorno = this.dblPrecio;
 
@@ -27,7 +27,7 @@ public class Producto {
             precioRetorno = precioRetorno*1.21;
         }
 
-        if(pEsSuscripcion.equals(true)){
+        if(esSuscripcion.equals(true)){
             precioRetorno = precioRetorno*0.8;
 
             switch (this.frecuencia){
