@@ -5,7 +5,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class PruebaSucursal {
+public class SucursalTest {
 
     @Test
     public void siJuanCompraEnLaSucursalBLaOperacionSeRegistraEnLaSucursalYEnJuan() throws BeneficioException {
@@ -42,6 +42,9 @@ public class PruebaSucursal {
         heladeria.agregarBeneficio(beneficioTarjetaPremium);
 
         heladeriaSucursal1.comprar(juan, 100, Mes.ENERO);
+
+        List<Operacion> operacionesDeJuan = juan.obtenerOperaciones();
+        Assert.assertEquals(operacionesDeJuan.size(), 1);
     }
 
 }

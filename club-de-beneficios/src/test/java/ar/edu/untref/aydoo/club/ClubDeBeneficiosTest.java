@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.Map;
 
-public class PruebaClubDeBeneficios {
+public class ClubDeBeneficiosTest {
 
     private Cliente juan;
     private Cliente carlos;

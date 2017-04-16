@@ -22,10 +22,10 @@ public class Establecimiento {
         this.beneficios.add(beneficio);
     }
 
-    public Beneficio tieneBeneficio(Tarjeta tarjeta) throws BeneficioException {
+    public Beneficio tieneBeneficio(Tarjeta tarjeta) {
         
         boolean tiene = false;
-        Beneficio beneficio = this.beneficios.get(0);
+        Beneficio beneficio = null;
 
         for(int i = 0 ; i < this.beneficios.size() && !tiene ; i++) {
             
@@ -34,7 +34,7 @@ public class Establecimiento {
         }
 
         if(!tiene){
-            throw new BeneficioException();
+            beneficio = null;
         }
 
         return beneficio;
