@@ -10,8 +10,9 @@ public class Operacion {
     private Beneficio beneficio;
     private Mes mes;
     private List<Producto> productos = new ArrayList<Producto>();
+    private Sucursal sucursal;
     
-    public Operacion(Beneficio beneficio, List<Producto> productos,Mes mes) throws BeneficioException{
+    public Operacion(Beneficio beneficio, List<Producto> productos,Mes mes, Sucursal sucursal) throws BeneficioException{
         this.beneficio = beneficio;
         this.productos = productos;
 
@@ -21,6 +22,8 @@ public class Operacion {
         this.importe = importeOriginal-importeADescontar;
         this.importeAhorrado = importeADescontar;
         this.mes = mes;
+
+        this.sucursal = sucursal;
     }
 
     public double obtenerDescuento(Beneficio beneficio,List<Producto> productos) throws BeneficioException{
