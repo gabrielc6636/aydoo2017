@@ -17,13 +17,13 @@ public class Sucursal {
         return this.operaciones;
     }
 
-    public void comprar(Cliente cliente, int importeOriginal,Mes mes) throws BeneficioException {
+    public void comprar(Cliente cliente, List<Producto> productos,Mes mes) throws BeneficioException {
 
         Beneficio beneficio = this.establecimiento.tieneBeneficio(cliente.obtenerTarjeta());
 
         if (beneficio!=null) {
 
-            Operacion nuevaOperacion = new Operacion(beneficio, importeOriginal,mes);
+            Operacion nuevaOperacion = new Operacion(beneficio, productos,mes);
             
             this.operaciones.add(nuevaOperacion);
             cliente.registrarOperacion(nuevaOperacion);

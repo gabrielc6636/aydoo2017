@@ -5,9 +5,14 @@ public class Beneficio {
     private Tarjeta tarjeta;
     private int valor;
 
-    public Beneficio(Tarjeta tarjeta, int valor) {
+    public Beneficio(Tarjeta tarjeta, int valor) throws BeneficioException {
         this.tarjeta = tarjeta;
-        this.valor = valor;
+        if(valor>5) {
+            this.valor = valor;
+        }
+        else{
+            throw new BeneficioException();
+        }
     }
     
     public Tarjeta obtenerTarjeta(){
@@ -15,7 +20,6 @@ public class Beneficio {
     }
 
     public int obtenerValorBeneficio() {
-
         return this.valor;
     }
 
