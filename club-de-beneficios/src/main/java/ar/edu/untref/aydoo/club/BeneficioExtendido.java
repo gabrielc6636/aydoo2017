@@ -1,5 +1,8 @@
 package ar.edu.untref.aydoo.club;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -12,15 +15,17 @@ public class BeneficioExtendido extends Beneficio {
 
     public BeneficioExtendido(Tarjeta tarjeta, int valor) throws BeneficioException {
         super(tarjeta,valor);
+        this.tarjeta = tarjeta;
+        this.valor = valor;
+
     }
 
     public double obtenerValorBeneficio(List<Producto> productos) {
 
-        double importeOriginal = 0;
+        Collections.sort(productos,Collections.reverseOrder() );
 
-        for(Producto producto: productos){
-            importeOriginal = importeOriginal+producto.obtenerImporte();
-        }
+        int cantProductos = productos.size();
+        double importeOriginal = productos.get(cantProductos-1).obtenerImporte();
 
         return importeOriginal-(((100-this.valor)*importeOriginal) / 100.0);
     }

@@ -299,7 +299,7 @@ public class ClubDeBeneficiosTest {
         Cliente mateo = new Cliente(Tarjeta.CLASSIC,"mateo@classic");
 
         libreria.agregarSucursal(sucursal);
-        libreria.agregarBeneficio(new BeneficioExtendido(Tarjeta.CLASSIC,50));
+        libreria.agregarBeneficio(new BeneficioExtendido(Tarjeta.CLASSIC,100));
         this.club.agregarCliente(mateo);
 
         Producto martinFierro = new Producto(100.0,"Martin Fierro");
