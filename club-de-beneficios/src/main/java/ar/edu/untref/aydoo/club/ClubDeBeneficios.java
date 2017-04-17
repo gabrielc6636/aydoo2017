@@ -89,7 +89,7 @@ public class ClubDeBeneficios {
             for(Operacion operacion: operacionesCliente){
                 //Establecimiento | Producto comprado | Precio habitual (sin beneficio) | Beneficio obtenido
                 for(Producto producto:operacion.obtenerProductos()){
-                    System.out.println("Producto: "+ producto.)
+                    System.out.println("Producto: "+ producto.obtenerNombre() + " precio habitual (sin beneficio): " + producto.obtenerImporte() + " beneficio obtenido: " + producto.obtenerBeneficioImporte());
                 }
             }
         }
