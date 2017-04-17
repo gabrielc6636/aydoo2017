@@ -15,11 +15,12 @@ public class SucursalTest {
         Establecimiento heladeria = new Establecimiento();
         Beneficio beneficio = new Beneficio(Tarjeta.PREMIUM, 20);
         Sucursal heladeriaSucursal1 = new Sucursal("SucursalPrueba");
+        Producto kiloDeHelado = new Producto(100.0,"Kilo de Helado");
 
         heladeria.agregarSucursal(heladeriaSucursal1);
         heladeria.agregarBeneficio(beneficio);
         
-        heladeriaSucursal1.comprar(juan, 100, Mes.ENERO);
+        heladeriaSucursal1.comprar(juan, kiloDeHelado, Mes.ENERO);
 
         List<Operacion> operacionesDeJuan = juan.obtenerOperaciones();
         List<Operacion> operacionesDeSucursal1 = heladeriaSucursal1.obtenerOperaciones();
