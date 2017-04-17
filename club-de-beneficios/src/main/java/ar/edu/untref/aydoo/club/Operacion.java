@@ -16,15 +16,15 @@ public class Operacion {
         this.productos = productos;
 
         double importeOriginal = obtenerImporteInicial();
-        double importeADescontar = obtenerDescuento(beneficio,importeOriginal);
+        double importeADescontar = obtenerDescuento(beneficio,productos);
 
         this.importe = importeOriginal-importeADescontar;
         this.importeAhorrado = importeADescontar;
         this.mes = mes;
     }
 
-    public double obtenerDescuento(Beneficio beneficio,double importeOriginal){
-        return beneficio.obtenerValorBeneficio(importeOriginal);
+    public double obtenerDescuento(Beneficio beneficio,List<Producto> productos){
+        return beneficio.obtenerValorBeneficio(productos);
     }
 
     public double obtenerImporteInicial(){

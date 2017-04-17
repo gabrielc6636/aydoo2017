@@ -1,5 +1,7 @@
 package ar.edu.untref.aydoo.club;
 
+import java.util.List;
+
 public class Beneficio {
 
     protected Tarjeta tarjeta;
@@ -19,7 +21,14 @@ public class Beneficio {
         return this.tarjeta;
     }
 
-    public double obtenerValorBeneficio(double importeOriginal) {
+    public double obtenerValorBeneficio(List<Producto> productos) {
+
+        double importeOriginal = 0;
+
+        for(Producto producto: productos){
+            importeOriginal = importeOriginal+producto.obtenerImporte();
+        }
+
         return importeOriginal-(((100-this.valor)*importeOriginal) / 100.0);
     }
 
