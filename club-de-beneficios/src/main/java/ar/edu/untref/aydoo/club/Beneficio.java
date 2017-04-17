@@ -2,8 +2,8 @@ package ar.edu.untref.aydoo.club;
 
 public class Beneficio {
 
-    private Tarjeta tarjeta;
-    private int valor;
+    protected Tarjeta tarjeta;
+    protected int valor;
 
     public Beneficio(Tarjeta tarjeta, int valor) throws BeneficioException {
         this.tarjeta = tarjeta;
