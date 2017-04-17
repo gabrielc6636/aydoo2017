@@ -30,11 +30,11 @@ public class Producto  implements Comparable<Producto>  {
     }
 
     @Override
-    public int compareTo(Producto o) {
-        if (importe < o.importe) {
+    public int compareTo(Producto producto) {
+        if (importe < producto.importe) {
             return -1;
         }
-        if (importe > o.importe) {
+        if (importe > producto.importe) {
             return 1;
         }
         return 0;
