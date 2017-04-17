@@ -81,4 +81,16 @@ public class ClubDeBeneficios {
         return listaDeClientes;
     }
 
+    public void imprimirReporteDeAhorros(Mes mes){
+        Map<Cliente,Double> listaDeClientes =obtenerClientesParaEnviarEmail(mes);
+
+        for(Cliente cliente:listaDeClientes.keySet()){
+            List<Operacion> operacionesCliente = cliente.obtenerOperaciones();
+            for(Operacion operacion: operacionesCliente){
+                //Establecimiento | Producto comprado | Precio habitual (sin beneficio) | Beneficio obtenido
+
+            }
+        }
+    }
+
 }

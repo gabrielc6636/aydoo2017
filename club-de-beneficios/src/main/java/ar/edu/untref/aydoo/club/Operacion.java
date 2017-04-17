@@ -24,7 +24,15 @@ public class Operacion {
     }
 
     public double obtenerDescuento(Beneficio beneficio,List<Producto> productos) throws BeneficioException{
-        return beneficio.obtenerValorBeneficio(productos);
+        productos = beneficio.obtenerValorBeneficio(productos);
+
+        double importeInicial = 0;
+
+        for(Producto producto: productos){
+            importeInicial = importeInicial+producto.obtenerBeneficioImporte();
+        }
+
+        return importeInicial;
     }
 
     public double obtenerImporteInicial(){
@@ -47,6 +55,10 @@ public class Operacion {
 
     public Mes obtenerMes(){
         return this.mes;
+    }
+
+    public List<Producto> obtenerProductos(){
+        return this.productos;
     }
     
 }

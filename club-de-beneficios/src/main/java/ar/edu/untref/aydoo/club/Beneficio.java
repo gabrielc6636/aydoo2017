@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo.club;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Beneficio {
@@ -21,15 +22,22 @@ public class Beneficio {
         return this.tarjeta;
     }
 
-    public double obtenerValorBeneficio(List<Producto> productos)  throws BeneficioException {
+    public List<Producto> obtenerValorBeneficio(List<Producto> productos)  throws BeneficioException {
 
-        double importeOriginal = 0;
+        List<Producto> productosConBeneficio = new ArrayList<Producto>();
 
         for(Producto producto: productos){
+
+            double importeOriginal = 0;
+
             importeOriginal = importeOriginal+producto.obtenerImporte();
+
+            producto.asignarBeneficio(importeOriginal-(((100-this.valor)*importeOriginal) / 100.0));
+
+            productosConBeneficio.add(producto);
         }
 
-        return importeOriginal-(((100-this.valor)*importeOriginal) / 100.0);
+        return productosConBeneficio;
     }
 
 }

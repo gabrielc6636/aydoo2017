@@ -1,9 +1,6 @@
 package ar.edu.untref.aydoo.club;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by gabriel on 16/04/17.
@@ -20,9 +17,11 @@ public class BeneficioExtendido extends Beneficio {
 
     }
 
-    public double obtenerValorBeneficio(List<Producto> productos) throws BeneficioException {
+    public List<Producto> obtenerValorBeneficio(List<Producto> productos) throws BeneficioException {
 
         Collections.sort(productos,Collections.reverseOrder() );
+
+        List<Producto> productosConBeneficio = new ArrayList<Producto>();
 
         int cantProductos = productos.size();
 
@@ -32,6 +31,15 @@ public class BeneficioExtendido extends Beneficio {
 
         double importeOriginal = productos.get(cantProductos-1).obtenerImporte();
 
-        return importeOriginal-(((100-this.valor)*importeOriginal) / 100.0);
+        productos.get(cantProductos-1).asignarBeneficio(importeOriginal-(((100-this.valor)*importeOriginal) / 100.0));
+
+        for(Producto producto: productos){
+
+            productosConBeneficio.add(producto);
+        }
+
+        return productosConBeneficio;
+
+
     }
 }
