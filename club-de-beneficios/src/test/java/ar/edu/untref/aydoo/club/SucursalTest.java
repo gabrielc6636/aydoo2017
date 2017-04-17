@@ -13,7 +13,7 @@ public class SucursalTest {
 
         Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com");
 
-        Establecimiento heladeria = new Establecimiento();
+        Establecimiento heladeria = new Establecimiento("Heladeria");
         Beneficio beneficio = new Beneficio(Tarjeta.PREMIUM, 20);
         Sucursal heladeriaSucursal1 = new Sucursal("SucursalPrueba");
         Producto kiloDeHelado = new Producto(100.0,"Kilo de Helado");
@@ -39,7 +39,7 @@ public class SucursalTest {
 
         Cliente juan = new Cliente(Tarjeta.CLASSIC,"a@b.com");
         
-        Establecimiento heladeria = new Establecimiento();
+        Establecimiento heladeria = new Establecimiento("Heladeria");
         Sucursal heladeriaSucursal1 = new Sucursal("SucursalPrueba");
         Beneficio beneficioTarjetaPremium = new Beneficio(Tarjeta.PREMIUM, 20);
         Producto kiloDeHelado = new Producto(100.0,"Kilo de Helado");
