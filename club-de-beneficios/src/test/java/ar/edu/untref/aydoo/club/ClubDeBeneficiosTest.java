@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class ClubDeBeneficiosTest {
@@ -21,7 +23,7 @@ public class ClubDeBeneficiosTest {
     private ClubDeBeneficios club;
 
     @Before
-    public void inicializar() {
+    public void inicializar() throws BeneficioException {
 
         /*Carlos tiene tarjeta Classic.
         Juan tiene tarjeta Premium.
@@ -66,11 +68,16 @@ public class ClubDeBeneficiosTest {
     }
 
     @Test
-    public void devuelveJuanComoUnicoBeneficiadoEnElMes() {
+    public void devuelveJuanComoUnicoBeneficiadoEnElMes() throws BeneficioException {
         
         Beneficio beneficio = new Beneficio(Tarjeta.PREMIUM, 10);
-        
-        Operacion operacion = new Operacion(beneficio, 1000, Mes.ENERO);
+
+        Producto productoTest = new Producto(1000,"Producto de Test");
+
+        List<Producto> productos = new ArrayList<Producto>();
+        productos.add(productoTest);
+
+        Operacion operacion = new Operacion(beneficio, productos, Mes.ENERO);
         
         juan.registrarOperacion(operacion);
         
@@ -82,7 +89,12 @@ public class ClubDeBeneficiosTest {
 
         Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com");
 
-        sucursalS1.comprar(juan, 100, Mes.ENERO);
+        Producto productoTest = new Producto(100,"Producto de Test");
+
+        List<Producto> productos = new ArrayList<Producto>();
+        productos.add(productoTest);
+
+        sucursalS1.comprar(juan, productos, Mes.ENERO);
 
         Establecimiento establecimientoConMasBeneficios = club.obtenerEstablecimientoAFelicitar();
 
@@ -102,26 +114,31 @@ public class ClubDeBeneficiosTest {
         Cliente clienteClassic = new Cliente(Tarjeta.CLASSIC,"clienteClassic@classic");
         Cliente clientePremium = new Cliente(Tarjeta.PREMIUM,"clientePremium@premium");
 
-        //OPERACIONES CLASSIC
-        sucursalS1.comprar(carlos,500, Mes.ENERO);
-        sucursalS1.comprar(clienteClassic,500, Mes.ENERO);
-        sucursalS1.comprar(clienteClassic,500, Mes.ENERO);
-        sucursalS1.comprar(clienteClassic,500, Mes.ENERO);
+        Producto productoTest = new Producto(500.0,"Producto de Test");
 
-        //OPERACIONES PREMIUM
-        sucursalS1.comprar(juan,500, Mes.ENERO);
-        sucursalS1.comprar(clientePremium,500, Mes.ENERO);
-        sucursalS1.comprar(clientePremium,500, Mes.ENERO);
+        List<Producto> productos = new ArrayList<Producto>();
+        productos.add(productoTest);
 
         //OPERACIONES CLASSIC
-        sucursalS3.comprar(carlos,500, Mes.ENERO);
-        sucursalS3.comprar(clienteClassic,500, Mes.ENERO);
-        sucursalS3.comprar(clienteClassic,500, Mes.ENERO);
+        sucursalS1.comprar(carlos,productos, Mes.ENERO);
+        sucursalS1.comprar(clienteClassic,productos, Mes.ENERO);
+        sucursalS1.comprar(clienteClassic,productos, Mes.ENERO);
+        sucursalS1.comprar(clienteClassic,productos, Mes.ENERO);
 
         //OPERACIONES PREMIUM
-        sucursalS3.comprar(clientePremium,500, Mes.ENERO);
-        sucursalS3.comprar(clientePremium,500, Mes.ENERO);
-        sucursalS3.comprar(clientePremium,500, Mes.ENERO);
+        sucursalS1.comprar(juan,productos, Mes.ENERO);
+        sucursalS1.comprar(clientePremium,productos, Mes.ENERO);
+        sucursalS1.comprar(clientePremium,productos, Mes.ENERO);
+
+        //OPERACIONES CLASSIC
+        sucursalS3.comprar(carlos,productos, Mes.ENERO);
+        sucursalS3.comprar(clienteClassic,productos, Mes.ENERO);
+        sucursalS3.comprar(clienteClassic,productos, Mes.ENERO);
+
+        //OPERACIONES PREMIUM
+        sucursalS3.comprar(clientePremium,productos, Mes.ENERO);
+        sucursalS3.comprar(clientePremium,productos, Mes.ENERO);
+        sucursalS3.comprar(clientePremium,productos, Mes.ENERO);
 
         Establecimiento establecimientoConMasBeneficios = club.obtenerEstablecimientoAFelicitar();
         Assert.assertEquals(heladeriaA, establecimientoConMasBeneficios);
@@ -132,7 +149,12 @@ public class ClubDeBeneficiosTest {
 
         Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com");
 
-        sucursalS1.comprar(juan, 100, Mes.ENERO);
+        Producto productoTest = new Producto(100,"Producto de Test");
+
+        List<Producto> productos = new ArrayList<Producto>();
+        productos.add(productoTest);
+
+        sucursalS1.comprar(juan, productos, Mes.ENERO);
 
         Sucursal sucursalGanadora = club.obtenerSucursalAFelicitar();
 
@@ -151,26 +173,31 @@ public class ClubDeBeneficiosTest {
         Cliente clienteClassic = new Cliente(Tarjeta.CLASSIC,"clienteClassic@classic");
         Cliente clientePremium = new Cliente(Tarjeta.PREMIUM,"clientePremium@premium");
 
-        //OPERACIONES CLASSIC
-        sucursalS1.comprar(carlos,500, Mes.ENERO);
-        sucursalS1.comprar(clienteClassic,500, Mes.ENERO);
-        sucursalS1.comprar(clienteClassic,500, Mes.ENERO);
-        sucursalS1.comprar(clienteClassic,500, Mes.ENERO);
+        Producto productoTest = new Producto(500.0,"Producto de Test");
 
-        //OPERACIONES PREMIUM
-        sucursalS1.comprar(juan,500, Mes.ENERO);
-        sucursalS1.comprar(clientePremium,500, Mes.ENERO);
-        sucursalS1.comprar(clientePremium,500, Mes.ENERO);
+        List<Producto> productos = new ArrayList<Producto>();
+        productos.add(productoTest);
 
         //OPERACIONES CLASSIC
-        sucursalS3.comprar(carlos,500, Mes.ENERO);
-        sucursalS3.comprar(clienteClassic,500, Mes.ENERO);
-        sucursalS3.comprar(clienteClassic,500, Mes.ENERO);
+        sucursalS1.comprar(carlos,productos, Mes.ENERO);
+        sucursalS1.comprar(clienteClassic,productos, Mes.ENERO);
+        sucursalS1.comprar(clienteClassic,productos, Mes.ENERO);
+        sucursalS1.comprar(clienteClassic,productos, Mes.ENERO);
 
         //OPERACIONES PREMIUM
-        sucursalS3.comprar(clientePremium,500, Mes.ENERO);
-        sucursalS3.comprar(clientePremium,500, Mes.ENERO);
-        sucursalS3.comprar(clientePremium,500, Mes.ENERO);
+        sucursalS1.comprar(juan,productos, Mes.ENERO);
+        sucursalS1.comprar(clientePremium,productos, Mes.ENERO);
+        sucursalS1.comprar(clientePremium,productos, Mes.ENERO);
+
+        //OPERACIONES CLASSIC
+        sucursalS3.comprar(carlos,productos, Mes.ENERO);
+        sucursalS3.comprar(clienteClassic,productos, Mes.ENERO);
+        sucursalS3.comprar(clienteClassic,productos, Mes.ENERO);
+
+        //OPERACIONES PREMIUM
+        sucursalS3.comprar(clientePremium,productos, Mes.ENERO);
+        sucursalS3.comprar(clientePremium,productos, Mes.ENERO);
+        sucursalS3.comprar(clientePremium,productos, Mes.ENERO);
 
         Sucursal sucursalGanadora = club.obtenerSucursalAFelicitar();
         Assert.assertEquals(sucursalS1, sucursalGanadora);
@@ -183,7 +210,12 @@ public class ClubDeBeneficiosTest {
 
         club.agregarCliente(juan);
 
-        sucursalS1.comprar(juan, 100, Mes.ENERO);
+        Producto productoTest = new Producto(100,"Producto de Test");
+
+        List<Producto> productos = new ArrayList<Producto>();
+        productos.add(productoTest);
+
+        sucursalS1.comprar(juan, productos, Mes.ENERO);
 
         Map<Cliente,Double> clientesParaEmail = club.obtenerClientesParaEnviarEmail(Mes.ENERO);
 
@@ -219,26 +251,31 @@ public class ClubDeBeneficiosTest {
         this.club.agregarCliente(clienteClassic);
         this.club.agregarCliente(clientePremium);
 
-        //OPERACIONES CLASSIC
-        sucursalS1.comprar(carlos,500, Mes.ENERO);
-        sucursalS1.comprar(clienteClassic,500, Mes.ENERO);
-        sucursalS1.comprar(clienteClassic,500, Mes.ENERO);
-        sucursalS1.comprar(clienteClassic,500, Mes.ENERO);
+        Producto productoTest = new Producto(500.0,"Producto de Test");
 
-        //OPERACIONES PREMIUM
-        sucursalS1.comprar(juan,500, Mes.ENERO);
-        sucursalS1.comprar(clientePremium,500, Mes.ENERO);
-        sucursalS1.comprar(clientePremium,500, Mes.ENERO);
+        List<Producto> productos = new ArrayList<Producto>();
+        productos.add(productoTest);
 
         //OPERACIONES CLASSIC
-        sucursalS3.comprar(carlos,500, Mes.ENERO);
-        sucursalS3.comprar(clienteClassic,500, Mes.ENERO);
-        sucursalS3.comprar(clienteClassic,500, Mes.ENERO);
+        sucursalS1.comprar(carlos,productos, Mes.ENERO);
+        sucursalS1.comprar(clienteClassic,productos, Mes.ENERO);
+        sucursalS1.comprar(clienteClassic,productos, Mes.ENERO);
+        sucursalS1.comprar(clienteClassic,productos, Mes.ENERO);
 
         //OPERACIONES PREMIUM
-        sucursalS3.comprar(clientePremium,500, Mes.ENERO);
-        sucursalS3.comprar(clientePremium,500, Mes.ENERO);
-        sucursalS3.comprar(clientePremium,500, Mes.ENERO);
+        sucursalS1.comprar(juan,productos, Mes.ENERO);
+        sucursalS1.comprar(clientePremium,productos, Mes.ENERO);
+        sucursalS1.comprar(clientePremium,productos, Mes.ENERO);
+
+        //OPERACIONES CLASSIC
+        sucursalS3.comprar(carlos,productos, Mes.ENERO);
+        sucursalS3.comprar(clienteClassic,productos, Mes.ENERO);
+        sucursalS3.comprar(clienteClassic,productos, Mes.ENERO);
+
+        //OPERACIONES PREMIUM
+        sucursalS3.comprar(clientePremium,productos, Mes.ENERO);
+        sucursalS3.comprar(clientePremium,productos, Mes.ENERO);
+        sucursalS3.comprar(clientePremium,productos, Mes.ENERO);
 
         Map<Cliente,Double> clientesParaEmail = club.obtenerClientesParaEnviarEmail(Mes.ENERO);
 

@@ -4,6 +4,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ClienteTest {
 
     private Cliente juan;
@@ -20,11 +23,16 @@ public class ClienteTest {
     }
     
     @Test
-    public void siElClienteRealizaUnaOperacionDeMilPesosConDescuentoDe10PorcientoEntoncesPago900() {
+    public void siElClienteRealizaUnaOperacionDeMilPesosConDescuentoDe10PorcientoEntoncesPago900() throws BeneficioException {
         
         Beneficio beneficio = new Beneficio(Tarjeta.CLASSIC, 10);
+
+        Producto productoTest = new Producto(1000,"Producto de Test");
+
+        List<Producto> productos = new ArrayList<Producto>();
+        productos.add(productoTest);
         
-        Operacion operacion = new Operacion(beneficio, 1000, Mes.ENERO);
+        Operacion operacion = new Operacion(beneficio, productos, Mes.ENERO);
 
         juan.registrarOperacion(operacion);
         
@@ -32,11 +40,16 @@ public class ClienteTest {
     }
     
     @Test
-    public void siElClienteRealizaUnaOperacionDeUnPesoConDescuentoDe50PorcientoEntoncesAhorro1() {
+    public void siElClienteRealizaUnaOperacionDeUnPesoConDescuentoDe50PorcientoEntoncesAhorro1() throws BeneficioException  {
         
         Beneficio beneficio = new Beneficio(Tarjeta.CLASSIC, 50);
+
+        Producto productoTest = new Producto(1,"Producto de Test");
+
+        List<Producto> productos = new ArrayList<Producto>();
+        productos.add(productoTest);
         
-        Operacion operacion = new Operacion(beneficio, 1, Mes.ENERO);
+        Operacion operacion = new Operacion(beneficio, productos, Mes.ENERO);
 
         juan.registrarOperacion(operacion);
         
@@ -44,11 +57,16 @@ public class ClienteTest {
     }
 
     @Test
-    public void siElClienteRealizaUnaOperacionDeMilPesosConDescuentoDe10PorcientoEntoncesAhorro100() {
+    public void siElClienteRealizaUnaOperacionDeMilPesosConDescuentoDe10PorcientoEntoncesAhorro100() throws BeneficioException  {
 
         Beneficio beneficio = new Beneficio(Tarjeta.CLASSIC, 10);
 
-        Operacion operacion = new Operacion(beneficio, 1000, Mes.ENERO);
+        Producto productoTest = new Producto(1000,"Producto de Test");
+
+        List<Producto> productos = new ArrayList<Producto>();
+        productos.add(productoTest);
+
+        Operacion operacion = new Operacion(beneficio, productos, Mes.ENERO);
 
         juan.registrarOperacion(operacion);
 

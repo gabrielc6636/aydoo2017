@@ -11,19 +11,29 @@ public class Operacion {
     private Mes mes;
     private List<Producto> productos = new ArrayList<Producto>();
     
-    public Operacion(Beneficio beneficio, List<Producto>,Mes mes) {
+    public Operacion(Beneficio beneficio, List<Producto> productos,Mes mes) {
         this.beneficio = beneficio;
+        this.productos = productos;
 
-        double importeOriginal = obtenerImporteInicial(beneficio);
+        double importeOriginal = obtenerImporteInicial();
+        double importeADescontar = obtenerDescuento(beneficio,importeOriginal);
 
-        this.importe = ( (100-beneficio.obtenerValorBeneficio() )*importeOriginal) / 100.0;
-        this.importeAhorrado = importeOriginal-(( (100-beneficio.obtenerValorBeneficio() )*importeOriginal) / 100.0);
+        this.importe = importeOriginal-importeADescontar;
+        this.importeAhorrado = importeADescontar;
         this.mes = mes;
     }
 
-    public double obtenerImporteInicial(Beneficio beneficio){
+    public double obtenerDescuento(Beneficio beneficio,double importeOriginal){
+        return beneficio.obtenerValorBeneficio(importeOriginal);
+    }
+
+    public double obtenerImporteInicial(){
         double importeInicial = 0;
-        
+
+        for(Producto producto: productos){
+            importeInicial = importeInicial+producto.obtenerImporte();
+        }
+
         return importeInicial;
     }
 

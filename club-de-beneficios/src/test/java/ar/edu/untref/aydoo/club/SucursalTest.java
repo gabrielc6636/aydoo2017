@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo.club;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
@@ -17,10 +18,13 @@ public class SucursalTest {
         Sucursal heladeriaSucursal1 = new Sucursal("SucursalPrueba");
         Producto kiloDeHelado = new Producto(100.0,"Kilo de Helado");
 
+        List<Producto> productos = new ArrayList<Producto>();
+        productos.add(kiloDeHelado);
+
         heladeria.agregarSucursal(heladeriaSucursal1);
         heladeria.agregarBeneficio(beneficio);
 
-        heladeriaSucursal1.comprar(juan, kiloDeHelado, Mes.ENERO);
+        heladeriaSucursal1.comprar(juan, productos, Mes.ENERO);
 
         List<Operacion> operacionesDeJuan = juan.obtenerOperaciones();
         List<Operacion> operacionesDeSucursal1 = heladeriaSucursal1.obtenerOperaciones();
@@ -40,10 +44,13 @@ public class SucursalTest {
         Beneficio beneficioTarjetaPremium = new Beneficio(Tarjeta.PREMIUM, 20);
         Producto kiloDeHelado = new Producto(100.0,"Kilo de Helado");
 
+        List<Producto> productos = new ArrayList<Producto>();
+        productos.add(kiloDeHelado);
+
         heladeria.agregarSucursal(heladeriaSucursal1);
         heladeria.agregarBeneficio(beneficioTarjetaPremium);
 
-        heladeriaSucursal1.comprar(juan, kiloDeHelado, Mes.ENERO);
+        heladeriaSucursal1.comprar(juan, productos, Mes.ENERO);
 
         List<Operacion> operacionesDeJuan = juan.obtenerOperaciones();
         Assert.assertEquals(operacionesDeJuan.size(), 1);

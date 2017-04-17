@@ -19,8 +19,8 @@ public class Beneficio {
         return this.tarjeta;
     }
 
-    public int obtenerValorBeneficio() {
-        return this.valor;
+    public double obtenerValorBeneficio(double importeOriginal) {
+        return importeOriginal-(((100-this.valor)*importeOriginal) / 100.0);
     }
 
 }
