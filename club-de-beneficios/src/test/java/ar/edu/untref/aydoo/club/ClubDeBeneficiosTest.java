@@ -219,6 +219,8 @@ public class ClubDeBeneficiosTest {
 
         Map<Cliente,Double> clientesParaEmail = club.obtenerClientesParaEnviarEmail(Mes.ENERO);
 
+        club.imprimirReporteDeAhorros(Mes.ENERO);
+
         double valorAhorrado = clientesParaEmail.get(juan);
 
         Assert.assertTrue(clientesParaEmail.containsKey(juan));
