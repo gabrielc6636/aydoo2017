@@ -88,7 +88,9 @@ public class ClubDeBeneficios {
             List<Operacion> operacionesCliente = cliente.obtenerOperaciones();
             for(Operacion operacion: operacionesCliente){
                 //Establecimiento | Producto comprado | Precio habitual (sin beneficio) | Beneficio obtenido
-
+                for(Producto producto:operacion.obtenerProductos()){
+                    System.out.println("Producto: "+ producto.)
+                }
             }
         }
     }

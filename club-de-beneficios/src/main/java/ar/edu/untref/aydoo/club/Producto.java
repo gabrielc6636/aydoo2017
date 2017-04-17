@@ -25,6 +25,10 @@ public class Producto  implements Comparable<Producto>  {
         return this.importeBeneficio;
     }
 
+    public String obtenerNombre(){
+        return this.nombre;
+    }
+
     @Override
     public int compareTo(Producto o) {
         if (importe < o.importe) {
