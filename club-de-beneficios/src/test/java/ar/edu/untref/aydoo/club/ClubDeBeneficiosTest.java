@@ -286,4 +286,32 @@ public class ClubDeBeneficiosTest {
 
     }
 
+    @Test
+    public void siMateoCompra2ProductosCon2x1TengoQueCobrarleSoloUno() throws BeneficioException{
+        /*Ejemplo #2:
+        Mateo compra con su tarjeta classic el libro "Martín Fierro" ($100) en la librería la librería "El altillo" (sucursal única).
+        Esta librería está asociada al club y ofrece el beneficio 2x1.
+        Entonces Mateo elige como segundo libro "El Cantar del Cid" ($80) pero como tiene el beneficio este segundo libro le resultar gratis.
+        O sea que Mateo se lleva estos dos libros por $100 (el beneficio 2x1 tomo como referencia el  precio del libro más alto)*/
+
+        Establecimiento libreria = new Establecimiento();
+        Sucursal sucursal = new Sucursal("Sucursal Unica");
+        Cliente mateo = new Cliente(Tarjeta.CLASSIC,"mateo@classic");
+
+        libreria.agregarSucursal(sucursal);
+        libreria.agregarBeneficio(new BeneficioExtendido(Tarjeta.CLASSIC,50));
+        this.club.agregarCliente(mateo);
+
+        Producto martinFierro = new Producto(100.0,"Martin Fierro");
+        Producto elCantarDelCid = new Producto(80.0,"El Cantar del Cid");
+
+        List<Producto> productos = new ArrayList<Producto>();
+        productos.add(martinFierro);
+        productos.add(elCantarDelCid);
+
+        sucursal.comprar(mateo,productos,Mes.ENERO);
+
+        Assert.assertEquals(100, mateo.calcularDineroAbonado(), 0.005);
+    }
+
 }
