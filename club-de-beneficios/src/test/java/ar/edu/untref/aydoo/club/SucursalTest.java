@@ -1,11 +1,12 @@
 package ar.edu.untref.aydoo.club;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-public class PruebaSucursal {
+public class SucursalTest {
 
     @Test
     public void siJuanCompraEnLaSucursalBLaOperacionSeRegistraEnLaSucursalYEnJuan() throws BeneficioException {
@@ -15,11 +16,15 @@ public class PruebaSucursal {
         Establecimiento heladeria = new Establecimiento();
         Beneficio beneficio = new Beneficio(Tarjeta.PREMIUM, 20);
         Sucursal heladeriaSucursal1 = new Sucursal("SucursalPrueba");
+        Producto kiloDeHelado = new Producto(100.0,"Kilo de Helado");
+
+        List<Producto> productos = new ArrayList<Producto>();
+        productos.add(kiloDeHelado);
 
         heladeria.agregarSucursal(heladeriaSucursal1);
         heladeria.agregarBeneficio(beneficio);
-        
-        heladeriaSucursal1.comprar(juan, 100, Mes.ENERO);
+
+        heladeriaSucursal1.comprar(juan, productos, Mes.ENERO);
 
         List<Operacion> operacionesDeJuan = juan.obtenerOperaciones();
         List<Operacion> operacionesDeSucursal1 = heladeriaSucursal1.obtenerOperaciones();
@@ -37,11 +42,18 @@ public class PruebaSucursal {
         Establecimiento heladeria = new Establecimiento();
         Sucursal heladeriaSucursal1 = new Sucursal("SucursalPrueba");
         Beneficio beneficioTarjetaPremium = new Beneficio(Tarjeta.PREMIUM, 20);
-        
+        Producto kiloDeHelado = new Producto(100.0,"Kilo de Helado");
+
+        List<Producto> productos = new ArrayList<Producto>();
+        productos.add(kiloDeHelado);
+
         heladeria.agregarSucursal(heladeriaSucursal1);
         heladeria.agregarBeneficio(beneficioTarjetaPremium);
 
-        heladeriaSucursal1.comprar(juan, 100, Mes.ENERO);
+        heladeriaSucursal1.comprar(juan, productos, Mes.ENERO);
+
+        List<Operacion> operacionesDeJuan = juan.obtenerOperaciones();
+        Assert.assertEquals(operacionesDeJuan.size(), 1);
     }
 
 }

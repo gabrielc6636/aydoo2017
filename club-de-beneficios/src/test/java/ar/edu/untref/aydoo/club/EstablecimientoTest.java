@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by gabriel on 14/04/17.
  */
-public class PruebaEstablecimiento {
+public class EstablecimientoTest {
 
     @Test
     public void siAgregoBeneficioTarjetaClassicTengoQueTenerBeneficio() throws BeneficioException {
@@ -23,7 +23,7 @@ public class PruebaEstablecimiento {
         Assert.assertEquals(beneficio,beneficioObtenido);
     }
 
-    @Test(expected = BeneficioException.class)
+    @Test
     public void siAgregoBeneficioTarjetaClassicNoTengoQueTenerBeneficioPremium() throws BeneficioException {
 
         Establecimiento heladeria = new Establecimiento();
@@ -33,6 +33,6 @@ public class PruebaEstablecimiento {
 
         Beneficio beneficioObtenido = heladeria.tieneBeneficio(Tarjeta.PREMIUM);
 
-        Assert.assertEquals(beneficio,beneficioObtenido);
+        Assert.assertEquals(null,beneficioObtenido);
     }
 }
