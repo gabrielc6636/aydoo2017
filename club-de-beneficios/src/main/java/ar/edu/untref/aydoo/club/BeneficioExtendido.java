@@ -20,11 +20,16 @@ public class BeneficioExtendido extends Beneficio {
 
     }
 
-    public double obtenerValorBeneficio(List<Producto> productos) {
+    public double obtenerValorBeneficio(List<Producto> productos) throws BeneficioException {
 
         Collections.sort(productos,Collections.reverseOrder() );
 
         int cantProductos = productos.size();
+
+        if(cantProductos<2){
+            throw new BeneficioException("El beneficio de 2x1 no se puede aplicar a solo un producto");
+        }
+
         double importeOriginal = productos.get(cantProductos-1).obtenerImporte();
 
         return importeOriginal-(((100-this.valor)*importeOriginal) / 100.0);

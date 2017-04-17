@@ -13,7 +13,7 @@ public class Beneficio {
             this.valor = valor;
         }
         else{
-            throw new BeneficioException();
+            throw new BeneficioException("El porcentaje del descuento es menor a 5%");
         }
     }
     
@@ -21,7 +21,7 @@ public class Beneficio {
         return this.tarjeta;
     }
 
-    public double obtenerValorBeneficio(List<Producto> productos) {
+    public double obtenerValorBeneficio(List<Producto> productos)  throws BeneficioException {
 
         double importeOriginal = 0;
 

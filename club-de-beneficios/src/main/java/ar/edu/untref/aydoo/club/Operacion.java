@@ -11,7 +11,7 @@ public class Operacion {
     private Mes mes;
     private List<Producto> productos = new ArrayList<Producto>();
     
-    public Operacion(Beneficio beneficio, List<Producto> productos,Mes mes) {
+    public Operacion(Beneficio beneficio, List<Producto> productos,Mes mes) throws BeneficioException{
         this.beneficio = beneficio;
         this.productos = productos;
 
@@ -23,7 +23,7 @@ public class Operacion {
         this.mes = mes;
     }
 
-    public double obtenerDescuento(Beneficio beneficio,List<Producto> productos){
+    public double obtenerDescuento(Beneficio beneficio,List<Producto> productos) throws BeneficioException{
         return beneficio.obtenerValorBeneficio(productos);
     }
 

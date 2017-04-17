@@ -29,7 +29,7 @@ public class Sucursal {
             cliente.registrarOperacion(nuevaOperacion);
         
         } else {
-            throw new BeneficioException();
+            throw new BeneficioException("El establecimiento no cuenta con beneficio para la tarjeta solicitada");
         }
     }
 
