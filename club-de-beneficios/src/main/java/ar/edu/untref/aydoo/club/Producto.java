@@ -5,6 +5,7 @@ package ar.edu.untref.aydoo.club;
  */
 public class Producto  implements Comparable<Producto>  {
     private double importe = 0;
+    private double importeBeneficio = 0;
     private String nombre;
 
     public Producto(double importe,String nombre){
@@ -14,6 +15,14 @@ public class Producto  implements Comparable<Producto>  {
 
     public double obtenerImporte(){
         return this.importe;
+    }
+
+    public void asignarBeneficio(double importe){
+        this.importeBeneficio = importe;
+    }
+
+    public double obtenerBeneficioImporte(){
+        return this.importeBeneficio;
     }
 
     @Override
