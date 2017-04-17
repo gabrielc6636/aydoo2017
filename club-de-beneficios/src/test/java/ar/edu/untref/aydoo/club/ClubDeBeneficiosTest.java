@@ -39,7 +39,7 @@ public class ClubDeBeneficiosTest {
         this.juan = new Cliente(Tarjeta.PREMIUM,"juan@a.com");
         this.carlos  =new Cliente(Tarjeta.CLASSIC,"carlos@b.com");
 
-        this.heladeriaA = new Establecimiento();
+        this.heladeriaA = new Establecimiento("Heladeria A");
         this.heladeriaA.agregarBeneficio(new Beneficio(Tarjeta.CLASSIC,10));
         this.heladeriaA.agregarBeneficio(new Beneficio(Tarjeta.PREMIUM,20));
 
@@ -51,7 +51,7 @@ public class ClubDeBeneficiosTest {
         this.heladeriaA.agregarSucursal(sucursalS2);
         this.sucursalS2.asignarEstablecimiento(heladeriaA);
 
-        this.restaurantB = new Establecimiento();
+        this.restaurantB = new Establecimiento("Restaurant B");
         this.restaurantB.agregarBeneficio(new Beneficio(Tarjeta.CLASSIC,20));
         this.restaurantB.agregarBeneficio(new Beneficio(Tarjeta.PREMIUM,20));
         this.sucursalS3 = new Sucursal("S3");
@@ -74,10 +74,12 @@ public class ClubDeBeneficiosTest {
 
         Producto productoTest = new Producto(1000,"Producto de Test");
 
+        Sucursal sucursalTest = new Sucursal("SucursalTest");
+
         List<Producto> productos = new ArrayList<Producto>();
         productos.add(productoTest);
 
-        Operacion operacion = new Operacion(beneficio, productos, Mes.ENERO);
+        Operacion operacion = new Operacion(beneficio, productos, Mes.ENERO,sucursalTest);
         
         juan.registrarOperacion(operacion);
         
@@ -296,7 +298,7 @@ public class ClubDeBeneficiosTest {
         Entonces Mateo elige como segundo libro "El Cantar del Cid" ($80) pero como tiene el beneficio este segundo libro le resultar gratis.
         O sea que Mateo se lleva estos dos libros por $100 (el beneficio 2x1 tomo como referencia el  precio del libro más alto)*/
 
-        Establecimiento libreria = new Establecimiento();
+        Establecimiento libreria = new Establecimiento("Libreria");
         Sucursal sucursal = new Sucursal("Sucursal Unica");
         Cliente mateo = new Cliente(Tarjeta.CLASSIC,"mateo@classic");
 
@@ -320,7 +322,7 @@ public class ClubDeBeneficiosTest {
     public void siMateoCompra3ProductosCon2x1TengoQueCobrarleSoloDos() throws BeneficioException{
 
 
-        Establecimiento libreria = new Establecimiento();
+        Establecimiento libreria = new Establecimiento("Libreria");
         Sucursal sucursal = new Sucursal("Sucursal Unica");
         Cliente mateo = new Cliente(Tarjeta.CLASSIC,"mateo@classic");
 
@@ -346,7 +348,7 @@ public class ClubDeBeneficiosTest {
     public void siMateoCompra1ProductoCon2x1TiroException() throws BeneficioException{
 
 
-        Establecimiento libreria = new Establecimiento();
+        Establecimiento libreria = new Establecimiento("Libreria");
         Sucursal sucursal = new Sucursal("Sucursal Unica");
         Cliente mateo = new Cliente(Tarjeta.CLASSIC,"mateo@classic");
 

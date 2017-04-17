@@ -63,5 +63,9 @@ public class Operacion {
     public List<Producto> obtenerProductos(){
         return this.productos;
     }
+
+    public Sucursal obtenerSucursal(){
+        return this.sucursal;
+    }
     
 }

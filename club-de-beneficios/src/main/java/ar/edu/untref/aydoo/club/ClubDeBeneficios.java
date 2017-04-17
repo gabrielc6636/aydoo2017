@@ -19,7 +19,7 @@ public class ClubDeBeneficios {
 
     public Establecimiento obtenerEstablecimientoAFelicitar() {
 
-        Establecimiento establecimientoGanador = new Establecimiento();
+        Establecimiento establecimientoGanador = new Establecimiento("");
         int cantidadDeOperaciones = 0;
 
         for(Establecimiento establecimiento: establecimientos){
@@ -89,7 +89,7 @@ public class ClubDeBeneficios {
             for(Operacion operacion: operacionesCliente){
                 //Establecimiento | Producto comprado | Precio habitual (sin beneficio) | Beneficio obtenido
                 for(Producto producto:operacion.obtenerProductos()){
-                    System.out.println("Producto: "+ producto.obtenerNombre() + " precio habitual (sin beneficio): " + producto.obtenerImporte() + " beneficio obtenido: " + producto.obtenerBeneficioImporte());
+                    System.out.println("Establecimiento: "+ operacion.obtenerSucursal().obtenerEstablecimiento().obtenerNombre()+ "Producto: "+ producto.obtenerNombre() + " precio habitual (sin beneficio): " + producto.obtenerImporte() + " beneficio obtenido: " + producto.obtenerBeneficioImporte());
                 }
             }
         }

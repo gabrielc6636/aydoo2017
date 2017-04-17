@@ -29,10 +29,12 @@ public class ClienteTest {
 
         Producto productoTest = new Producto(1000,"Producto de Test");
 
+        Sucursal sucursalTest = new Sucursal("SucursalTest");
+
         List<Producto> productos = new ArrayList<Producto>();
         productos.add(productoTest);
         
-        Operacion operacion = new Operacion(beneficio, productos, Mes.ENERO);
+        Operacion operacion = new Operacion(beneficio, productos, Mes.ENERO,sucursalTest);
 
         juan.registrarOperacion(operacion);
         
@@ -46,10 +48,12 @@ public class ClienteTest {
 
         Producto productoTest = new Producto(1,"Producto de Test");
 
+        Sucursal sucursalTest = new Sucursal("SucursalTest");
+
         List<Producto> productos = new ArrayList<Producto>();
         productos.add(productoTest);
         
-        Operacion operacion = new Operacion(beneficio, productos, Mes.ENERO);
+        Operacion operacion = new Operacion(beneficio, productos, Mes.ENERO,sucursalTest);
 
         juan.registrarOperacion(operacion);
         
@@ -63,10 +67,12 @@ public class ClienteTest {
 
         Producto productoTest = new Producto(1000,"Producto de Test");
 
+        Sucursal sucursalTest = new Sucursal("SucursalTest");
+
         List<Producto> productos = new ArrayList<Producto>();
         productos.add(productoTest);
 
-        Operacion operacion = new Operacion(beneficio, productos, Mes.ENERO);
+        Operacion operacion = new Operacion(beneficio, productos, Mes.ENERO, sucursalTest);
 
         juan.registrarOperacion(operacion);
 

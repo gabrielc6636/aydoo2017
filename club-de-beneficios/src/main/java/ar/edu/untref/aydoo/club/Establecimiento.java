@@ -7,6 +7,11 @@ public class Establecimiento {
 
     private List<Sucursal> sucursales = new ArrayList<Sucursal>();
     private List<Beneficio> beneficios = new ArrayList<Beneficio>();
+    private String nombre = new String();
+
+    public Establecimiento(String nombre){
+        this.nombre = nombre;
+    }
 
     public void agregarSucursal(Sucursal sucursal) {
         
@@ -20,6 +25,10 @@ public class Establecimiento {
 
     public void agregarBeneficio(Beneficio beneficio) {
         this.beneficios.add(beneficio);
+    }
+
+    public String obtenerNombre(){
+        return this.nombre;
     }
 
     public Beneficio tieneBeneficio(Tarjeta tarjeta) {

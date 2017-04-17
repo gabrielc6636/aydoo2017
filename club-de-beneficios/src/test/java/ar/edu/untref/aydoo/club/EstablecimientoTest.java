@@ -13,7 +13,7 @@ public class EstablecimientoTest {
     @Test
     public void siAgregoBeneficioTarjetaClassicTengoQueTenerBeneficio() throws BeneficioException {
 
-        Establecimiento heladeria = new Establecimiento();
+        Establecimiento heladeria = new Establecimiento("Heladeria");
         Beneficio beneficio = new Beneficio(Tarjeta.CLASSIC,20);
 
         heladeria.agregarBeneficio(beneficio);
@@ -26,7 +26,7 @@ public class EstablecimientoTest {
     @Test
     public void siAgregoBeneficioTarjetaClassicNoTengoQueTenerBeneficioPremium() throws BeneficioException {
 
-        Establecimiento heladeria = new Establecimiento();
+        Establecimiento heladeria = new Establecimiento("Heladeria");
         Beneficio beneficio = new Beneficio(Tarjeta.CLASSIC,20);
 
         heladeria.agregarBeneficio(beneficio);
