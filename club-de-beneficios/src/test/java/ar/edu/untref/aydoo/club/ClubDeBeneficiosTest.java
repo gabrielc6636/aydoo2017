@@ -314,4 +314,29 @@ public class ClubDeBeneficiosTest {
         Assert.assertEquals(100, mateo.calcularDineroAbonado(), 0.005);
     }
 
+    @Test
+    public void siMateoCompra3ProductosCon2x1TengoQueCobrarleSoloDos() throws BeneficioException{
+
+
+        Establecimiento libreria = new Establecimiento();
+        Sucursal sucursal = new Sucursal("Sucursal Unica");
+        Cliente mateo = new Cliente(Tarjeta.CLASSIC,"mateo@classic");
+
+        libreria.agregarSucursal(sucursal);
+        libreria.agregarBeneficio(new BeneficioExtendido(Tarjeta.CLASSIC,100));
+        this.club.agregarCliente(mateo);
+
+        Producto martinFierro = new Producto(100.0,"Martin Fierro");
+        Producto elCantarDelCid = new Producto(80.0,"El Cantar del Cid");
+        Producto libroTDD = new Producto(80.0,"Libro sobre TDD");
+
+        List<Producto> productos = new ArrayList<Producto>();
+        productos.add(martinFierro);
+        productos.add(elCantarDelCid);
+
+        sucursal.comprar(mateo,productos,Mes.ENERO);
+
+        Assert.assertEquals(100, mateo.calcularDineroAbonado(), 0.005);
+    }
+
 }
