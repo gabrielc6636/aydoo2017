@@ -8,29 +8,29 @@ public class Producto  implements Comparable<Producto>  {
     private double importeBeneficio = 0;
     private String nombre;
 
-    public Producto(double importe,String nombre){
+    public Producto(final double importe, final String nombre) {
         this.importe = importe;
         this.nombre = nombre;
     }
 
-    public double obtenerImporte(){
+    public double obtenerImporte() {
         return this.importe;
     }
 
-    public void asignarBeneficio(double importe){
+    public void asignarBeneficio(final double importe) {
         this.importeBeneficio = importe;
     }
 
-    public double obtenerBeneficioImporte(){
+    public double obtenerBeneficioImporte() {
         return this.importeBeneficio;
     }
 
-    public String obtenerNombre(){
+    public String obtenerNombre() {
         return this.nombre;
     }
 
     @Override
-    public int compareTo(Producto producto) {
+    public int compareTo(final Producto producto) {
         if (importe < producto.importe) {
             return -1;
         }
