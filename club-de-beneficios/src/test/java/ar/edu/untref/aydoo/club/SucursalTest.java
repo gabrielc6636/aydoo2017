@@ -11,9 +11,9 @@ public class SucursalTest {
     @Test
     public void siJuanCompraEnLaSucursalBLaOperacionSeRegistraEnLaSucursalYEnJuan() throws BeneficioException {
 
-        Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com");
+        Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com","Juan");
 
-        Establecimiento heladeria = new Establecimiento();
+        Establecimiento heladeria = new Establecimiento("Heladeria");
         Beneficio beneficio = new Beneficio(Tarjeta.PREMIUM, 20);
         Sucursal heladeriaSucursal1 = new Sucursal("SucursalPrueba");
         Producto kiloDeHelado = new Producto(100.0,"Kilo de Helado");
@@ -37,9 +37,9 @@ public class SucursalTest {
     @Test(expected = BeneficioException.class)
     public void siJuanTieneTarjetaClassicPeroLaSucursalSoloManejaTarjetaPremiumEntoncesHayUnaExcepcion() throws BeneficioException {
 
-        Cliente juan = new Cliente(Tarjeta.CLASSIC,"a@b.com");
+        Cliente juan = new Cliente(Tarjeta.CLASSIC,"a@b.com","Juan");
         
-        Establecimiento heladeria = new Establecimiento();
+        Establecimiento heladeria = new Establecimiento("Heladeria");
         Sucursal heladeriaSucursal1 = new Sucursal("SucursalPrueba");
         Beneficio beneficioTarjetaPremium = new Beneficio(Tarjeta.PREMIUM, 20);
         Producto kiloDeHelado = new Producto(100.0,"Kilo de Helado");

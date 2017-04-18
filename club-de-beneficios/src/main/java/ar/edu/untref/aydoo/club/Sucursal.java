@@ -23,7 +23,7 @@ public class Sucursal {
 
         if (beneficio!=null) {
 
-            Operacion nuevaOperacion = new Operacion(beneficio, productos,mes);
+            Operacion nuevaOperacion = new Operacion(beneficio, productos,mes,this);
             
             this.operaciones.add(nuevaOperacion);
             cliente.registrarOperacion(nuevaOperacion);
@@ -35,6 +35,10 @@ public class Sucursal {
 
     public void asignarEstablecimiento(Establecimiento establecimiento) {
         this.establecimiento = establecimiento;
+    }
+
+    public Establecimiento obtenerEstablecimiento(){
+        return this.establecimiento;
     }
 
 }

@@ -8,14 +8,20 @@ public class Cliente {
     private Tarjeta tarjeta;
     private List<Operacion> operaciones = new ArrayList<Operacion>();
     private String email;
+    private String nombre;
 
-    public Cliente(Tarjeta tarjeta,String email) {
+    public Cliente(Tarjeta tarjeta,String email,String nombre) {
         this.tarjeta = tarjeta;
         this.email = email;
+        this.nombre = nombre;
     }
 
     public List<Operacion> obtenerOperaciones() {
         return this.operaciones;
+    }
+
+    public String obtenerNombre(){
+        return this.nombre;
     }
 
     public Tarjeta obtenerTarjeta() {

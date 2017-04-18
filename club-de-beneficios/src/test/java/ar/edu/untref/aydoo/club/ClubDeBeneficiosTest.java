@@ -36,10 +36,10 @@ public class ClubDeBeneficiosTest {
 
         this.club = new ClubDeBeneficios();
 
-        this.juan = new Cliente(Tarjeta.PREMIUM,"juan@a.com");
-        this.carlos  =new Cliente(Tarjeta.CLASSIC,"carlos@b.com");
+        this.juan = new Cliente(Tarjeta.PREMIUM,"juan@a.com","Juan");
+        this.carlos  =new Cliente(Tarjeta.CLASSIC,"carlos@b.com","Carlos");
 
-        this.heladeriaA = new Establecimiento();
+        this.heladeriaA = new Establecimiento("Heladeria A");
         this.heladeriaA.agregarBeneficio(new Beneficio(Tarjeta.CLASSIC,10));
         this.heladeriaA.agregarBeneficio(new Beneficio(Tarjeta.PREMIUM,20));
 
@@ -51,7 +51,7 @@ public class ClubDeBeneficiosTest {
         this.heladeriaA.agregarSucursal(sucursalS2);
         this.sucursalS2.asignarEstablecimiento(heladeriaA);
 
-        this.restaurantB = new Establecimiento();
+        this.restaurantB = new Establecimiento("Restaurant B");
         this.restaurantB.agregarBeneficio(new Beneficio(Tarjeta.CLASSIC,20));
         this.restaurantB.agregarBeneficio(new Beneficio(Tarjeta.PREMIUM,20));
         this.sucursalS3 = new Sucursal("S3");
@@ -74,10 +74,12 @@ public class ClubDeBeneficiosTest {
 
         Producto productoTest = new Producto(1000,"Producto de Test");
 
+        Sucursal sucursalTest = new Sucursal("SucursalTest");
+
         List<Producto> productos = new ArrayList<Producto>();
         productos.add(productoTest);
 
-        Operacion operacion = new Operacion(beneficio, productos, Mes.ENERO);
+        Operacion operacion = new Operacion(beneficio, productos, Mes.ENERO,sucursalTest);
         
         juan.registrarOperacion(operacion);
         
@@ -87,7 +89,7 @@ public class ClubDeBeneficiosTest {
     @Test
     public void siTengoUnaOperacionElEstablecimientoQueMasBeneficiosTieneQueSerElDeLaOperacion() throws BeneficioException {
 
-        Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com");
+        Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com","Juan");
 
         Producto productoTest = new Producto(100,"Producto de Test");
 
@@ -111,8 +113,8 @@ public class ClubDeBeneficiosTest {
          La sucursal S3 atendió a 6 clientes y les realizó el beneficio ofrecido.
          Carlos utilizó su tarjeta Classic para hacer uso del beneficio.*/
 
-        Cliente clienteClassic = new Cliente(Tarjeta.CLASSIC,"clienteClassic@classic");
-        Cliente clientePremium = new Cliente(Tarjeta.PREMIUM,"clientePremium@premium");
+        Cliente clienteClassic = new Cliente(Tarjeta.CLASSIC,"clienteClassic@classic","Cliente Classic");
+        Cliente clientePremium = new Cliente(Tarjeta.PREMIUM,"clientePremium@premium", "Cliente Premium");
 
         Producto productoTest = new Producto(500.0,"Producto de Test");
 
@@ -147,7 +149,7 @@ public class ClubDeBeneficiosTest {
     @Test
     public void siTengoUnaOperacionLaSucursalQueMasBeneficiosTieneQueSerElDeLaOperacion() throws BeneficioException {
 
-        Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com");
+        Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com","Juan");
 
         Producto productoTest = new Producto(100,"Producto de Test");
 
@@ -156,7 +158,7 @@ public class ClubDeBeneficiosTest {
 
         sucursalS1.comprar(juan, productos, Mes.ENERO);
 
-        Sucursal sucursalGanadora = club.obtenerSucursalAFelicitar();
+        Sucursal sucursalGanadora = club.obtenerSucursalAFelicitar(Mes.ENERO);
 
         Assert.assertEquals(sucursalS1, sucursalGanadora);
     }
@@ -170,8 +172,8 @@ public class ClubDeBeneficiosTest {
          La sucursal S3 atendió a 6 clientes y les realizó el beneficio ofrecido.
          Carlos utilizó su tarjeta Classic para hacer uso del beneficio.*/
 
-        Cliente clienteClassic = new Cliente(Tarjeta.CLASSIC,"clienteClassic@classic");
-        Cliente clientePremium = new Cliente(Tarjeta.PREMIUM,"clientePremium@premium");
+        Cliente clienteClassic = new Cliente(Tarjeta.CLASSIC,"clienteClassic@classic","Cliente Classic");
+        Cliente clientePremium = new Cliente(Tarjeta.PREMIUM,"clientePremium@premium","Cliente Premium");
 
         Producto productoTest = new Producto(500.0,"Producto de Test");
 
@@ -199,14 +201,14 @@ public class ClubDeBeneficiosTest {
         sucursalS3.comprar(clientePremium,productos, Mes.ENERO);
         sucursalS3.comprar(clientePremium,productos, Mes.ENERO);
 
-        Sucursal sucursalGanadora = club.obtenerSucursalAFelicitar();
+        Sucursal sucursalGanadora = club.obtenerSucursalAFelicitar(Mes.ENERO);
         Assert.assertEquals(sucursalS1, sucursalGanadora);
     }
 
     @Test
     public void siJuanHizoOperacionEnEneroTengoQueEnviarleEmail() throws BeneficioException {
 
-        Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com");
+        Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com","Juan");
 
         club.agregarCliente(juan);
 
@@ -247,8 +249,8 @@ public class ClubDeBeneficiosTest {
          La sucursal S3 atendió a 6 clientes y les realizó el beneficio ofrecido.
          Carlos utilizó su tarjeta Classic para hacer uso del beneficio.*/
 
-        Cliente clienteClassic = new Cliente(Tarjeta.CLASSIC,"clienteClassic@classic");
-        Cliente clientePremium = new Cliente(Tarjeta.PREMIUM,"clientePremium@premium");
+        Cliente clienteClassic = new Cliente(Tarjeta.CLASSIC,"clienteClassic@classic","Cliente Classic");
+        Cliente clientePremium = new Cliente(Tarjeta.PREMIUM,"clientePremium@premium","Cliente Premium");
 
         this.club.agregarCliente(clienteClassic);
         this.club.agregarCliente(clientePremium);
@@ -281,6 +283,8 @@ public class ClubDeBeneficiosTest {
 
         Map<Cliente,Double> clientesParaEmail = club.obtenerClientesParaEnviarEmail(Mes.ENERO);
 
+        club.imprimirReporteDeAhorros(Mes.ENERO);
+
         Assert.assertTrue(clientesParaEmail.containsKey(this.juan));
         Assert.assertTrue(clientesParaEmail.containsKey(this.carlos));
         Assert.assertTrue(clientesParaEmail.containsKey(clienteClassic));
@@ -296,9 +300,9 @@ public class ClubDeBeneficiosTest {
         Entonces Mateo elige como segundo libro "El Cantar del Cid" ($80) pero como tiene el beneficio este segundo libro le resultar gratis.
         O sea que Mateo se lleva estos dos libros por $100 (el beneficio 2x1 tomo como referencia el  precio del libro más alto)*/
 
-        Establecimiento libreria = new Establecimiento();
+        Establecimiento libreria = new Establecimiento("Libreria");
         Sucursal sucursal = new Sucursal("Sucursal Unica");
-        Cliente mateo = new Cliente(Tarjeta.CLASSIC,"mateo@classic");
+        Cliente mateo = new Cliente(Tarjeta.CLASSIC,"mateo@classic","Mateo");
 
         libreria.agregarSucursal(sucursal);
         libreria.agregarBeneficio(new BeneficioExtendido(Tarjeta.CLASSIC,100));
@@ -320,9 +324,9 @@ public class ClubDeBeneficiosTest {
     public void siMateoCompra3ProductosCon2x1TengoQueCobrarleSoloDos() throws BeneficioException{
 
 
-        Establecimiento libreria = new Establecimiento();
+        Establecimiento libreria = new Establecimiento("Libreria");
         Sucursal sucursal = new Sucursal("Sucursal Unica");
-        Cliente mateo = new Cliente(Tarjeta.CLASSIC,"mateo@classic");
+        Cliente mateo = new Cliente(Tarjeta.CLASSIC,"mateo@classic","Mateo");
 
         libreria.agregarSucursal(sucursal);
         libreria.agregarBeneficio(new BeneficioExtendido(Tarjeta.CLASSIC,100));
@@ -346,9 +350,9 @@ public class ClubDeBeneficiosTest {
     public void siMateoCompra1ProductoCon2x1TiroException() throws BeneficioException{
 
 
-        Establecimiento libreria = new Establecimiento();
+        Establecimiento libreria = new Establecimiento("Libreria");
         Sucursal sucursal = new Sucursal("Sucursal Unica");
-        Cliente mateo = new Cliente(Tarjeta.CLASSIC,"mateo@classic");
+        Cliente mateo = new Cliente(Tarjeta.CLASSIC,"mateo@classic","Mateo");
 
         libreria.agregarSucursal(sucursal);
         libreria.agregarBeneficio(new BeneficioExtendido(Tarjeta.CLASSIC,100));
