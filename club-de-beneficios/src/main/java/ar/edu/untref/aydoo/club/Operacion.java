@@ -11,13 +11,17 @@ public class Operacion {
     private Mes mes;
     private List<Producto> productos = new ArrayList<Producto>();
     private Sucursal sucursal;
-    
-    public Operacion(final Beneficio beneficio, final List<Producto> productos, final Mes mes, final Sucursal sucursal) throws BeneficioException {
+    public Operacion(final Beneficio beneficio,
+                     final List<Producto> productos,
+                     final Mes mes,
+                     final Sucursal sucursal)
+            throws BeneficioException {
         this.beneficio = beneficio;
         this.productos = productos;
 
         double importeOriginal = obtenerImporteInicial();
-        double importeADescontar = obtenerDescuento(beneficio, productos);
+        double importeADescontar = obtenerDescuento(beneficio,
+                                                    productos);
 
         this.importe = importeOriginal - importeADescontar;
         this.importeAhorrado = importeADescontar;
@@ -26,13 +30,16 @@ public class Operacion {
         this.sucursal = sucursal;
     }
 
-    public double obtenerDescuento(final Beneficio beneficio, List<Producto> productos) throws BeneficioException {
+    public double obtenerDescuento(final Beneficio beneficio,
+                                   List<Producto> productos)
+            throws BeneficioException {
         productos = beneficio.obtenerValorBeneficio(productos);
 
         double importeInicial = 0;
 
         for (Producto producto: productos) {
-            importeInicial = importeInicial + producto.obtenerBeneficioImporte();
+            importeInicial = importeInicial
+                    + producto.obtenerBeneficioImporte();
         }
 
         return importeInicial;
@@ -42,7 +49,8 @@ public class Operacion {
         double importeInicial = 0;
 
         for (Producto producto: productos) {
-            importeInicial = importeInicial + producto.obtenerImporte();
+            importeInicial = importeInicial
+                    + producto.obtenerImporte();
         }
 
         return importeInicial;
@@ -67,5 +75,4 @@ public class Operacion {
     public Sucursal obtenerSucursal() {
         return this.sucursal;
     }
-    
 }

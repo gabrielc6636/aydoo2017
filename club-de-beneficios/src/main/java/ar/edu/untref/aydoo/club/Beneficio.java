@@ -12,12 +12,11 @@ public class Beneficio {
         this.tarjeta = tarjeta;
         if (valor > 5) {
             this.valor = valor;
-        }
-        else {
+        } else {
             throw new BeneficioException("El porcentaje del descuento es menor a 5%");
         }
     }
-    
+
     public Tarjeta obtenerTarjeta() {
         return this.tarjeta;
     }

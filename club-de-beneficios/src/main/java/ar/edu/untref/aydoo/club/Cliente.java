@@ -30,11 +30,9 @@ public class Cliente {
 
     public double calcularDineroAbonado() {
         double ahorro = 0;
-        
         for (Operacion operacion : operaciones) {
             ahorro = ahorro + operacion.obtenerImporte();
         }
-        
         return ahorro;
     }
 
@@ -49,7 +47,6 @@ public class Cliente {
 
         return ahorro;
     }
-    
     public void registrarOperacion(final Operacion operacion) {
         this.operaciones.add(operacion);
     }

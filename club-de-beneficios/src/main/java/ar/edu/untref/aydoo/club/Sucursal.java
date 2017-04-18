@@ -17,19 +17,24 @@ public class Sucursal {
         return this.operaciones;
     }
 
-    public void comprar(final Cliente cliente, final List<Producto> productos, final Mes mes) throws BeneficioException {
+    public void comprar(final Cliente cliente,
+                        final List<Producto> productos,
+                        final Mes mes) throws BeneficioException {
 
-        Beneficio beneficio = this.establecimiento.tieneBeneficio(cliente.obtenerTarjeta());
+        Beneficio beneficio =
+                    this.establecimiento.tieneBeneficio(
+                            cliente.obtenerTarjeta());
 
         if (beneficio != null) {
 
-            Operacion nuevaOperacion = new Operacion(beneficio, productos, mes, this);
-            
+            Operacion nuevaOperacion = new Operacion(beneficio,
+                                                     productos,
+                                                        mes, this);
             this.operaciones.add(nuevaOperacion);
             cliente.registrarOperacion(nuevaOperacion);
-        
         } else {
-            throw new BeneficioException("El establecimiento no cuenta con beneficio para la tarjeta solicitada");
+            throw new BeneficioException("El establecimiento no "
+                    + "cuenta con beneficio para la tarjeta solicitada");
         }
     }
 

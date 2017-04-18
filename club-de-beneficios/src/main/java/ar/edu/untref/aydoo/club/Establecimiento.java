@@ -14,7 +14,6 @@ public class Establecimiento {
     }
 
     public void agregarSucursal(final Sucursal sucursal) {
-        
         this.sucursales.add(sucursal);
         sucursal.asignarEstablecimiento(this);
     }
@@ -32,12 +31,10 @@ public class Establecimiento {
     }
 
     public Beneficio tieneBeneficio(final Tarjeta tarjeta) {
-        
         boolean tiene = false;
         Beneficio beneficio = null;
 
         for (int i = 0; i < this.beneficios.size() && !tiene; i++) {
-            
             beneficio = this.beneficios.get(i);
             tiene = beneficio.obtenerTarjeta().equals(tarjeta);
         }

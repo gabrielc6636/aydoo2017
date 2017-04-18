@@ -9,7 +9,6 @@ public class ClubDeBeneficios {
 
     private List<Establecimiento> establecimientos = new ArrayList<Establecimiento>();
     private List<Cliente> clientes = new ArrayList<Cliente>();
-    
     public void agregarEstablecimiento(final Establecimiento establecimiento) {
         this.establecimientos.add(establecimiento);
     }
