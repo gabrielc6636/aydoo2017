@@ -42,7 +42,7 @@ public class Establecimiento {
             tiene = beneficio.obtenerTarjeta().equals(tarjeta);
         }
 
-        if(!tiene) {
+        if (!tiene) {
             beneficio = null;
         }
 
