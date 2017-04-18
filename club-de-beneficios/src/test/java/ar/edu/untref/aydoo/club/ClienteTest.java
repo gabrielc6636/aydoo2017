@@ -13,7 +13,7 @@ public class ClienteTest {
 
     @Before
     public void inicializar() {
-        this.juan = new Cliente(Tarjeta.CLASSIC,"a@b.com");
+        this.juan = new Cliente(Tarjeta.CLASSIC,"a@b.com","Juan");
     }
     
     @Test

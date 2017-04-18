@@ -39,7 +39,7 @@ public class ClubDeBeneficios {
         return establecimientoGanador;
     }
 
-    public Sucursal obtenerSucursalAFelicitar(){
+    public Sucursal obtenerSucursalAFelicitar(Mes mes){
 
         Sucursal sucursalGanadora = new Sucursal("SucursalGanadora");
         int cantidadDeOperaciones = 0;
@@ -49,8 +49,13 @@ public class ClubDeBeneficios {
 
             for(Sucursal sucursal:sucursales){
                 int operaciones = 0;
-                operaciones = operaciones+sucursal.obtenerOperaciones().size();
 
+                for (Operacion operacion : sucursal.obtenerOperaciones()){
+                    if(operacion.obtenerMes().equals(mes)) {
+                        operaciones = operaciones + 1;
+                    }
+                }
+                
                 if(operaciones>cantidadDeOperaciones){
                     cantidadDeOperaciones = operaciones;
                     sucursalGanadora = sucursal;
@@ -85,12 +90,11 @@ public class ClubDeBeneficios {
         Map<Cliente,Double> listaDeClientes =obtenerClientesParaEnviarEmail(mes);
 
         for(Cliente cliente:listaDeClientes.keySet()){
-            System.out.println("Establecimiento: "+ cliente.obtenerNombre());
+            System.out.println("Cliente: "+ cliente.obtenerNombre());
             List<Operacion> operacionesCliente = cliente.obtenerOperaciones();
             for(Operacion operacion: operacionesCliente){
-                //Establecimiento | Producto comprado | Precio habitual (sin beneficio) | Beneficio obtenido
                 for(Producto producto:operacion.obtenerProductos()){
-                    System.out.println("Establecimiento: "+ operacion.obtenerSucursal().obtenerEstablecimiento().obtenerNombre()+ "Producto: "+ producto.obtenerNombre() + " precio habitual (sin beneficio): " + producto.obtenerImporte() + " beneficio obtenido: " + producto.obtenerBeneficioImporte());
+                    System.out.println("Establecimiento: "+ operacion.obtenerSucursal().obtenerEstablecimiento().obtenerNombre()+ " | Producto: "+ producto.obtenerNombre() + " | precio habitual (sin beneficio): " + producto.obtenerImporte() + " | beneficio obtenido: " + producto.obtenerBeneficioImporte());
                 }
             }
         }
