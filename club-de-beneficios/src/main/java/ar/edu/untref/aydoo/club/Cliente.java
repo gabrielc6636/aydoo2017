@@ -10,7 +10,7 @@ public class Cliente {
     private String email;
     private String nombre;
 
-    public Cliente(Tarjeta tarjeta,String email,String nombre) {
+    public Cliente(final Tarjeta tarjeta, final String email, final String nombre) {
         this.tarjeta = tarjeta;
         this.email = email;
         this.nombre = nombre;
@@ -20,32 +20,29 @@ public class Cliente {
         return this.operaciones;
     }
 
-    public String obtenerNombre(){
+    public String obtenerNombre() {
         return this.nombre;
     }
 
     public Tarjeta obtenerTarjeta() {
-
         return this.tarjeta;
     }
 
     public double calcularDineroAbonado() {
-
         double ahorro = 0;
         
-        for(Operacion operacion : operaciones){
+        for (Operacion operacion : operaciones) {
             ahorro = ahorro + operacion.obtenerImporte();
         }
         
         return ahorro;
     }
 
-    public double calcularAhorro(Mes mes) {
-
+    public double calcularAhorro(final Mes mes) {
         double ahorro = 0;
 
-        for(Operacion operacion : operaciones){
-            if(operacion.obtenerMes().equals(mes)) {
+        for (Operacion operacion : operaciones) {
+            if (operacion.obtenerMes().equals(mes)) {
                 ahorro = ahorro + operacion.obtenerImporteAhorrado();
             }
         }
@@ -53,7 +50,7 @@ public class Cliente {
         return ahorro;
     }
     
-    public void registrarOperacion(Operacion operacion) {
+    public void registrarOperacion(final Operacion operacion) {
         this.operaciones.add(operacion);
     }
 
