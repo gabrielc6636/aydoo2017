@@ -8,12 +8,16 @@ public class Beneficio {
     private Tarjeta tarjeta;
     private int valor;
 
-    public Beneficio(final Tarjeta tarjeta, final int valor) throws BeneficioException {
+    public Beneficio(final Tarjeta tarjeta,
+                     final int valor)
+            throws BeneficioException {
         this.tarjeta = tarjeta;
-        if (valor > 5) {
+        int minimo = 5;
+        if (valor > minimo) {
             this.valor = valor;
         } else {
-            throw new BeneficioException("El porcentaje del descuento es menor a 5%");
+            throw new BeneficioException(
+                    "El porcentaje del descuento es menor a 5%");
         }
     }
 
@@ -21,7 +25,9 @@ public class Beneficio {
         return this.tarjeta;
     }
 
-    public List<Producto> obtenerValorBeneficio(final List<Producto> productos)  throws BeneficioException {
+    public List<Producto> obtenerValorBeneficio(
+            final List<Producto> productos)
+            throws BeneficioException {
 
         List<Producto> productosConBeneficio = new ArrayList<Producto>();
 
@@ -31,7 +37,9 @@ public class Beneficio {
 
             importeOriginal = importeOriginal + producto.obtenerImporte();
 
-            producto.asignarBeneficio(importeOriginal - (((100 - this.valor) * importeOriginal) / 100.0));
+            producto.asignarBeneficio(importeOriginal
+                    - (((100 - this.valor)
+                    * importeOriginal) / 100.0));
 
             productosConBeneficio.add(producto);
         }

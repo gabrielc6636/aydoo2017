@@ -31,9 +31,10 @@ public class Operacion {
     }
 
     public double obtenerDescuento(final Beneficio beneficio,
-                                   List<Producto> productos)
+                                   final List<Producto> productosDescuento)
             throws BeneficioException {
-        productos = beneficio.obtenerValorBeneficio(productos);
+        List<Producto> productos
+                = beneficio.obtenerValorBeneficio(productosDescuento);
 
         double importeInicial = 0;
 
