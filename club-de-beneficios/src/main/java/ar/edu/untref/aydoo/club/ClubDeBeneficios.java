@@ -55,7 +55,7 @@ public class ClubDeBeneficios {
                         operaciones = operaciones + 1;
                     }
                 }
-                
+
                 if(operaciones>cantidadDeOperaciones){
                     cantidadDeOperaciones = operaciones;
                     sucursalGanadora = sucursal;
@@ -90,11 +90,11 @@ public class ClubDeBeneficios {
         Map<Cliente,Double> listaDeClientes =obtenerClientesParaEnviarEmail(mes);
 
         for(Cliente cliente:listaDeClientes.keySet()){
-            System.out.println("Cliente: "+ cliente.obtenerNombre());
+            System.out.println("Cliente: " + cliente.obtenerNombre());
             List<Operacion> operacionesCliente = cliente.obtenerOperaciones();
             for(Operacion operacion: operacionesCliente){
                 for(Producto producto:operacion.obtenerProductos()){
-                    System.out.println("Establecimiento: "+ operacion.obtenerSucursal().obtenerEstablecimiento().obtenerNombre()+ " | Producto: "+ producto.obtenerNombre() + " | precio habitual (sin beneficio): " + producto.obtenerImporte() + " | beneficio obtenido: " + producto.obtenerBeneficioImporte());
+                    System.out.println("Establecimiento: " + operacion.obtenerSucursal().obtenerEstablecimiento().obtenerNombre() + " | Producto: " + producto.obtenerNombre() + " | precio habitual (sin beneficio): " + producto.obtenerImporte() + " | beneficio obtenido: " + producto.obtenerBeneficioImporte());
                 }
             }
         }

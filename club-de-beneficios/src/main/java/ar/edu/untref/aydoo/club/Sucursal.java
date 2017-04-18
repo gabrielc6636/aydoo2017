@@ -9,7 +9,7 @@ public class Sucursal {
     private Establecimiento establecimiento;
     private String nombre;
 
-    public Sucursal(String nombre){
+    public Sucursal(final String nombre) {
         this.nombre = nombre;
     }
 
@@ -17,13 +17,13 @@ public class Sucursal {
         return this.operaciones;
     }
 
-    public void comprar(Cliente cliente, List<Producto> productos,Mes mes) throws BeneficioException {
+    public void comprar(final Cliente cliente, final List<Producto> productos, final Mes mes) throws BeneficioException {
 
         Beneficio beneficio = this.establecimiento.tieneBeneficio(cliente.obtenerTarjeta());
 
-        if (beneficio!=null) {
+        if (beneficio != null) {
 
-            Operacion nuevaOperacion = new Operacion(beneficio, productos,mes,this);
+            Operacion nuevaOperacion = new Operacion(beneficio, productos, mes, this);
             
             this.operaciones.add(nuevaOperacion);
             cliente.registrarOperacion(nuevaOperacion);
@@ -33,11 +33,11 @@ public class Sucursal {
         }
     }
 
-    public void asignarEstablecimiento(Establecimiento establecimiento) {
+    public void asignarEstablecimiento(final Establecimiento establecimiento) {
         this.establecimiento = establecimiento;
     }
 
-    public Establecimiento obtenerEstablecimiento(){
+    public Establecimiento obtenerEstablecimiento() {
         return this.establecimiento;
     }
 

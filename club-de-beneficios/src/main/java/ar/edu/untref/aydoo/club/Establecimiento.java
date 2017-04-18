@@ -9,40 +9,40 @@ public class Establecimiento {
     private List<Beneficio> beneficios = new ArrayList<Beneficio>();
     private String nombre = new String();
 
-    public Establecimiento(String nombre){
+    public Establecimiento(final String nombre) {
         this.nombre = nombre;
     }
 
-    public void agregarSucursal(Sucursal sucursal) {
+    public void agregarSucursal(final Sucursal sucursal) {
         
         this.sucursales.add(sucursal);
         sucursal.asignarEstablecimiento(this);
     }
 
-    public List<Sucursal> obtenerSucursales(){
+    public List<Sucursal> obtenerSucursales() {
         return this.sucursales;
     }
 
-    public void agregarBeneficio(Beneficio beneficio) {
+    public void agregarBeneficio(final Beneficio beneficio) {
         this.beneficios.add(beneficio);
     }
 
-    public String obtenerNombre(){
+    public String obtenerNombre() {
         return this.nombre;
     }
 
-    public Beneficio tieneBeneficio(Tarjeta tarjeta) {
+    public Beneficio tieneBeneficio(final Tarjeta tarjeta) {
         
         boolean tiene = false;
         Beneficio beneficio = null;
 
-        for(int i = 0 ; i < this.beneficios.size() && !tiene ; i++) {
+        for (int i = 0; i < this.beneficios.size() && !tiene; i++) {
             
-            beneficio= this.beneficios.get(i);
+            beneficio = this.beneficios.get(i);
             tiene = beneficio.obtenerTarjeta().equals(tarjeta);
         }
 
-        if(!tiene){
+        if(!tiene) {
             beneficio = null;
         }
 

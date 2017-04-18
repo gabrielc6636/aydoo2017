@@ -5,7 +5,7 @@ package ar.edu.untref.aydoo.club;
  */
 public class BeneficioException extends Exception {
 
-    public BeneficioException(String message) {
+    public BeneficioException(final String message) {
         super(message);
     }
 }
