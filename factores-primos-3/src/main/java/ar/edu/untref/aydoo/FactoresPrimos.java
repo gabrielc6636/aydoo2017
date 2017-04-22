@@ -16,29 +16,25 @@ public class FactoresPrimos {
 
         String strRetorno = "";
 
-        if(strFormato.equals("quiet")||strFormato.equals("pretty")) {
+        FactoresPrimosFactorizador factorizador = new FactoresPrimosFactorizador();
+        FactoresPrimosImpresor impresor = new FactoresPrimosImpresor();
 
-            FactoresPrimosFactorizador factorizador = new FactoresPrimosFactorizador();
-            FactoresPrimosImpresor impresor = new FactoresPrimosImpresor();
+        List<Integer> lstFactores = factorizador.calcularFactores(intNumeroAFactorizar);
 
-            List<Integer> lstFactores = factorizador.calcularFactores(intNumeroAFactorizar);
-
-            switch (strFormato) {
-                case "pretty":
-                    strRetorno = impresor.imprimirEnFormatoPretty(intNumeroAFactorizar,lstFactores);
-                    break;
-                case "quiet":
-                    strRetorno = impresor.imprimirEnFormatoQuiet(lstFactores);
-                    break;
-                default:
-                    break;
-            }
+        switch (strFormato) {
+            case "":
+                strRetorno = impresor.imprimirEnFormatoPretty(intNumeroAFactorizar,lstFactores);
+                break;
+            case "pretty":
+                strRetorno = impresor.imprimirEnFormatoPretty(intNumeroAFactorizar,lstFactores);
+                break;
+            case "quiet":
+                strRetorno = impresor.imprimirEnFormatoQuiet(lstFactores);
+                break;
+            default:
+                strRetorno = "Formato no aceptado. Las opciones posibles son: pretty o quiet.";
+                break;
         }
-        else
-        {
-            strRetorno = "Formato no aceptado. Las opciones posibles son: pretty o quiet.";
-        }
-
         return strRetorno;
     }
 

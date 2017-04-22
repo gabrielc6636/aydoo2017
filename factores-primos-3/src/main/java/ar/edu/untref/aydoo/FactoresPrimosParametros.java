@@ -13,10 +13,12 @@ public class FactoresPrimosParametros {
 
         String parametroAEvaluar;
 
-        if (args.length > 0){
+        if (args.length > 0) {
             this.numeroAFactorizar = args[0];
             for (int i = 1; i < args.length; i++){
+
                 parametroAEvaluar = args[i].substring(0, 3).toUpperCase();
+
                 switch (parametroAEvaluar) {
                     case "--F":
                         this.formatoDeSalida = args[i];
@@ -33,10 +35,9 @@ public class FactoresPrimosParametros {
     }
 
     public Integer obtenerNumeroAFactorizar() {
-
         Integer numeroAFactorizar = 0;
-        if (this.numeroAFactorizar != ""){
-            numeroAFactorizar =  Integer.parseInt(this.numeroAFactorizar);
+        if (this.numeroAFactorizar != "") {
+            numeroAFactorizar = Integer.parseInt(this.numeroAFactorizar);
         }
         return numeroAFactorizar;
 

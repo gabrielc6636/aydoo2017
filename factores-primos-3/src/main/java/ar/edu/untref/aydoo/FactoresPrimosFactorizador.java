@@ -16,21 +16,20 @@ public class FactoresPrimosFactorizador {
         int intFactor = 2;
         List<Integer> lstFactores = new LinkedList<Integer>();
 
-        if (Integer.class.isInstance(this.intNumeroAFactorizar)) {
-            if (this.intNumeroAFactorizar > 1) {
-                while (this.intNumeroAFactorizar != 1 ) {
-                    while ( (this.intNumeroAFactorizar % intFactor) == 0)
-                    {
-                        this.intNumeroAFactorizar /= intFactor;
-                        lstFactores.add(intFactor);
-                    }
-                    intFactor++;
+        if (this.intNumeroAFactorizar > 1) {
+            while (this.intNumeroAFactorizar != 1 ) {
+                while ( (this.intNumeroAFactorizar % intFactor) == 0)
+                {
+                    this.intNumeroAFactorizar /= intFactor;
+                    lstFactores.add(intFactor);
                 }
-            }
-            else {
-                System.out.println("El valor debe ser mayor a 1");
+                intFactor++;
             }
         }
+        else {
+            System.out.println("El valor debe ser mayor a 1");
+        }
+
         return lstFactores;
     }
 }
