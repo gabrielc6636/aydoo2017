@@ -7,7 +7,10 @@ import java.util.*;
  * Created by gabriel on 01/04/17.
  */
 public class FactoresPrimos {
-    int intNumeroAFactorizar;
+    private static int numeroAFactorizar;
+    private static String formatoDeImpresion;
+    private static String formatoDeOrden;
+    private static String nombreDeArchivo;
 
     public String devolverFactoresPrimos(int intNumeroAFactorizar, String strFormato){
 
@@ -39,25 +42,29 @@ public class FactoresPrimos {
         return strRetorno;
     }
 
+    private static void obtenerParametros(String[] args) {
+
+        FactoresPrimosParametros parametros = new FactoresPrimosParametros(args);
+        numeroAFactorizar = parametros.obtenerNumeroAFactorizar();
+        formatoDeImpresion = parametros.obtenerFormatoDeSalida();
+        formatoDeOrden = parametros.obtenerFormatoDeOrden();
+        nombreDeArchivo = parametros.obtenerNombreDeArchivo();
+
+    }
+
     public static void main(String[]args)throws IOException {
 
-        String strFormatoSalida = "";
+        obtenerParametros(args);
 
-        int intNumeroAFactorizar = Integer.parseInt(args[0]);
+        System.out.println("Formato: "+formatoDeImpresion);
 
-        if(args.length>1) {
-            strFormatoSalida = args[1].replaceAll("--format=", "").trim().toLowerCase();
-        }
-
-        System.out.println("Formato: "+strFormatoSalida);
-
-        System.out.println("El número es: "+intNumeroAFactorizar);
+        System.out.println("El número es: "+numeroAFactorizar);
 
         FactoresPrimos factoresPrimos=new FactoresPrimos();
 
         System.out.println("Los factores primos son:");
 
-        String strImpresion = factoresPrimos.devolverFactoresPrimos(intNumeroAFactorizar,strFormatoSalida);
+        String strImpresion = factoresPrimos.devolverFactoresPrimos(numeroAFactorizar,formatoDeImpresion);
 
         System.out.println(strImpresion);
 
