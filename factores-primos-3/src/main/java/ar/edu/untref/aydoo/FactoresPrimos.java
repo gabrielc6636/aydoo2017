@@ -39,9 +39,6 @@ public class FactoresPrimos {
         return strRetorno;
     }
 
-
-
-
     public static void main(String[]args)throws IOException {
 
         String strFormatoSalida = "";

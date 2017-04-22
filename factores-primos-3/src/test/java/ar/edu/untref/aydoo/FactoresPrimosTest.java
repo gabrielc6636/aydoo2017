@@ -26,9 +26,9 @@ public class FactoresPrimosTest {
         lstFactoresEsperados.add(5);
         List<Integer> lstFactores = new ArrayList<Integer>();
 
-        FactoresPrimos factoresPrimos  = new FactoresPrimos();
+        FactoresPrimosFactorizador factorizador = new FactoresPrimosFactorizador();
 
-        lstFactores = factoresPrimos.calcularFactores(360);
+        lstFactores = factorizador.calcularFactores(360);
 
         for (Integer factor : lstFactores) {
             System.out.print(factor+" ");
@@ -51,9 +51,9 @@ public class FactoresPrimosTest {
         lstFactoresEsperados.add(5);
         List<Integer> lstFactores = new ArrayList<Integer>();
 
-        FactoresPrimos factoresPrimos  = new FactoresPrimos();
+        FactoresPrimosFactorizador factorizador = new FactoresPrimosFactorizador();
 
-        lstFactores = factoresPrimos.calcularFactores(90);
+        lstFactores = factorizador.calcularFactores(90);
 
         for (Integer factor : lstFactores) {
             System.out.print(factor+" ");
@@ -71,12 +71,13 @@ public class FactoresPrimosTest {
 
         boolean blnFactorizacion;
         int intNumeroAFactorizar = 360;
-        FactoresPrimos factoresPrimos = new FactoresPrimos();
+        FactoresPrimosFactorizador factorizador = new FactoresPrimosFactorizador();
+        FactoresPrimosImpresor impresor = new FactoresPrimosImpresor();
 
-        List<Integer> lstFactores = factoresPrimos.calcularFactores(intNumeroAFactorizar);
+        List<Integer> lstFactores = factorizador.calcularFactores(intNumeroAFactorizar);
 
         String strImpresionDeseada = "Factores primos " + Integer.toString(intNumeroAFactorizar) + ": 2 2 2 3 3 5 ";
-        String strImpresionObtenida = factoresPrimos.imprimirEnFormatoPretty(intNumeroAFactorizar, lstFactores);
+        String strImpresionObtenida = impresor.imprimirEnFormatoPretty(intNumeroAFactorizar, lstFactores);
 
         blnFactorizacion = strImpresionObtenida.equals(strImpresionDeseada);
 
@@ -93,12 +94,13 @@ public class FactoresPrimosTest {
 
         boolean blnFactorizacion;
         int intNumeroAFactorizar = 90;
-        FactoresPrimos factoresPrimos = new FactoresPrimos();
+        FactoresPrimosFactorizador factorizador = new FactoresPrimosFactorizador();
+        FactoresPrimosImpresor impresor = new FactoresPrimosImpresor();
 
-        List<Integer> lstFactores = factoresPrimos.calcularFactores(intNumeroAFactorizar);
+        List<Integer> lstFactores = factorizador.calcularFactores(intNumeroAFactorizar);
 
         String strImpresionDeseada = "Factores primos " + Integer.toString(intNumeroAFactorizar) + ": 2 3 3 5 ";
-        String strImpresionObtenida = factoresPrimos.imprimirEnFormatoPretty(intNumeroAFactorizar, lstFactores);
+        String strImpresionObtenida = impresor.imprimirEnFormatoPretty(intNumeroAFactorizar, lstFactores);
 
         blnFactorizacion = strImpresionObtenida.equals(strImpresionDeseada);
 
@@ -115,12 +117,13 @@ public class FactoresPrimosTest {
 
         boolean blnFactorizacion;
         int intNumeroAFactorizar = 360;
-        FactoresPrimos factoresPrimos = new FactoresPrimos();
+        FactoresPrimosFactorizador factorizador = new FactoresPrimosFactorizador();
+        FactoresPrimosImpresor impresor = new FactoresPrimosImpresor();
 
-        List<Integer> lstFactores = factoresPrimos.calcularFactores(intNumeroAFactorizar);
+        List<Integer> lstFactores = factorizador.calcularFactores(intNumeroAFactorizar);
 
         String strImpresionDeseada = "5\n3\n3\n2\n2\n2\n";
-        String strImpresionObtenida = factoresPrimos.imprimirEnFormatoQuiet(lstFactores);
+        String strImpresionObtenida = impresor.imprimirEnFormatoQuiet(lstFactores);
 
         blnFactorizacion = strImpresionObtenida.equals(strImpresionDeseada);
 
@@ -137,12 +140,13 @@ public class FactoresPrimosTest {
 
         boolean blnFactorizacion;
         int intNumeroAFactorizar = 90;
-        FactoresPrimos factoresPrimos = new FactoresPrimos();
+        FactoresPrimosFactorizador factorizador = new FactoresPrimosFactorizador();
+        FactoresPrimosImpresor impresor = new FactoresPrimosImpresor();
 
-        List<Integer> lstFactores = factoresPrimos.calcularFactores(intNumeroAFactorizar);
+        List<Integer> lstFactores = factorizador.calcularFactores(intNumeroAFactorizar);
 
         String strImpresionDeseada = "5\n3\n3\n2\n";
-        String strImpresionObtenida = factoresPrimos.imprimirEnFormatoQuiet(lstFactores);
+        String strImpresionObtenida = impresor.imprimirEnFormatoQuiet(lstFactores);
 
         blnFactorizacion = strImpresionObtenida.equals(strImpresionDeseada);
 
