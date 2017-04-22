@@ -12,24 +12,24 @@ public class FactoresPrimos {
     private static String formatoDeOrden;
     private static String nombreDeArchivo;
 
-    public String devolverFactoresPrimos(int intNumeroAFactorizar, String strFormato){
+    public String devolverFactoresPrimos(int numeroAFactorizar, String formatoDeImpresion, String formatoDeOrden){
 
         String strRetorno = "";
 
         FactoresPrimosFactorizador factorizador = new FactoresPrimosFactorizador();
         FactoresPrimosImpresor impresor = new FactoresPrimosImpresor();
 
-        List<Integer> lstFactores = factorizador.calcularFactores(intNumeroAFactorizar);
+        List<Integer> lstFactores = factorizador.calcularFactores(numeroAFactorizar);
 
-        switch (strFormato) {
+        switch (formatoDeImpresion) {
             case "":
-                strRetorno = impresor.imprimirEnFormatoPretty(intNumeroAFactorizar,lstFactores);
+                strRetorno = impresor.imprimirEnFormatoPretty(numeroAFactorizar,lstFactores,formatoDeOrden);
                 break;
             case "pretty":
-                strRetorno = impresor.imprimirEnFormatoPretty(intNumeroAFactorizar,lstFactores);
+                strRetorno = impresor.imprimirEnFormatoPretty(numeroAFactorizar,lstFactores,formatoDeOrden);
                 break;
             case "quiet":
-                strRetorno = impresor.imprimirEnFormatoQuiet(lstFactores);
+                strRetorno = impresor.imprimirEnFormatoQuiet(lstFactores,formatoDeOrden);
                 break;
             default:
                 strRetorno = "Formato no aceptado. Las opciones posibles son: pretty o quiet.";
@@ -48,6 +48,15 @@ public class FactoresPrimos {
 
     }
 
+    private static void imprimirArchivo(String pathImpresion, String impresion) throws IOException {
+
+        int posicion = 14;
+        String ruta = pathImpresion.substring(posicion);
+        FactoresPrimosIO factoresPrimosIO = new FactoresPrimosIO(ruta);
+        factoresPrimosIO.escribirFactorizacion(impresion);
+
+    }
+
     public static void main(String[]args)throws IOException {
 
         obtenerParametros(args);
@@ -60,9 +69,15 @@ public class FactoresPrimos {
 
         System.out.println("Los factores primos son:");
 
-        String strImpresion = factoresPrimos.devolverFactoresPrimos(numeroAFactorizar,formatoDeImpresion);
+        String impresion = factoresPrimos.devolverFactoresPrimos(numeroAFactorizar,formatoDeImpresion,formatoDeOrden);
 
-        System.out.println(strImpresion);
+        if (nombreDeArchivo == ""){
+            System.out.println(impresion);
+        }else{
+            imprimirArchivo(nombreDeArchivo, impresion);
+        }
 
     }
+
+
 }
