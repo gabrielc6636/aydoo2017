@@ -14,7 +14,7 @@ import java.util.List;
 public class FactoresPrimosTest {
 
     @Test
-    public void TestFactorPrimo360()
+    public void TestFactorPrimo360() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo 360");
@@ -40,8 +40,21 @@ public class FactoresPrimosTest {
         Assert.assertTrue(lstFactoresEsperados.equals(lstFactores));
     }
 
+    @Test (expected = FactorizadorException.class)
+    public void TestFactorPrimo1ObtengoException() throws FactorizadorException
+    {
+        System.out.println("");
+        System.out.println("Test Factor Primo 1");
+
+        List<Integer> lstFactores = new ArrayList<Integer>();
+
+        FactoresPrimosFactorizador factorizador = new FactoresPrimosFactorizador();
+
+        lstFactores = factorizador.calcularFactores(1);
+    }
+
     @Test
-    public void TestFactorPrimo90()
+    public void TestFactorPrimo90() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo 90");
@@ -66,7 +79,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoPrettyPara360Integral()
+    public void TestFactorPrimoPrettyPara360Integral() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Pretty para 360");
@@ -88,7 +101,29 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoPrettyPara360()
+    public void TestFactorPrimodDefaultPrettyPara360Integral() throws FactorizadorException
+    {
+        System.out.println("");
+        System.out.println("Test Factor Primo Pretty para 360");
+
+        boolean blnFactorizacion;
+        int intNumeroAFactorizar = 360;
+
+        FactoresPrimos factoresPrimos = new FactoresPrimos();
+
+        String strImpresionObtenida = factoresPrimos.devolverFactoresPrimos(intNumeroAFactorizar,"","--sort:asc");
+        String strImpresionDeseada = "Factores primos " + Integer.toString(intNumeroAFactorizar) + ": 2 2 2 3 3 5 ";
+
+
+        blnFactorizacion = strImpresionObtenida.equals(strImpresionDeseada);
+
+        System.out.println(strImpresionObtenida);
+
+        Assert.assertTrue(blnFactorizacion);
+    }
+
+    @Test
+    public void TestFactorPrimoPrettyPara360() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Pretty para 360");
@@ -111,7 +146,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoPrettyPara90()
+    public void TestFactorPrimoPrettyPara90() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Pretty para 90");
@@ -134,7 +169,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoQuietPara360()
+    public void TestFactorPrimoQuietPara360() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Quiet para 360");
@@ -157,7 +192,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoQuietPara360SortDes()
+    public void TestFactorPrimoQuietPara360SortDes() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Quiet para 360");
@@ -180,7 +215,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoQuietPara360SortAsc()
+    public void TestFactorPrimoQuietPara360SortAsc() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Quiet para 360");
@@ -204,7 +239,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoQuietPara90()
+    public void TestFactorPrimoQuietPara90() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Quiet para 90");
@@ -227,7 +262,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoQuietPara90SortDes()
+    public void TestFactorPrimoQuietPara90SortDes() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Quiet para 90");
@@ -250,7 +285,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoQuietPara90SortAsc()
+    public void TestFactorPrimoQuietPara90SortAsc() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Quiet para 90");
@@ -273,7 +308,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoErrorTipo()
+    public void TestFactorPrimoErrorTipo() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Error Tipo Resumen");
@@ -287,7 +322,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestIntegral() throws IOException
+    public void TestIntegral() throws IOException,FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Quiet para 90");
@@ -304,7 +339,6 @@ public class FactoresPrimosTest {
 
         String strImpresionDeseada = "5\n3\n3\n2\n";
 
-
         String ruta = "salida.txt";
         FactoresPrimosIO factoresPrimosIO = new FactoresPrimosIO(ruta);
 
@@ -312,7 +346,8 @@ public class FactoresPrimosTest {
 
         blnFactorizacion = strImpresionObtenida.equals(strImpresionDeseada);
 
-        System.out.println(strImpresionObtenida);
+        args[3] = "";
+        FactoresPrimos.main(args);
 
         Assert.assertTrue(blnFactorizacion);
     }

@@ -17,18 +17,20 @@ public class FactoresPrimosParametros {
             this.numeroAFactorizar = args[0];
             for (int i = 1; i < args.length; i++){
 
-                parametroAEvaluar = args[i].substring(0, 3).toUpperCase();
+                if(!args[i].isEmpty()) {
+                    parametroAEvaluar = args[i].substring(0, 3).toUpperCase();
 
-                switch (parametroAEvaluar) {
-                    case "--F":
-                        this.formatoDeSalida = args[i];
-                        break;
-                    case "--S":
-                        this.formatoDeOrden = args[i];
-                        break;
-                    case "--O":
-                        this.nombreDeArchivo = args[i];
-                        break;
+                    switch (parametroAEvaluar) {
+                        case "--F":
+                            this.formatoDeSalida = args[i];
+                            break;
+                        case "--S":
+                            this.formatoDeOrden = args[i];
+                            break;
+                        case "--O":
+                            this.nombreDeArchivo = args[i];
+                            break;
+                    }
                 }
             }
         }

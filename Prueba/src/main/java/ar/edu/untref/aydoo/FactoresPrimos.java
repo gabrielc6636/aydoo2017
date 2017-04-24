@@ -12,8 +12,10 @@ public class FactoresPrimos {
     private static String formatoDeOrden;
     private static String nombreDeArchivo;
 
-    public String devolverFactoresPrimos(int numeroAFactorizar, String formatoDeImpresion, String formatoDeOrden){
-
+    public String devolverFactoresPrimos(
+            int numeroAFactorizar,
+            String formatoDeImpresion,
+            String formatoDeOrden) throws FactorizadorException{
         String strRetorno = "";
 
         FactoresPrimosFactorizador factorizador = new FactoresPrimosFactorizador();
@@ -41,44 +43,28 @@ public class FactoresPrimos {
     }
 
     private static void obtenerParametros(String[] args) {
-
         FactoresPrimosParametros parametros = new FactoresPrimosParametros(args);
         numeroAFactorizar = parametros.obtenerNumeroAFactorizar();
         formatoDeImpresion = parametros.obtenerFormatoDeSalida();
         formatoDeOrden = parametros.obtenerFormatoDeOrden();
         nombreDeArchivo = parametros.obtenerNombreDeArchivo();
-
     }
 
     private static void imprimirArchivo(String pathImpresion, String impresion) throws IOException {
-
         String ruta = pathImpresion.replaceAll("--output-file=","");
         FactoresPrimosIO factoresPrimosIO = new FactoresPrimosIO(ruta);
         factoresPrimosIO.escribirFactorizacion(impresion);
-
     }
 
-    public static void main(String[]args)throws IOException {
-
+    public static void main(String[]args) throws IOException,FactorizadorException {
         obtenerParametros(args);
-
-        System.out.println("Formato: "+formatoDeImpresion);
-
-        System.out.println("El número es: "+numeroAFactorizar);
-
         FactoresPrimos factoresPrimos=new FactoresPrimos();
-
-        System.out.println("Los factores primos son:");
-
         String impresion = factoresPrimos.devolverFactoresPrimos(numeroAFactorizar,formatoDeImpresion,formatoDeOrden);
 
-        if (nombreDeArchivo == ""){
+        if (nombreDeArchivo == "") {
             System.out.println(impresion);
-        }else{
+        } else {
             imprimirArchivo(nombreDeArchivo, impresion);
         }
-
     }
-
-
 }

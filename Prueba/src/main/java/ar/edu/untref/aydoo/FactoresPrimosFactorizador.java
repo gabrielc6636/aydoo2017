@@ -10,7 +10,7 @@ public class FactoresPrimosFactorizador {
 
     int intNumeroAFactorizar;
 
-    public List<Integer> calcularFactores(int intNumeroAFactorizar) {
+    public List<Integer> calcularFactores(int intNumeroAFactorizar) throws FactorizadorException {
 
         this.intNumeroAFactorizar = intNumeroAFactorizar;
         int intFactor = 2;
@@ -27,7 +27,7 @@ public class FactoresPrimosFactorizador {
             }
         }
         else {
-            System.out.println("El valor debe ser mayor a 1");
+            throw new FactorizadorException("El valor debe ser mayor a 1");
         }
 
         return lstFactores;
