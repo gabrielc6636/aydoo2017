@@ -169,7 +169,7 @@ public class FactoresPrimosTest {
 
         List<Integer> lstFactores = factorizador.calcularFactores(intNumeroAFactorizar);
 
-        String strImpresionDeseada = "5\n3\n3\n2\n2\n2\n";
+        String strImpresionDeseada = "2\n2\n2\n3\n3\n5\n";
         String strImpresionObtenida = impresor.imprimirEnFormatoQuiet(lstFactores,"--sort:des");
 
         blnFactorizacion = strImpresionObtenida.equals(strImpresionDeseada);
@@ -192,7 +192,8 @@ public class FactoresPrimosTest {
 
         List<Integer> lstFactores = factorizador.calcularFactores(intNumeroAFactorizar);
 
-        String strImpresionDeseada = "2\n2\n2\n3\n3\n5\n";
+
+        String strImpresionDeseada = "5\n3\n3\n2\n2\n2\n";
         String strImpresionObtenida = impresor.imprimirEnFormatoQuiet(lstFactores,"--sort:asc");
 
         blnFactorizacion = strImpresionObtenida.equals(strImpresionDeseada);
@@ -238,7 +239,7 @@ public class FactoresPrimosTest {
 
         List<Integer> lstFactores = factorizador.calcularFactores(intNumeroAFactorizar);
 
-        String strImpresionDeseada = "5\n3\n3\n2\n";
+        String strImpresionDeseada = "2\n3\n3\n5\n";
         String strImpresionObtenida = impresor.imprimirEnFormatoQuiet(lstFactores,"--sort:des");
 
         blnFactorizacion = strImpresionObtenida.equals(strImpresionDeseada);
@@ -261,7 +262,7 @@ public class FactoresPrimosTest {
 
         List<Integer> lstFactores = factorizador.calcularFactores(intNumeroAFactorizar);
 
-        String strImpresionDeseada = "2\n3\n3\n5\n";
+        String strImpresionDeseada = "5\n3\n3\n2\n";
         String strImpresionObtenida = impresor.imprimirEnFormatoQuiet(lstFactores,"--sort:asc");
 
         blnFactorizacion = strImpresionObtenida.equals(strImpresionDeseada);
@@ -286,7 +287,6 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    @Ignore
     public void TestIntegral() throws IOException
     {
         System.out.println("");
@@ -303,7 +303,7 @@ public class FactoresPrimosTest {
 
         FactoresPrimos.main(args);
 
-        String strImpresionDeseada = "2\n3\n3\n5\n";
+        String strImpresionDeseada = "5\n3\n3\n2\n";
 
         int posicion = 14;
         String rutaImpresion = "salida.txt";
