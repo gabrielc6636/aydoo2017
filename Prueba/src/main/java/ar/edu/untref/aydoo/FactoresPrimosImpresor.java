@@ -1,42 +1,59 @@
 package ar.edu.untref.aydoo;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Comparator;
 
 /**
  * Created by gabriel on 22/04/17.
  */
 public class FactoresPrimosImpresor {
 
-    public String imprimirEnFormatoPretty(int numeroAFactorizar, List<Integer> lstFactores,String formatoDeOrden){
+    public String imprimirEnFormatoPretty(
+            final int numeroAFactorizar,
+            final List<Integer> lstFactores,
+            final String formatoDeOrden) {
 
-        String strFactoresPretty = "Factores primos "  + Integer.toString(numeroAFactorizar) + ": ";
+        String strFactoresPretty =
+                "Factores primos "
+                        + Integer.toString(numeroAFactorizar)
+                        + ": ";
 
-        List<Integer> listaDeFactores = ordenarLista(lstFactores,formatoDeOrden);
+        List<Integer> listaDeFactores =
+                ordenarLista(lstFactores, formatoDeOrden);
 
-        Iterator<Integer> itListaFactores = listaDeFactores.iterator();
-        while(itListaFactores.hasNext()){
-            strFactoresPretty = strFactoresPretty + Integer.toString(itListaFactores.next()) + ' ';
+        for (Integer factor: listaDeFactores) {
+            strFactoresPretty = strFactoresPretty
+                    + Integer.toString(factor)
+                    + ' ';
         }
 
         return strFactoresPretty;
     }
 
-    public String imprimirEnFormatoQuiet(List<Integer> lstFactores,String formatoDeOrden) {
+    public String imprimirEnFormatoQuiet(
+            final List<Integer> lstFactores,
+            final String formatoDeOrden) {
 
         String strFactoresQuiet = "";
 
-        List<Integer> listaDeFactores = ordenarLista(lstFactores,formatoDeOrden);
+        List<Integer> listaDeFactores =
+                ordenarLista(lstFactores, formatoDeOrden);
 
-        ListIterator<Integer> itListaFactores = listaDeFactores.listIterator(lstFactores.size());
-
-        while (itListaFactores.hasPrevious()){
-            strFactoresQuiet = strFactoresQuiet + Integer.toString(itListaFactores.previous()) + "\n";
+        for (Integer factor: listaDeFactores) {
+            strFactoresQuiet = strFactoresQuiet
+                    + Integer.toString(factor)
+                    + "\n";
         }
 
         return strFactoresQuiet;
     }
 
-    private List<Integer> ordenarLista(List<Integer> listaDeFactoresPrimos, String formatoDeOrden) {
+    private List<Integer> ordenarLista(
+            final List<Integer> listaDeFactoresPrimos,
+            final String formatoDeOrden) {
 
         switch (formatoDeOrden.toUpperCase()) {
             case "--SORT:ASC":

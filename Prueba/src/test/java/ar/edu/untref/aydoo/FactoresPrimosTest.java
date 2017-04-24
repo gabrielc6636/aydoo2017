@@ -181,7 +181,7 @@ public class FactoresPrimosTest {
 
         List<Integer> lstFactores = factorizador.calcularFactores(intNumeroAFactorizar);
 
-        String strImpresionDeseada = "5\n3\n3\n2\n2\n2\n";
+        String strImpresionDeseada = "2\n2\n2\n3\n3\n5\n";
         String strImpresionObtenida = impresor.imprimirEnFormatoQuiet(lstFactores,"");
 
         blnFactorizacion = strImpresionObtenida.equals(strImpresionDeseada);
@@ -204,7 +204,7 @@ public class FactoresPrimosTest {
 
         List<Integer> lstFactores = factorizador.calcularFactores(intNumeroAFactorizar);
 
-        String strImpresionDeseada = "2\n2\n2\n3\n3\n5\n";
+        String strImpresionDeseada = "5\n3\n3\n2\n2\n2\n";
         String strImpresionObtenida = impresor.imprimirEnFormatoQuiet(lstFactores,"--sort:des");
 
         blnFactorizacion = strImpresionObtenida.equals(strImpresionDeseada);
@@ -227,8 +227,7 @@ public class FactoresPrimosTest {
 
         List<Integer> lstFactores = factorizador.calcularFactores(intNumeroAFactorizar);
 
-
-        String strImpresionDeseada = "5\n3\n3\n2\n2\n2\n";
+        String strImpresionDeseada = "2\n2\n2\n3\n3\n5\n";
         String strImpresionObtenida = impresor.imprimirEnFormatoQuiet(lstFactores,"--sort:asc");
 
         blnFactorizacion = strImpresionObtenida.equals(strImpresionDeseada);
@@ -251,7 +250,7 @@ public class FactoresPrimosTest {
 
         List<Integer> lstFactores = factorizador.calcularFactores(intNumeroAFactorizar);
 
-        String strImpresionDeseada = "5\n3\n3\n2\n";
+        String strImpresionDeseada = "2\n3\n3\n5\n";
         String strImpresionObtenida = impresor.imprimirEnFormatoQuiet(lstFactores,"");
 
         blnFactorizacion = strImpresionObtenida.equals(strImpresionDeseada);
@@ -274,7 +273,7 @@ public class FactoresPrimosTest {
 
         List<Integer> lstFactores = factorizador.calcularFactores(intNumeroAFactorizar);
 
-        String strImpresionDeseada = "2\n3\n3\n5\n";
+        String strImpresionDeseada = "5\n3\n3\n2\n";
         String strImpresionObtenida = impresor.imprimirEnFormatoQuiet(lstFactores,"--sort:des");
 
         blnFactorizacion = strImpresionObtenida.equals(strImpresionDeseada);
@@ -297,7 +296,7 @@ public class FactoresPrimosTest {
 
         List<Integer> lstFactores = factorizador.calcularFactores(intNumeroAFactorizar);
 
-        String strImpresionDeseada = "5\n3\n3\n2\n";
+        String strImpresionDeseada = "2\n3\n3\n5\n";
         String strImpresionObtenida = impresor.imprimirEnFormatoQuiet(lstFactores,"--sort:asc");
 
         blnFactorizacion = strImpresionObtenida.equals(strImpresionDeseada);
@@ -332,7 +331,7 @@ public class FactoresPrimosTest {
         String[] args = new String[4];
         args[0] = "90";
         args[1] = "--format=quiet";
-        args[2] = "--sort:asc";
+        args[2] = "--sort:des";
         args[3] = "--output-file=salida.txt";
 
         FactoresPrimos.main(args);
