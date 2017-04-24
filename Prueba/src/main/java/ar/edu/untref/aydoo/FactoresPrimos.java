@@ -1,7 +1,7 @@
 package ar.edu.untref.aydoo;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.List;
 
 /**
  * Created by gabriel on 01/04/17.
@@ -13,55 +13,82 @@ public class FactoresPrimos {
     private static String nombreDeArchivo;
 
     public String devolverFactoresPrimos(
-            int numeroAFactorizar,
-            String formatoDeImpresion,
-            String formatoDeOrden) throws FactorizadorException{
+            final int numeroPorFactorizar,
+            final String formatoParaImpresion,
+            final String formatoParaOrden) throws FactorizadorException {
         String strRetorno = "";
 
-        FactoresPrimosFactorizador factorizador = new FactoresPrimosFactorizador();
-        FactoresPrimosImpresor impresor = new FactoresPrimosImpresor();
+        String formatoParaLaImpresion = formatoParaImpresion;
 
-        List<Integer> lstFactores = factorizador.calcularFactores(numeroAFactorizar);
+        FactoresPrimosFactorizador factorizador
+                = new FactoresPrimosFactorizador();
+        FactoresPrimosImpresor impresor
+                = new FactoresPrimosImpresor();
 
-        formatoDeImpresion = formatoDeImpresion.replaceAll("--format=","").toLowerCase();
+        List<Integer> lstFactores
+                = factorizador.calcularFactores(
+                        numeroPorFactorizar);
 
-        switch (formatoDeImpresion) {
+        formatoParaLaImpresion = formatoParaLaImpresion
+                .replaceAll("--format=", "")
+                .toLowerCase();
+
+        switch (formatoParaLaImpresion) {
             case "":
-                strRetorno = impresor.imprimirEnFormatoPretty(numeroAFactorizar,lstFactores,formatoDeOrden);
+                strRetorno = impresor.imprimirEnFormatoPretty(
+                        numeroPorFactorizar,
+                        lstFactores,
+                        formatoParaOrden);
                 break;
             case "pretty":
-                strRetorno = impresor.imprimirEnFormatoPretty(numeroAFactorizar,lstFactores,formatoDeOrden);
+                strRetorno = impresor.imprimirEnFormatoPretty(
+                        numeroPorFactorizar,
+                        lstFactores,
+                        formatoParaOrden);
                 break;
             case "quiet":
-                strRetorno = impresor.imprimirEnFormatoQuiet(lstFactores,formatoDeOrden);
+                strRetorno = impresor.imprimirEnFormatoQuiet(
+                        lstFactores,
+                        formatoParaOrden);
                 break;
             default:
-                strRetorno = "Formato no aceptado. Las opciones posibles son: pretty o quiet.";
+                strRetorno = "Formato no aceptado. "
+                        + "Las opciones posibles son: pretty o quiet.";
                 break;
         }
         return strRetorno;
     }
 
-    private static void obtenerParametros(String[] args) {
-        FactoresPrimosParametros parametros = new FactoresPrimosParametros(args);
+    private static void obtenerParametros(
+            final String[] args) {
+        FactoresPrimosParametros parametros
+                = new FactoresPrimosParametros(args);
         numeroAFactorizar = parametros.obtenerNumeroAFactorizar();
         formatoDeImpresion = parametros.obtenerFormatoDeSalida();
         formatoDeOrden = parametros.obtenerFormatoDeOrden();
         nombreDeArchivo = parametros.obtenerNombreDeArchivo();
     }
 
-    private static void imprimirArchivo(String pathImpresion, String impresion) throws IOException {
-        String ruta = pathImpresion.replaceAll("--output-file=","");
+    private static void imprimirArchivo(
+            final String rutaDeImpresion,
+            final String impresion)
+            throws IOException {
+        String ruta = rutaDeImpresion.replaceAll("--output-file=", "");
         FactoresPrimosIO factoresPrimosIO = new FactoresPrimosIO(ruta);
         factoresPrimosIO.escribirFactorizacion(impresion);
     }
 
-    public static void main(String[]args) throws IOException,FactorizadorException {
+    public static void main(final String[]args)
+            throws IOException, FactorizadorException {
         obtenerParametros(args);
-        FactoresPrimos factoresPrimos=new FactoresPrimos();
-        String impresion = factoresPrimos.devolverFactoresPrimos(numeroAFactorizar,formatoDeImpresion,formatoDeOrden);
+        FactoresPrimos factoresPrimos = new FactoresPrimos();
+        String impresion = factoresPrimos
+                .devolverFactoresPrimos(
+                        numeroAFactorizar,
+                        formatoDeImpresion,
+                        formatoDeOrden);
 
-        if (nombreDeArchivo == "") {
+        if (nombreDeArchivo.isEmpty()) {
             System.out.println(impresion);
         } else {
             imprimirArchivo(nombreDeArchivo, impresion);

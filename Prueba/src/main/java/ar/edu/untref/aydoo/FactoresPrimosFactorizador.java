@@ -8,25 +8,24 @@ import java.util.List;
  */
 public class FactoresPrimosFactorizador {
 
-    int intNumeroAFactorizar;
+    private int numeroAFactorizar;
 
-    public List<Integer> calcularFactores(int intNumeroAFactorizar) throws FactorizadorException {
+    public List<Integer> calcularFactores(
+            final int intNumeroAFactorizar)
+            throws FactorizadorException {
 
-        this.intNumeroAFactorizar = intNumeroAFactorizar;
+        this.numeroAFactorizar = intNumeroAFactorizar;
         int intFactor = 2;
         List<Integer> lstFactores = new LinkedList<Integer>();
-
-        if (this.intNumeroAFactorizar > 1) {
-            while (this.intNumeroAFactorizar != 1 ) {
-                while ( (this.intNumeroAFactorizar % intFactor) == 0)
-                {
-                    this.intNumeroAFactorizar /= intFactor;
+        if (this.numeroAFactorizar > 1) {
+            while (this.numeroAFactorizar != 1) {
+                while ((this.numeroAFactorizar % intFactor) == 0) {
+                    this.numeroAFactorizar /= intFactor;
                     lstFactores.add(intFactor);
                 }
                 intFactor++;
             }
-        }
-        else {
+        } else {
             throw new FactorizadorException("El valor debe ser mayor a 1");
         }
 

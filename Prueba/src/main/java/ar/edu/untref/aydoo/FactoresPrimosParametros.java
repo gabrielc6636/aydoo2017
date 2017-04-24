@@ -9,16 +9,20 @@ public class FactoresPrimosParametros {
     private String formatoDeOrden = "";
     private String nombreDeArchivo = "";
 
-    public FactoresPrimosParametros(String[] args) {
+    private final Integer numeroTres = 3;
+
+    public FactoresPrimosParametros(final String[] args) {
 
         String parametroAEvaluar;
 
         if (args.length > 0) {
             this.numeroAFactorizar = args[0];
-            for (int i = 1; i < args.length; i++){
+            for (int i = 1; i < args.length; i++) {
 
-                if(!args[i].isEmpty()) {
-                    parametroAEvaluar = args[i].substring(0, 3).toUpperCase();
+                if (!args[i].isEmpty()) {
+                    parametroAEvaluar = args[i]
+                            .substring(0, numeroTres)
+                            .toUpperCase();
 
                     switch (parametroAEvaluar) {
                         case "--F":
@@ -30,6 +34,8 @@ public class FactoresPrimosParametros {
                         case "--O":
                             this.nombreDeArchivo = args[i];
                             break;
+                        default:
+                            break;
                     }
                 }
             }
@@ -37,11 +43,11 @@ public class FactoresPrimosParametros {
     }
 
     public Integer obtenerNumeroAFactorizar() {
-        Integer numeroAFactorizar = 0;
+        Integer numeroARetornar = 0;
         if (this.numeroAFactorizar != "") {
-            numeroAFactorizar = Integer.parseInt(this.numeroAFactorizar);
+            numeroARetornar = Integer.parseInt(this.numeroAFactorizar);
         }
-        return numeroAFactorizar;
+        return numeroARetornar;
 
     }
 

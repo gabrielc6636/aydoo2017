@@ -12,23 +12,28 @@ import java.util.Scanner;
 public class FactoresPrimosIO {
 
     private FileWriter archivoSalida;
-    private String path;
+    private String ruta;
     private Scanner scanner;
 
-    public FactoresPrimosIO(String path) throws IOException {
-        this.path = path;
+    public FactoresPrimosIO(
+            final String rutaArchivo)
+            throws IOException {
+        this.ruta = rutaArchivo;
     }
 
-    public void escribirFactorizacion(String factorizacion) throws IOException {
-        archivoSalida = new FileWriter(this.path);
+    public void escribirFactorizacion(
+            final String factorizacion)
+            throws IOException {
+        archivoSalida = new FileWriter(this.ruta);
         archivoSalida.write(factorizacion);
         archivoSalida.close();
     }
 
-    public String leerFactorizacion() throws FileNotFoundException {
+    public String leerFactorizacion()
+            throws FileNotFoundException {
 
         String factorizacion = "";
-        File archivoSalidaParaLeer = new File(this.path);
+        File archivoSalidaParaLeer = new File(this.ruta);
         scanner = new Scanner(archivoSalidaParaLeer);
 
         while (scanner.hasNextLine()) {
