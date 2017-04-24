@@ -21,6 +21,8 @@ public class FactoresPrimos {
 
         List<Integer> lstFactores = factorizador.calcularFactores(numeroAFactorizar);
 
+        formatoDeImpresion = formatoDeImpresion.replaceAll("--format=","").toLowerCase();
+
         switch (formatoDeImpresion) {
             case "":
                 strRetorno = impresor.imprimirEnFormatoPretty(numeroAFactorizar,lstFactores,formatoDeOrden);
@@ -50,8 +52,7 @@ public class FactoresPrimos {
 
     private static void imprimirArchivo(String pathImpresion, String impresion) throws IOException {
 
-        int posicion = 14;
-        String ruta = pathImpresion.substring(posicion);
+        String ruta = pathImpresion.replaceAll("--output-file=","");
         FactoresPrimosIO factoresPrimosIO = new FactoresPrimosIO(ruta);
         factoresPrimosIO.escribirFactorizacion(impresion);
 

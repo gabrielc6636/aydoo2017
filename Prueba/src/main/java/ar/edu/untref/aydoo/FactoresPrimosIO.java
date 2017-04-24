@@ -16,11 +16,11 @@ public class FactoresPrimosIO {
     private Scanner scanner;
 
     public FactoresPrimosIO(String path) throws IOException {
-        archivoSalida = new FileWriter(path);
         this.path = path;
     }
 
     public void escribirFactorizacion(String factorizacion) throws IOException {
+        archivoSalida = new FileWriter(this.path);
         archivoSalida.write(factorizacion);
         archivoSalida.close();
     }
@@ -34,7 +34,7 @@ public class FactoresPrimosIO {
         while (scanner.hasNextLine()) {
             factorizacion = factorizacion + scanner.nextLine() + "\n";
         }
-
+        scanner.close();
         return factorizacion;
     }
 

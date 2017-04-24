@@ -293,10 +293,9 @@ public class FactoresPrimosTest {
         System.out.println("Test Factor Primo Quiet para 90");
 
         boolean blnFactorizacion;
-        int intNumeroAFactorizar = 90;
 
-        String[] args = new String[3];
-        args[0] = "360";
+        String[] args = new String[4];
+        args[0] = "90";
         args[1] = "--format=quiet";
         args[2] = "--sort:asc";
         args[3] = "--output-file=salida.txt";
@@ -305,9 +304,8 @@ public class FactoresPrimosTest {
 
         String strImpresionDeseada = "5\n3\n3\n2\n";
 
-        int posicion = 14;
-        String rutaImpresion = "salida.txt";
-        String ruta = rutaImpresion.substring(posicion);
+
+        String ruta = "salida.txt";
         FactoresPrimosIO factoresPrimosIO = new FactoresPrimosIO(ruta);
 
         String strImpresionObtenida = factoresPrimosIO.leerFactorizacion();
