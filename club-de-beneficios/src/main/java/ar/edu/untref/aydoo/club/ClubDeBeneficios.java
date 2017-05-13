@@ -20,7 +20,7 @@ public class ClubDeBeneficios {
 
     public Establecimiento obtenerEstablecimientoAFelicitar() {
 
-        Establecimiento establecimientoGanador = new Establecimiento("");
+        Establecimiento establecimientoGanador = null;
         int cantidadDeOperaciones = 0;
 
         for (Establecimiento establecimiento: establecimientos) {
@@ -43,7 +43,7 @@ public class ClubDeBeneficios {
 
     public Sucursal obtenerSucursalAFelicitar(final Mes mes) {
 
-        Sucursal sucursalGanadora = new Sucursal("SucursalGanadora");
+        Sucursal sucursalGanadora = null;
         int cantidadDeOperaciones = 0;
 
         for (Establecimiento establecimiento: establecimientos) {

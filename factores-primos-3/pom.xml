@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>ar.edu.untref.aydoo</groupId>
-    <artifactId>factores-primos-3</artifactId>
+    <artifactId>Factores-Primos-3</artifactId>
     <version>1.0.0</version>
     <dependencies>
         <dependency>
@@ -37,7 +37,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>factores-primos</finalName>
+        <finalName>Factores-Primos</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -95,24 +95,24 @@
                     </execution>
                 </executions>
             </plugin>
-             <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
-                  <archive>
-                    <manifest>
-                      <addClasspath>true</addClasspath>
-                      <mainClass>ar.edu.untref.aydoo.FactoresPrimos</mainClass>
-                    </manifest>
-                  </archive>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>ar.edu.untref.aydoo.club.FactoresPrimos</mainClass>
+                        </manifest>
+                    </archive>
                 </configuration>
-              </plugin>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>3.7</version>
             </plugin>
-                        <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>2.17</version>

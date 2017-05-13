@@ -14,7 +14,7 @@ import java.util.List;
 public class FactoresPrimosTest {
 
     @Test
-    public void TestFactorPrimo360() throws FactorizadorException
+    public void testFactorPrimo360() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo 360");
@@ -41,7 +41,7 @@ public class FactoresPrimosTest {
     }
 
     @Test (expected = FactorizadorException.class)
-    public void TestFactorPrimo1ObtengoException() throws FactorizadorException
+    public void testFactorPrimo1ObtengoException() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo 1");
@@ -54,7 +54,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimo90() throws FactorizadorException
+    public void testFactorPrimo90() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo 90");
@@ -79,7 +79,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoPrettyPara360Integral() throws FactorizadorException
+    public void testFactorPrimoPrettyPara360Integral() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Pretty para 360");
@@ -101,7 +101,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimodDefaultPrettyPara360Integral() throws FactorizadorException
+    public void testFactorPrimodDefaultPrettyPara360Integral() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Pretty para 360");
@@ -123,7 +123,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoPrettyPara360() throws FactorizadorException
+    public void testFactorPrimoPrettyPara360() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Pretty para 360");
@@ -146,7 +146,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoPrettyPara90() throws FactorizadorException
+    public void testFactorPrimoPrettyPara90() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Pretty para 90");
@@ -169,7 +169,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoQuietPara360() throws FactorizadorException
+    public void testFactorPrimoQuietPara360() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Quiet para 360");
@@ -192,7 +192,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoQuietPara360SortDes() throws FactorizadorException
+    public void testFactorPrimoQuietPara360SortDes() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Quiet para 360");
@@ -215,7 +215,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoQuietPara360SortAsc() throws FactorizadorException
+    public void testFactorPrimoQuietPara360SortAsc() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Quiet para 360");
@@ -238,7 +238,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoQuietPara90() throws FactorizadorException
+    public void testFactorPrimoQuietPara90() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Quiet para 90");
@@ -261,7 +261,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoQuietPara90SortDes() throws FactorizadorException
+    public void testFactorPrimoQuietPara90SortDes() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Quiet para 90");
@@ -284,7 +284,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoQuietPara90SortAsc() throws FactorizadorException
+    public void testFactorPrimoQuietPara90SortAsc() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Quiet para 90");
@@ -307,7 +307,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestFactorPrimoErrorTipo() throws FactorizadorException
+    public void testFactorPrimoErrorTipo() throws FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Error Tipo Resumen");
@@ -321,7 +321,7 @@ public class FactoresPrimosTest {
     }
 
     @Test
-    public void TestIntegral() throws IOException,FactorizadorException
+    public void testIntegral() throws IOException,FactorizadorException
     {
         System.out.println("");
         System.out.println("Test Factor Primo Quiet para 90");
