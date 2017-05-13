@@ -25,17 +25,17 @@ public class Sucursal {
                     this.establecimiento.tieneBeneficio(
                             cliente.obtenerTarjeta());
 
-        if (beneficio != null) {
+        /*if (beneficio != null) {*/
 
             Operacion nuevaOperacion = new Operacion(beneficio,
                                                      productos,
                                                         mes, this);
             this.operaciones.add(nuevaOperacion);
             cliente.registrarOperacion(nuevaOperacion);
-        } else {
+        /*} else {
             throw new BeneficioException("El establecimiento no "
                     + "cuenta con beneficio para la tarjeta solicitada");
-        }
+        }*/
     }
 
     public void asignarEstablecimiento(final Establecimiento establecimiento) {
