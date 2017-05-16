@@ -36,7 +36,7 @@ public class Operacion {
 
         double importeInicial = 0;
 
-        if(beneficio!=null) {
+        if (beneficio != null) {
 
             List<Producto> productos
                     = beneficio.obtenerValorBeneficio(productosDescuento);

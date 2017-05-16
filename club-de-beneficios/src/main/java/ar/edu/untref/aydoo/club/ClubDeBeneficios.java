@@ -89,16 +89,18 @@ public class ClubDeBeneficios {
         return listaDeClientes;
     }
 
-    public void imprimirReporteDeAhorros(final Mes mes) {
+    public String imprimirReporteDeAhorros(final Mes mes) {
+        String respuesta = "";
+
         Map<Cliente, Double> listaDeClientes
                 = obtenerClientesParaEnviarEmail(mes);
 
         for (Cliente cliente:listaDeClientes.keySet()) {
-            System.out.println("Cliente: " + cliente.obtenerNombre());
+            respuesta = respuesta + "Cliente : " + cliente.obtenerNombre();
             List<Operacion> operacionesCliente = cliente.obtenerOperaciones();
             for (Operacion operacion: operacionesCliente) {
                 for (Producto producto:operacion.obtenerProductos()) {
-                    System.out.println("Establecimiento: "
+                    respuesta = respuesta + "Establecimiento: "
                             + operacion.obtenerSucursal()
                             .obtenerEstablecimiento()
                             .obtenerNombre()
@@ -107,10 +109,12 @@ public class ClubDeBeneficios {
                             + " | precio habitual (sin beneficio): "
                             + producto.obtenerImporte()
                             + " | beneficio obtenido: "
-                            + producto.obtenerBeneficioImporte());
+                            + producto.obtenerBeneficioImporte();
                 }
             }
         }
+
+        return respuesta;
     }
 
 }

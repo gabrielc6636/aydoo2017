@@ -34,7 +34,7 @@ public class SucursalTest {
         Assert.assertEquals(operacionesDeJuan.get(0), operacionesDeSucursal1.get(0));
     }
     
-    @Test(expected = BeneficioException.class)
+    @Test
     public void siJuanTieneTarjetaClassicPeroLaSucursalSoloManejaTarjetaPremiumEntoncesHayUnaExcepcion() throws BeneficioException {
 
         Cliente juan = new Cliente(Tarjeta.CLASSIC,"a@b.com","Juan");
@@ -54,6 +54,9 @@ public class SucursalTest {
 
         List<Operacion> operacionesDeJuan = juan.obtenerOperaciones();
         Assert.assertEquals(operacionesDeJuan.size(), 1);
+
+        Operacion operacion = operacionesDeJuan.get(0);
+        Assert.assertEquals(operacion.obtenerImporteAhorrado(),0.0,0);
     }
 
 }

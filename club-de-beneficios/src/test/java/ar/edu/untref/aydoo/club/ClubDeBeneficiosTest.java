@@ -69,21 +69,20 @@ public class ClubDeBeneficiosTest {
 
     @Test
     public void devuelveJuanComoUnicoBeneficiadoEnElMes() throws BeneficioException {
-        
-        Beneficio beneficio = new Beneficio(Tarjeta.PREMIUM, 10);
 
         Producto productoTest = new Producto(1000,"Producto de Test");
 
         Sucursal sucursalTest = new Sucursal("SucursalTest");
 
+        this.heladeriaA.agregarSucursal(sucursalTest);
+        sucursalTest.asignarEstablecimiento(heladeriaA);
+
         List<Producto> productos = new ArrayList<Producto>();
         productos.add(productoTest);
 
-        Operacion operacion = new Operacion(beneficio, productos, Mes.ENERO,sucursalTest);
+        sucursalTest.comprar(juan,productos,Mes.ENERO);
         
-        juan.registrarOperacion(operacion);
-        
-        Assert.assertEquals(900, juan.calcularDineroAbonado(), 0.005);
+        Assert.assertEquals(800, juan.calcularDineroAbonado(), 0.005);
     }
 
     @Test
@@ -218,15 +217,43 @@ public class ClubDeBeneficiosTest {
         productos.add(productoTest);
 
         sucursalS1.comprar(juan, productos, Mes.ENERO);
+        System.out.println(club.imprimirReporteDeAhorros(Mes.ENERO));
 
         Map<Cliente,Double> clientesParaEmail = club.obtenerClientesParaEnviarEmail(Mes.ENERO);
-
-        club.imprimirReporteDeAhorros(Mes.ENERO);
 
         double valorAhorrado = clientesParaEmail.get(juan);
 
         Assert.assertTrue(clientesParaEmail.containsKey(juan));
         Assert.assertEquals(20.0,valorAhorrado, 0.005);
+
+    }
+
+    @Test
+    public void siJuanHizoOperacionEnEneroTengoQueEnviarleEmailValidoContenidoEsperado() throws BeneficioException {
+
+        Cliente juan = new Cliente(Tarjeta.PREMIUM,"a@b.com","Juan");
+
+        club.agregarCliente(juan);
+
+        Producto productoTest = new Producto(100,"Producto de Test");
+
+        List<Producto> productos = new ArrayList<Producto>();
+        productos.add(productoTest);
+
+        sucursalS1.comprar(juan, productos, Mes.ENERO);
+
+        Map<Cliente,Double> clientesParaEmail = club.obtenerClientesParaEnviarEmail(Mes.ENERO);
+
+        String respuestaReporte = club.imprimirReporteDeAhorros(Mes.ENERO);
+
+        String respuestaEsperada = "Cliente : JuanEstablecimiento: Heladeria A | Producto: Producto de Test | precio habitual (sin beneficio): 100.0 | beneficio obtenido: 20.0";
+
+        double valorAhorrado = clientesParaEmail.get(juan);
+
+        Assert.assertTrue(clientesParaEmail.containsKey(juan));
+        Assert.assertEquals(20.0,valorAhorrado, 0.005);
+
+        Assert.assertEquals(respuestaReporte,respuestaEsperada);
     }
 
     @Test
